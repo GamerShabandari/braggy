@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +7,280 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+  /* background-color: #e90052; */
+  background: rgb(24, 15, 27);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.logo {
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #38003c; */
+  margin: 30px;
+}
+
+.information {
+  color: #38003c;
+  background-color: rgba(255, 255, 255, 0.95);
+  font-weight: 300;
+  line-height: 30px;
+  font-size: 0.7rem;
+  width: 80%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 30px 0px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+  background-color: #00ff85;
+  background-color: #ff68f0;
+  cursor: pointer;
+  padding: 10px;
+  background: rgb(255, 104, 240);
+  background: linear-gradient(90deg, rgba(255, 104, 240, 1) 0%, rgba(23, 172, 255, 1) 100%);
+}
+
+.btnIcon {
+  font-size: 2.5rem;
+  /* color: #38003c; */
+  color: rgb(24, 15, 27);
+  ;
+}
+
+a {
+  color: #ff68f0;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.github {
+  font-size: 2rem;
+}
+
+.swipesContainer {
+
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 40px;
+}
+
+.swipesContainer div {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+}
+
+.swipesContainer div span {
+  text-align: center;
+  position: absolute;
+  top: -20px;
+  width: fit-content;
+  width: 300px;
+  margin: 10px;
+}
+
+.swipeIcon {
+  filter: grayscale(100%);
+  filter: brightness(15);
+  width: 50px;
+  height: 50px;
+}
+
+.swipeUpIcon {
+  filter: grayscale(100%);
+  filter: brightness(15);
+  transform: rotate(270deg);
+  width: 50px;
+  height: 50px;
+}
+
+#root {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  /* background: rgb(61 25 91);
+  background-image: url("../public/img/PLBG.jpg");
+  background: rgb(24, 15, 27); */
+}
+
+* {
+  user-select: none;
+}
+
+#root>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.app {
+  overflow: hidden;
+}
+
+.app>div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  flex-direction: row !important;
+}
+
+.row>* {
+  margin: 5px;
+}
+
+h1 {
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+h2 {
+  color: #fff;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.timerContainer {
+  color: rgb(61 25 91);
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  border: 1px solid #ff68f0;
+  border-radius: 15px;
+  /* background-color: rgb(0,255,133);
+  background-color: #ff68f0; */
+  padding: 10px;
+  width: 220px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+}
+
+.seconds {
+  /* color: #e90052; */
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.cardContainer {
+  width: 500px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card {
+  position: relative;
+  width: 350px;
+  height: 550px;
+  border: 1px solid rgba(107, 107, 107, 0.22);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  transform: perspective(900px) rotateX(25deg);
+  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
+    auto;
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.logoContainer img {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: none;
+}
+
+.PLcontainer {
+  height: fit-content;
+  overflow: hidden;
+}
+
+.PLcontainer img {
+  width: 50%;
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+}
+
+.card h3 {
+  /* color: rgb(61 25 91); */
+  /* background-color: rgb(0,255,133); */
+  background-color: rgb(24, 15, 27);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  width: 300px;
+  height: fit-content;
+  margin: 0;
+  padding: 20px 0px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  border-radius: 15px;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
 }
