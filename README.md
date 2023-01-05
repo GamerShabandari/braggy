@@ -5,7 +5,3 @@ You swipe the card to the side you think will win the fixture, and swipe up if y
 
 You have 20 seconds to guess all the fixtures, hurry up and try to guess them all right and chase a highscore to brag about to your friends!
 
-## Available Scripts
-
-In the project directory, you can run:
-# braggy
