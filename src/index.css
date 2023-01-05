@@ -214,7 +214,7 @@ h2 {
 
 .cardContainer {
   width: 500px;
-  height: 600px;
+  height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -244,8 +244,8 @@ h2 {
 }
 
 .logoContainer img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   overflow: hidden;
   border: none;
 }
@@ -270,11 +270,10 @@ h2 {
   background-color: rgb(24, 15, 27);
   font-size: 0.8rem;
   font-weight: 400;
-  letter-spacing: 2px;
   width: 250px;
   height: fit-content;
   margin: 0;
-  padding: 20px 0px;
+  padding: 10px 0px;
   text-align: center;
   display: flex;
   justify-content: center;
