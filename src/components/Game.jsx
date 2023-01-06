@@ -50,8 +50,8 @@ export function Game() {
         if (completed && !isDone) {
             // Render if time is up
 
-            // setTimeIsUp(true);
-            // return <TimesUP />;
+            setTimeIsUp(true);
+            return <TimesUP />;
 
         } else {
             // Render a countdown
@@ -130,8 +130,8 @@ export function Game() {
 
         {timeIsUp && <div>
             <h1>TIMES UP BRO!</h1>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }}><HiHome></HiHome></button>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }}><HiOutlineRefresh></HiOutlineRefresh></button>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }}><HiOutlineRefresh className='btnIcon'></HiOutlineRefresh></button>
         </div>}
 
         {!timeIsUp && <>
@@ -140,7 +140,7 @@ export function Game() {
             {!isDone &&
                 <>
                     <div className='timerContainer  animate__animated animate__pulse animate__infinite	infinite'>
-                        <Countdown date={Date.now() + 20000} renderer={renderer} className='timerContainer' />
+                        <Countdown date={Date.now() + 30000} renderer={renderer} className='timerContainer' />
                     </div>
 
                     <div className='cardContainer animate__animated animate__fadeInDown animate__faster'>
@@ -175,8 +175,5 @@ export function Game() {
             </>}
 
         </>}
-
-        <h1>din senast spelade matchdag: {yourLastPlayedMatchDay}</h1>
-
     </>)
 }

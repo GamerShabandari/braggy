@@ -200,7 +200,7 @@ export function Home() {
                     wrapper="div"
                     cursor={false}
                     repeat={Infinity}
-                    style={{ fontSize: '4em', letterSpacing: "5px", fontWeight: "200" }}
+                    style={{ fontSize: '4rem', letterSpacing: "5px", fontWeight: "300" }}
                 />
             </LinearGradient>
 
@@ -216,21 +216,17 @@ export function Home() {
                         2000,
                         'Beat your spouse!',
                         2000,
-                        'Beat your siblings!',
-                        2000,
-                        'Beat your kids!',
-                        2000,
                         'Beat your nemesis!',
                         2000,
                         'Beat your boss!',
                         2000,
-                        '& then bragg about it!',
+                        '& then brag about it!',
                         2000,
                     ]}
                     wrapper="div"
                     cursor={false}
                     repeat={Infinity}
-                    style={{ fontSize: '1em', letterSpacing: "2px", fontWeight: "300" }}
+                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
                 />
             </LinearGradient>
         </div>
@@ -249,7 +245,7 @@ export function Home() {
 
         <div className="swipesContainer">
             <div>
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for awayteam win</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
                     loop
@@ -278,7 +274,20 @@ export function Home() {
 
                 </Player>
             </div>
+
+            <div>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds</LinearGradient>
+                <Player className="timerIcon"
+                    autoplay
+                    loop
+                    src="https://assets1.lottiefiles.com/packages/lf20_4yofoa5q.json"
+                >
+
+                </Player>
+            </div>
         </div>
+
+        
 
         <span className="information animate__animated animate__fadeInUp">
             This mobile game was made for my thesis assignment at Medieinstitutet. Its a game where you guess the results of all the fixtures in the upcoming round of the Premier League.
