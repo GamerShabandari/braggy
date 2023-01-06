@@ -214,13 +214,13 @@ export function Home() {
                         2000,
                         'Beat your coworkers!',
                         2000,
+                        'Beat your boss!',
+                        2000,
                         'Beat your spouse!',
                         2000,
                         'Beat your nemesis!',
                         2000,
-                        'Beat your boss!',
-                        2000,
-                        '& then brag about it!',
+                        'Beat & brag about it!',
                         2000,
                     ]}
                     wrapper="div"
