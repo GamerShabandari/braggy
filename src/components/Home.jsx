@@ -288,7 +288,7 @@ export function Home() {
         </div>
 
         <footer>
-            <a href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer" className="animate__animated animate__heartBeat animate__infinite	infinite">
+            <a href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                     Gamer Shabandari ©
                 </LinearGradient>
