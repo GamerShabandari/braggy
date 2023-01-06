@@ -232,7 +232,7 @@ export function Home() {
         </div>
 
         {yourLastPlayedMatchDay !== nextMatchD &&
-            <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }}><GiPlayButton className='btnIcon'></GiPlayButton></button>
+            <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }}  aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
         }
 
         {yourLastPlayedMatchDay === nextMatchD &&
@@ -244,7 +244,7 @@ export function Home() {
         }
 
         <div className="swipesContainer">
-            <div>
+            <div  aria-label="animated icon explaining swipe left mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
@@ -254,7 +254,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div>
+            <div  aria-label="animated icon explaining swipe up mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw</LinearGradient>
                 <Player className="swipeUpIcon"
                     autoplay
@@ -264,7 +264,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div>
+            <div  aria-label="animated icon explaining swipe right mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
@@ -275,7 +275,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div>
+            <div  aria-label="animated icon explaining time limit when playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds</LinearGradient>
                 <Player className="timerIcon"
                     autoplay
@@ -288,7 +288,7 @@ export function Home() {
         </div>
 
         <footer>
-            <a href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer">
+            <a href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer" aria-label="link to Gamer Shabandari Github page">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                     Gamer Shabandari ©
                 </LinearGradient>

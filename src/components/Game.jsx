@@ -130,8 +130,8 @@ export function Game() {
 
         {timeIsUp && <div>
             <h1>TIMES UP BRO!</h1>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }}><HiOutlineRefresh className='btnIcon'></HiOutlineRefresh></button>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }}  aria-label="button for navigating back home"><HiHome className='btnIcon'></HiHome></button>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round"><HiOutlineRefresh className='btnIcon'></HiOutlineRefresh></button>
         </div>}
 
         {!timeIsUp && <>
@@ -171,7 +171,7 @@ export function Game() {
                 <h3>
                     CHECK BACK AFTER MATCHDAY IS FINISHED FOR RESULTS
                 </h3>
-                <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+                <button className="btn animate__animated animate__pulse animate__infinite	infinite" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
             </>}
 
         </>}
