@@ -20,15 +20,11 @@ export function Game() {
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
     const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
 
-
-
     useEffect(() => {
 
         if (yourFinalPicksForThisMatchDay.length !== 0) {
             setIsDone(true)
         }
-
-        console.log(matchdayToPlay[0]);
 
     }, [])
 
@@ -49,10 +45,8 @@ export function Game() {
 
         if (completed && !isDone) {
             // Render if time is up
-
             setTimeIsUp(true);
             return <TimesUP />;
-
         } else {
             // Render a countdown
             myTimeLeft = seconds;
@@ -65,7 +59,6 @@ export function Game() {
     };
 
     const TimesUP = () => <span>TIMES UP!</span>;
-
 
     function filterResultsForDuplicates() {
         // check and remove duplicates from array if any
@@ -126,7 +119,7 @@ export function Game() {
         }
     }
 
-    return (<>
+    return (<main>
 
         {timeIsUp && <div>
             <h1>TIMES UP BRO!</h1>
@@ -175,5 +168,5 @@ export function Game() {
             </>}
 
         </>}
-    </>)
+    </main>)
 }

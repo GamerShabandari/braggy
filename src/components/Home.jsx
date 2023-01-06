@@ -185,7 +185,7 @@ export function Home() {
 
     }
 
-    return (<>
+    return (<main>
 
         {/* <button onClick={fetchResults}>fetch results</button>
         <button onClick={fetchFixtures}>fetch fixtures</button> */}
@@ -294,5 +294,5 @@ export function Home() {
                 </LinearGradient>
             </a>
         </footer>
-    </>)
+    </main>)
 }
