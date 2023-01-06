@@ -8,7 +8,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif;
-  /* background-color: #e90052; */
   background: rgb(24, 15, 27);
 }
 
@@ -24,7 +23,6 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: #38003c; */
   margin: 20px;
   margin-top: 10px;
 }
@@ -67,22 +65,14 @@ code {
 }
 
 a {
-  color: #ff68f0;
+  color: #17acff;
   display: block;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 300;
+  font-size: 0.7rem;
   margin: 0 auto;
   margin-top: 20px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 10px;
   width: fit-content;
-}
-
-.github {
-  font-size: 2rem;
 }
 
 .swipesContainer {
@@ -146,9 +136,6 @@ a {
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  /* background: rgb(61 25 91);
-  background-image: url("../public/img/PLBG.jpg");
-  background: rgb(24, 15, 27); */
 }
 
 * {
