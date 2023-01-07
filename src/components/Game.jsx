@@ -77,6 +77,7 @@ export function Game() {
 
         if (filteredResults.length === matchdayToPlay[1].length) {
             saveMyPicksToLocalstorage(filteredResults)
+            console.log("sparar dina val");
         }
     }
 
