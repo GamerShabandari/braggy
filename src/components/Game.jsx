@@ -122,13 +122,18 @@ export function Game() {
     return (<main>
 
         {timeIsUp && <div>
-            <h1>TIMES UP BRO!</h1>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }}  aria-label="button for navigating back home"><HiHome className='btnIcon'></HiHome></button>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round"><HiOutlineRefresh className='btnIcon'></HiOutlineRefresh></button>
+            <h1>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>TIMES UP! RETRY?</LinearGradient>
+            </h1>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
+                <HiHome className='btnIcon'></HiHome>
+            </button>
+            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
+                <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
+            </button>
         </div>}
 
         {!timeIsUp && <>
-
 
             {!isDone &&
                 <>
@@ -159,10 +164,10 @@ export function Game() {
 
             {isDone && <>
                 <h1>
-                    GREAT JOB!
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>
                 <h3>
-                    CHECK BACK AFTER MATCHDAY IS FINISHED FOR RESULTS
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY IS FINISHED FOR RESULTS</LinearGradient>
                 </h3>
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
             </>}
