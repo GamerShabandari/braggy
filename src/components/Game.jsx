@@ -113,7 +113,8 @@ export function Game() {
             let pick = {
                 homeTeam: match.homeTeam,
                 awayTeam: match.awayTeam,
-                myWinner: "draw"
+                // when draw is guessed, we save it as hometeam name + awayteam name for correct point calculation later
+                myWinner: match.homeTeam + match.awayTeam
             }
             myPicks.push(pick)
         }

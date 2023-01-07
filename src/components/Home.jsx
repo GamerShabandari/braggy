@@ -1,14 +1,76 @@
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../useLocalStorage";
-import { useEffect, useCallBack } from "react";
+import { useEffect } from "react";
 import axios from "axios";
-import { GiPlayButton } from "react-icons/gi";
-import { FaGithubSquare } from "react-icons/fa";
+import { GiH2O, GiPlayButton } from "react-icons/gi";
 import { LinearGradient } from 'react-text-gradients';
 import { TypeAnimation } from 'react-type-animation';
 import { Player } from '@lottiefiles/react-lottie-player';
 
 export function Home() {
+
+    let testFacit = [
+        {
+            "homeTeam": "Tottenham",
+            "awayTeam": "Arsenal",
+            "homeTeamScore": "2",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Newcastle United",
+            "awayTeam": "Fulham",
+            "homeTeamScore": "2",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Chelsea",
+            "awayTeam": "Crystal Palace",
+            "homeTeamScore": "0",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Brentford",
+            "awayTeam": "Bournemouth",
+            "homeTeamScore": "0",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Brighton",
+            "awayTeam": "Liverpool",
+            "homeTeamScore": "0",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Wolves",
+            "awayTeam": "West Ham",
+            "homeTeamScore": "1",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Nottingham Forest",
+            "awayTeam": "Leicester",
+            "homeTeamScore": "1",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Everton",
+            "awayTeam": "Southampton",
+            "homeTeamScore": "1",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Manchester United",
+            "awayTeam": "Manchester City",
+            "homeTeamScore": "1",
+            "awayTeamScore": "1"
+        },
+        {
+            "homeTeam": "Aston Villa",
+            "awayTeam": "Leeds",
+            "homeTeamScore": "1",
+            "awayTeamScore": "1"
+        }
+    ]
 
     const navigate = useNavigate();
 
@@ -21,6 +83,7 @@ export function Home() {
     const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
     const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "")
+    const [highScore, setHighScore] = useLocalStorage("highScore", 0)
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -57,25 +120,83 @@ export function Home() {
 
 
         console.log("checkresults");
-        console.log("matchdays från rättningen", matchdays);
+        //  console.log("matchdays från rättningen", matchdays);
+
+        let score = 0;
+        let timeLeftOnMyLastRound = 0;
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
             //alert("finns inget att rätta")
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
+            alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
             return
         }
 
         console.log("finns något att rätta eftersom du åtminstånde gjort dina picks tidigare");
         for (let i = 0; i < matchdays.length; i++) {
             const matchday = matchdays[i];
-            console.log("i loop inne i checkresults, matchday: ", matchday);
+            //  console.log("i loop inne i checkresults, matchday: ", matchday);
 
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
-                console.log("vi har resultat för matchday: ", matchday + " och du har spelat denna rond säger du: " + yourLastPlayedMatchDay);
-                console.log("oj oj oj vi har en match på index: ", i);
-                console.log("det här är vad vi ska jämföra mot, det är facit", results[i]);
-                console.log("här är valen du gjorde", yourFinalPicksForThisMatchDay[1]);
-                console.log("och hur många sekunder du hade över", yourFinalPicksForThisMatchDay[0]);
+                // console.log("vi har resultat för matchday: ", matchday + " och du har spelat denna rond säger du: " + yourLastPlayedMatchDay);
+                //  console.log("oj oj oj vi har en match på index: ", i);
+                // console.log("det här är vad vi ska jämföra mot, det är facit", results[i]);
+                //   console.log("här är valen du gjorde", yourFinalPicksForThisMatchDay[1]);
+                //  console.log("och hur många sekunder du hade över", yourFinalPicksForThisMatchDay[0]);
+
+                timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
+
+                for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
+
+                    for (const fixtureResult of testFacit) {
+                        //  console.log("gissning: " + fixtureGuessed + " resultat: " +fixtureResult);
+                        if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
+
+                            if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
+                                // if any of the fixtures hasnt been played yet, stop checking results
+                                alert("någon match saknar fortfarande resultat!")
+                                return
+                            }
+
+                            let winner = fixtureResult.homeTeam
+
+                            if (Number(fixtureResult.awayTeamScore) > Number(fixtureResult.homeTeamScore)) {
+                                winner = fixtureResult.awayTeam
+                            }
+                            if (Number(fixtureResult.awayTeamScore) === Number(fixtureResult.homeTeamScore)) {
+                                winner = fixtureResult.homeTeam + fixtureResult.awayTeam
+                            }
+
+                            if (fixtureGuessed.myWinner === winner) {
+                                score += 1
+                            }
+                            break
+                        }
+                    }
+                }
+
+                // score is number of right guesses x timeLeftOnMyLastRound
+
+
+                score = score * timeLeftOnMyLastRound * 1000;
+                console.log(score);
+
+                if (score > highScore) {
+                    setHighScore(score)
+                }
+
+                // for (let i = 0; i < yourFinalPicksForThisMatchDay[1].length; i++) {
+                //     const fixtureGuessed = yourFinalPicksForThisMatchDay[1][i];
+
+                //     for (let i = 0; i < testFacit.length; i++) {
+                //         const fixtureResult = testFacit[i];
+                //         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam) {
+                //             console.log("gissad vinnare: " + fixtureGuessed.myWinner + " resultat hemmalag: " + fixtureResult.homeTeam + " resultat bortalag: " + fixtureResult.awayTeam);
+                //         }
+
+                //     }
+
+                // }
 
                 // vi ska jämföra results[i] med yourFinalPicksForThisMatchDay[1]
 
@@ -229,10 +350,15 @@ export function Home() {
                     style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
                 />
             </LinearGradient>
+            <section>
+                <span className="highscore">
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Your Highscore: {highScore}</LinearGradient>
+                </span>
+            </section>
         </div>
-
+        
         {yourLastPlayedMatchDay !== nextMatchD &&
-            <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }}  aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
+            <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
         }
 
         {yourLastPlayedMatchDay === nextMatchD &&
@@ -244,7 +370,7 @@ export function Home() {
         }
 
         <div className="swipesContainer">
-            <div  aria-label="animated icon explaining swipe left mechanic for playing Braggy">
+            <div aria-label="animated icon explaining swipe left mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
@@ -254,7 +380,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div  aria-label="animated icon explaining swipe up mechanic for playing Braggy">
+            <div aria-label="animated icon explaining swipe up mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw</LinearGradient>
                 <Player className="swipeUpIcon"
                     autoplay
@@ -264,7 +390,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div  aria-label="animated icon explaining swipe right mechanic for playing Braggy">
+            <div aria-label="animated icon explaining swipe right mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
@@ -275,7 +401,7 @@ export function Home() {
                 </Player>
             </div>
 
-            <div  aria-label="animated icon explaining time limit when playing Braggy">
+            <div aria-label="animated icon explaining time limit when playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds</LinearGradient>
                 <Player className="timerIcon"
                     autoplay

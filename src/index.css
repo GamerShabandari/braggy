@@ -27,6 +27,8 @@ code {
   margin-top: 10px;
 }
 
+
+
 .information {
   color: #38003c;
   background-color: rgba(255, 255, 255, 0.95);
@@ -48,9 +50,7 @@ code {
   height: 50px;
   border-radius: 15px;
   border: none;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
-  background-color: #00ff85;
-  background-color: #ff68f0;
+  box-shadow: 0 1px 15px 0 rgba(255, 104, 240, 0.255);
   cursor: pointer;
   padding: 10px;
   background: rgb(255, 104, 240);
@@ -209,7 +209,8 @@ h3 {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+  /* box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112); */
+  box-shadow: 0 1px 15px 0 rgba(255, 104, 240, 0.255);
 }
 
 .seconds {
@@ -232,7 +233,8 @@ h3 {
   width: 300px;
   height: 500px;
   border: 1px solid rgba(107, 107, 107, 0.22);
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+  /* box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112); */
+  box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.255);
   background: rgb(255, 255, 255);
   border-radius: 15px;
   transform: perspective(900px) rotateX(25deg);
@@ -288,4 +290,10 @@ h3 {
   left: 25px;
   border-radius: 15px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+}
+
+.highscore{
+  font-size: 1.5rem;
+  font-weight: 100;
+  border: 1px solid white;
 }
