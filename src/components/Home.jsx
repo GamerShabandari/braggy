@@ -176,8 +176,6 @@ export function Home() {
                 }
 
                 // score is number of right guesses x timeLeftOnMyLastRound
-
-
                 score = score * timeLeftOnMyLastRound * 1000;
                 console.log(score);
 
@@ -185,23 +183,7 @@ export function Home() {
                     setHighScore(score)
                 }
 
-                // for (let i = 0; i < yourFinalPicksForThisMatchDay[1].length; i++) {
-                //     const fixtureGuessed = yourFinalPicksForThisMatchDay[1][i];
-
-                //     for (let i = 0; i < testFacit.length; i++) {
-                //         const fixtureResult = testFacit[i];
-                //         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam) {
-                //             console.log("gissad vinnare: " + fixtureGuessed.myWinner + " resultat hemmalag: " + fixtureResult.homeTeam + " resultat bortalag: " + fixtureResult.awayTeam);
-                //         }
-
-                //     }
-
-                // }
-
-                // vi ska jämföra results[i] med yourFinalPicksForThisMatchDay[1]
-
-                //yourFinalPicksForThisMatchDay[0] är tiden som var kvar när man spelade som ska multipliceras för rätt poäng
-
+               
                 // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
                 // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
                 // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
@@ -312,8 +294,9 @@ export function Home() {
         <button onClick={fetchFixtures}>fetch fixtures</button> */}
 
         <div className="logo">
-            <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                <TypeAnimation
+            <LinearGradient className="braggy animate__animated animate__zoomIn animate__fast" gradient={['to left', '#17acff ,#ff68f0']}>
+                <span>BRAGGY</span>
+                {/* <TypeAnimation
                     sequence={[
                         'BRAGGY',
                         2000,
@@ -322,7 +305,7 @@ export function Home() {
                     cursor={false}
                     repeat={Infinity}
                     style={{ fontSize: '4rem', letterSpacing: "5px", fontWeight: "300" }}
-                />
+                /> */}
             </LinearGradient>
 
 
@@ -347,7 +330,7 @@ export function Home() {
                     wrapper="div"
                     cursor={false}
                     repeat={Infinity}
-                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
+                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "200" }}
                 />
             </LinearGradient>
             <section>
@@ -356,7 +339,7 @@ export function Home() {
                 </span>
             </section>
         </div>
-        
+
         {yourLastPlayedMatchDay !== nextMatchD &&
             <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
         }

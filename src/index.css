@@ -18,14 +18,21 @@ code {
 
 .logo {
   width: 100vw;
-  height: 150px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px;
   margin-top: 10px;
-  gap: 10px;
+  gap: 0px;
+}
+
+.braggy{
+  font-size: 4rem;
+  letter-spacing: 5px; 
+  font-weight: 300;
+  margin-top: 10px;
 }
 
 .btn {
@@ -282,5 +289,4 @@ h3 {
 .highscore{
   font-size: 1.5rem;
   font-weight: 100;
-  border: 1px solid white;
 }
