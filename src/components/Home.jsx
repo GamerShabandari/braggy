@@ -2,10 +2,11 @@ import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../useLocalStorage";
 import { useEffect } from "react";
 import axios from "axios";
-import { GiH2O, GiPlayButton } from "react-icons/gi";
+import { GiPlayButton } from "react-icons/gi";
 import { LinearGradient } from 'react-text-gradients';
 import { TypeAnimation } from 'react-type-animation';
 import { Player } from '@lottiefiles/react-lottie-player';
+import AnimatedNumbers from "react-animated-numbers";
 
 export function Home() {
 
@@ -175,15 +176,19 @@ export function Home() {
                     }
                 }
 
-                // score is number of right guesses x timeLeftOnMyLastRound
+                // If you guessed all matches correct you get an extra bonus
+                if (score === yourFinalPicksForThisMatchDay[1].length) {
+                    score = score * 2;
+                }
+                // score is number of right guesses x timeLeftOnMyLastRound.
                 score = score * timeLeftOnMyLastRound * 1000;
-                console.log(score);
+                //  console.log(score);
 
                 if (score > highScore) {
                     setHighScore(score)
                 }
 
-               
+
                 // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
                 // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
                 // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
@@ -334,9 +339,21 @@ export function Home() {
                 />
             </LinearGradient>
             <section>
-                <span className="highscore">
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Your Highscore: {highScore}</LinearGradient>
-                </span>
+                <div className="scoreContainer">
+                    <span className="highscore">
+                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+                            Your Highscore:
+                        </LinearGradient>
+                        <AnimatedNumbers
+                            animateToNumber={highScore}
+                            fontStyle={{ fontSize: 32, color: "#caeaf8d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
+                            configs={[
+                                { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
+                            ]}
+                        ></AnimatedNumbers>
+                    </span>
+                </div>
+
             </section>
         </div>
 
@@ -354,7 +371,7 @@ export function Home() {
 
         <div className="swipesContainer">
             <div aria-label="animated icon explaining swipe left mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win.</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
                     loop
@@ -364,7 +381,7 @@ export function Home() {
             </div>
 
             <div aria-label="animated icon explaining swipe up mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw.</LinearGradient>
                 <Player className="swipeUpIcon"
                     autoplay
                     loop
@@ -374,24 +391,32 @@ export function Home() {
             </div>
 
             <div aria-label="animated icon explaining swipe right mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win.</LinearGradient>
                 <Player className="swipeIcon"
                     autoplay
                     loop
                     src="https://assets7.lottiefiles.com/packages/lf20_tl8tqdw9.json"
                 >
-
                 </Player>
             </div>
 
             <div aria-label="animated icon explaining time limit when playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds.</LinearGradient>
                 <Player className="timerIcon"
                     autoplay
                     loop
                     src="https://assets1.lottiefiles.com/packages/lf20_4yofoa5q.json"
                 >
+                </Player>
+            </div>
 
+            <div aria-label="animated icon explaining score system">
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Score is based on correct guesses & total time taken.</LinearGradient>
+                <Player className="scoreIcon"
+                    autoplay
+                    loop
+                    src="https://assets4.lottiefiles.com/packages/lf20_bcjfw1k6.json"
+                >
                 </Player>
             </div>
         </div>
