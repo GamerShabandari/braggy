@@ -77,6 +77,7 @@ export function Game() {
             return finalArray.concat([current]);
         }, [])
 
+        console.log("filtrerad lista är: " + filteredResults);
         console.log("nu ska vi se om längderna matchar, måste vara likadant för att spara ska köras: " + filteredResults.length + matchdayToPlay[1].length);
         if (filteredResults.length === matchdayToPlay[1].length) {
             saveMyPicksToLocalstorage(filteredResults)
