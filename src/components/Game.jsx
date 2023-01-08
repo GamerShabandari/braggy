@@ -31,12 +31,14 @@ export function Game() {
 
     // SAVE PICKS TO LOCALSTORAGE
     function saveMyPicksToLocalstorage(filteredResultsList) {
+        console.log("inne i spara funktionen, måste köras för att spara till LS");
         // setYourLastPlayedMatchDay(matchdayToPlay[0]);
         setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
+        console.log("det här är vad som skulle ha sparats till LS från spara funktionen: " + myTimeLeft + picksArrayWithTimeTakenToComplete);
         return
     }
 
@@ -62,6 +64,7 @@ export function Game() {
 
     function filterResultsForDuplicates() {
         // check and remove duplicates from array if any
+        console.log("ska filtrera dina val först innan vi sparar");
 
         let filteredResults = myPicks.reduce((finalArray, current) => {
 
@@ -77,7 +80,7 @@ export function Game() {
 
         if (filteredResults.length === matchdayToPlay[1].length) {
             saveMyPicksToLocalstorage(filteredResults)
-            console.log("sparar dina val");
+            console.log("nu borde filtrering vara klar och vi ska skicka vidare till spara");
         }
     }
 
@@ -87,6 +90,7 @@ export function Game() {
         if (i === 0) {
             setIsDone(true);
             filterResultsForDuplicates();
+            console.log("det var sista kortet nu ska vi spara");
         }
 
         if (direction === "left") {

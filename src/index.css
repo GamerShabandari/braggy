@@ -25,21 +25,7 @@ code {
   align-items: center;
   margin: 20px;
   margin-top: 10px;
-}
-
-
-
-.information {
-  color: #38003c;
-  background-color: rgba(255, 255, 255, 0.95);
-  font-weight: 300;
-  line-height: 30px;
-  font-size: 0.7rem;
-  width: 80%;
-  max-width: 500px;
-  padding: 20px;
-  border-radius: 15px;
-  margin: 30px 0px;
+  gap: 10px;
 }
 
 .btn {
@@ -144,6 +130,7 @@ main{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 20px;
 }
 
 * {
