@@ -65,6 +65,7 @@ export function Game() {
     function filterResultsForDuplicates() {
         // check and remove duplicates from array if any
         console.log("ska filtrera dina val först innan vi sparar");
+        console.log("mypics: " + myPicks);
 
         let filteredResults = myPicks.reduce((finalArray, current) => {
 
