@@ -129,7 +129,7 @@ export function Home() {
         if (yourFinalPicksForThisMatchDay.length === 0) {
             //alert("finns inget att rätta")
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
-            alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
+           alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
             return
         }
 
@@ -339,7 +339,7 @@ export function Home() {
                 />
             </LinearGradient>
             <section>
-                <div className="scoreContainer">
+                <div className="scoreContainer  animate__animated animate__fadeIn">
                     <span className="highscore">
                         <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                             Your Highscore:
@@ -358,7 +358,9 @@ export function Home() {
         </div>
 
         {yourLastPlayedMatchDay !== nextMatchD &&
-            <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
+            <div className="animate__animated animate__fadeIn">
+                <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
+            </div>
         }
 
         {yourLastPlayedMatchDay === nextMatchD &&
@@ -370,9 +372,9 @@ export function Home() {
         }
 
         <div className="swipesContainer">
-            <div aria-label="animated icon explaining swipe left mechanic for playing Braggy">
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe left mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win.</LinearGradient>
-                <Player className="swipeIcon"
+                <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
                     src="https://assets1.lottiefiles.com/packages/lf20_vmzgsolp.json"
@@ -380,9 +382,9 @@ export function Home() {
                 </Player>
             </div>
 
-            <div aria-label="animated icon explaining swipe up mechanic for playing Braggy">
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe up mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw.</LinearGradient>
-                <Player className="swipeUpIcon"
+                <Player className="swipeUpIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
                     src="https://assets7.lottiefiles.com/packages/lf20_tl8tqdw9.json"
@@ -390,9 +392,9 @@ export function Home() {
                 </Player>
             </div>
 
-            <div aria-label="animated icon explaining swipe right mechanic for playing Braggy">
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe right mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win.</LinearGradient>
-                <Player className="swipeIcon"
+                <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
                     src="https://assets7.lottiefiles.com/packages/lf20_tl8tqdw9.json"
@@ -400,9 +402,9 @@ export function Home() {
                 </Player>
             </div>
 
-            <div aria-label="animated icon explaining time limit when playing Braggy">
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining time limit when playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds.</LinearGradient>
-                <Player className="timerIcon"
+                <Player className="timerIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
                     src="https://assets1.lottiefiles.com/packages/lf20_4yofoa5q.json"
@@ -410,9 +412,9 @@ export function Home() {
                 </Player>
             </div>
 
-            <div aria-label="animated icon explaining score system">
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining score system">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Score is based on correct guesses & total time taken.</LinearGradient>
-                <Player className="scoreIcon"
+                <Player className="scoreIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
                     src="https://assets4.lottiefiles.com/packages/lf20_bcjfw1k6.json"
@@ -422,7 +424,7 @@ export function Home() {
         </div>
 
         <footer>
-            <a href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer" aria-label="link to Gamer Shabandari Github page">
+            <a className="animate__animated animate__fadeInUp" href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer" aria-label="link to Gamer Shabandari Github page">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                     Gamer Shabandari ©
                 </LinearGradient>
