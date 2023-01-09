@@ -14,7 +14,7 @@ export function Home() {
         {
             "homeTeam": "Tottenham",
             "awayTeam": "Arsenal",
-            "homeTeamScore": "2",
+            "homeTeamScore": "3",
             "awayTeamScore": "2"
         },
         {
@@ -94,8 +94,6 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
-    let justCheckedResults = false;
-
     useEffect(() => {
 
         // only fetch results from api every 24h
@@ -130,7 +128,7 @@ export function Home() {
         if (yourFinalPicksForThisMatchDay.length === 0) {
             //alert("finns inget att rätta")
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
-           alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
+            alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
             return
         }
 
@@ -138,7 +136,7 @@ export function Home() {
             const matchday = matchdays[i];
 
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
-           
+
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
@@ -328,16 +326,18 @@ export function Home() {
             </section>
         </div>
 
-        {yourLastPlayedMatchDay !== nextMatchD &&
+        {yourFinalPicksForThisMatchDay === [] &&
             <div className="animate__animated animate__fadeIn">
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
         }
 
-        {yourLastPlayedMatchDay === nextMatchD &&
-            <div>
-                <span className="information animate__animated animate__fadeIn">We are still waiting for the results to come in from your last played round (Matchday: {yourLastPlayedMatchDay}).
-                    Check back again soon!
+        {yourFinalPicksForThisMatchDay !== [] &&
+            <div className="information">
+                <span className="animate__animated animate__fadeIn">
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+                        We are still waiting for the results to come in from your last played round (Matchday: {yourLastPlayedMatchDay}). <br /> Check back again soon!
+                    </LinearGradient>
                 </span>
             </div>
         }
