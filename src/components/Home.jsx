@@ -15,61 +15,61 @@ export function Home() {
             "homeTeam": "Tottenham",
             "awayTeam": "Arsenal",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Newcastle United",
             "awayTeam": "Fulham",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Chelsea",
             "awayTeam": "Crystal Palace",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Brentford",
             "awayTeam": "Bournemouth",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Brighton",
             "awayTeam": "Liverpool",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Wolves",
             "awayTeam": "West Ham",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Nottingham Forest",
             "awayTeam": "Leicester",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Everton",
             "awayTeam": "Southampton",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Manchester United",
             "awayTeam": "Manchester City",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         },
         {
             "homeTeam": "Aston Villa",
             "awayTeam": "Leeds",
             "homeTeamScore": "2",
-            "awayTeamScore": "1"
+            "awayTeamScore": "3"
         }
     ]
 
