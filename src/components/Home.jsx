@@ -134,24 +134,17 @@ export function Home() {
             return
         }
 
-        console.log("finns något att rätta eftersom du åtminstånde gjort dina picks tidigare");
         for (let i = 0; i < matchdays.length; i++) {
             const matchday = matchdays[i];
-            //  console.log("i loop inne i checkresults, matchday: ", matchday);
 
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
-                // console.log("vi har resultat för matchday: ", matchday + " och du har spelat denna rond säger du: " + yourLastPlayedMatchDay);
-                //  console.log("oj oj oj vi har en match på index: ", i);
-                // console.log("det här är vad vi ska jämföra mot, det är facit", results[i]);
-                //   console.log("här är valen du gjorde", yourFinalPicksForThisMatchDay[1]);
-                //  console.log("och hur många sekunder du hade över", yourFinalPicksForThisMatchDay[0]);
-
+           
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
 
                     for (const fixtureResult of testFacit) {
-                        //  console.log("gissning: " + fixtureGuessed + " resultat: " +fixtureResult);
+
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
@@ -167,11 +160,7 @@ export function Home() {
                             }
                             if (Number(fixtureResult.awayTeamScore) === Number(fixtureResult.homeTeamScore)) {
                                 winner = fixtureResult.homeTeam + fixtureResult.awayTeam
-                                console.log("draw, should be teamname+teamname: " + winner);
                             }
-
-                            console.log("gissat resultat är: " + fixtureGuessed.myWinner +  " och rätt resultat var: " + winner);
-
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
                             }
@@ -185,21 +174,14 @@ export function Home() {
                     score = score * 2;
                     alert("alla rätt! bonus!")
                 }
-                console.log(score);
                 // score is number of right guesses x timeLeftOnMyLastRound.
                 score = score * timeLeftOnMyLastRound * 1000;
-                //  console.log(score);
-                console.log(score);
-
                 if (score > highScore) {
                     setHighScore(score)
                 }
-
-
                 // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
                 // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
                 // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
-
 
                 // MÅSTE OCKSÅ KOLLA ATT ÄVEN OM MATCHDAY FINNS I RESULTATEN FRÅN API ÄR DET INTE SÄKERT ATT ALLA MATCHER HUNNIT SPELAS ÄNNU, OM NÅGON MATCH SAKNAR RESULTAT SÅ MÅSTE AVBRYTA OCH VÄNTA PÅ ALLA RESULTAT 
 

@@ -151,6 +151,7 @@ export function Game() {
             // myPicks.push(pick)
             setIsDone(true);
             filterResultsForDuplicates();
+            console.log("mypicks, dubletter i dev men inte live?: " , myPicks);
             // console.log("det var sista kortet nu ska vi spara");
             // console.table(myPicks)
         }
