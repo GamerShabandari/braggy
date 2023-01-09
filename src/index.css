@@ -52,13 +52,11 @@ code {
 
 .btnIcon {
   font-size: 2.5rem;
-  /* color: #38003c; */
   color: rgb(24, 15, 27);
   ;
 }
 
 a {
-  color: #17acff;
   display: block;
   text-decoration: none;
   font-weight: 300;
@@ -66,7 +64,7 @@ a {
   margin: 0 auto;
   margin-bottom: 20px;
   width: fit-content;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
 }
 
 .swipesContainer {
@@ -125,7 +123,6 @@ a {
 
 .scoreIcon{
   filter: grayscale(100);
-  /* filter: invert(100%); */
   width: 50px;
   height: 50px;
   opacity: 0.8;
@@ -202,8 +199,6 @@ h3 {
   letter-spacing: 2px;
   border: 1px solid #ff68f0;
   border-radius: 15px;
-  /* background-color: rgb(0,255,133);
-  background-color: #ff68f0; */
   padding: 10px;
   width: 220px;
   height: 30px;
@@ -211,12 +206,10 @@ h3 {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  /* box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112); */
   box-shadow: 0 1px 15px 0 rgba(255, 104, 240, 0.255);
 }
 
 .seconds {
-  /* color: #e90052; */
   font-weight: 500;
   font-size: 1.5rem;
 }
@@ -235,7 +228,6 @@ h3 {
   width: 300px;
   height: 500px;
   border: 1px solid rgba(107, 107, 107, 0.22);
-  /* box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112); */
   box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.098);
   background: rgb(255, 255, 255);
   border-radius: 15px;
@@ -275,8 +267,6 @@ h3 {
 }
 
 .card h3 {
-  /* color: rgb(61 25 91); */
-  /* background-color: rgb(0,255,133); */
   background-color: rgb(24, 15, 27);
   font-size: 01rem;
   font-weight: 400;

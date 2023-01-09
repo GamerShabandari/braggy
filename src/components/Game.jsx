@@ -31,14 +31,12 @@ export function Game() {
 
     // SAVE PICKS TO LOCALSTORAGE
     function saveMyPicksToLocalstorage(filteredResultsList) {
-        //  console.log("inne i spara funktionen, måste köras för att spara till LS");
         // setYourLastPlayedMatchDay(matchdayToPlay[0]);
         setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
-        // console.log("det här är vad som skulle ha sparats till LS från spara funktionen: " + myTimeLeft + picksArrayWithTimeTakenToComplete);
         return
     }
 
@@ -62,12 +60,9 @@ export function Game() {
 
     const TimesUP = () => <span>TIMES UP!</span>;
 
+    // react bug, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
-        // check and remove duplicates from array if any
-        // console.log("ska filtrera dina val först innan vi sparar");
-        // console.log("mypics: " + myPicks);
-        // console.table(myPicks)
-
+      
         let filteredResults = myPicks.reduce((finalArray, current) => {
 
             let obj = finalArray.find((match) => match.homeTeam === current.homeTeam);
@@ -79,33 +74,13 @@ export function Game() {
             return finalArray.concat([current]);
         }, [])
 
-        // console.table(filteredResults)
-        // console.log("filtrerad lista är: " + filteredResults);
-        // console.log("nu ska vi se om längderna matchar, måste vara likadant för att spara ska köras: " + filteredResults.length + matchdayToPlay[1].length);
         if (filteredResults.length === matchdayToPlay[1].length) {
             saveMyPicksToLocalstorage(filteredResults)
-            //console.log("nu borde filtrering vara klar och vi ska skicka vidare till spara");
         }
     }
 
     function handleSwipes(direction, match, i) {
-        console.log("här i swipes");
-        //ALL CARDS SWIPED
-        if (i === 0) {
-            //   console.log(i + " : " + match.homeTeam + match.awayTeam);
-            // console.table(match)
-            // let pick = {
-            //     homeTeam: match.homeTeam,
-            //     awayTeam: match.awayTeam,
-            //     myWinner: match.homeTeam
-            // }
-            // myPicks.push(pick)
-            setIsDone(true);
-            filterResultsForDuplicates();
-            // console.log("det var sista kortet nu ska vi spara");
-            // console.table(myPicks)
-        }
-
+    
         if (direction === "left") {
             console.log(i);
 
@@ -140,21 +115,10 @@ export function Game() {
             myPicks.push(pick)
         }
 
+        // all cards swiped
         if (i === 0) {
-            //   console.log(i + " : " + match.homeTeam + match.awayTeam);
-            // console.table(match)
-            // let pick = {
-            //     homeTeam: match.homeTeam,
-            //     awayTeam: match.awayTeam,
-            //     myWinner: match.homeTeam
-            // }
-            // myPicks.push(pick)
             setIsDone(true);
-        //    filterResultsForDuplicates();
-            console.log("mypicks, dubletter i dev men inte live?: " , myPicks);
-            saveMyPicksToLocalstorage(myPicks)
-            // console.log("det var sista kortet nu ska vi spara");
-            // console.table(myPicks)
+            filterResultsForDuplicates();
         }
     }
 

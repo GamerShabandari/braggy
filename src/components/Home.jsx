@@ -193,9 +193,6 @@ export function Home() {
 
     function fetchResults() {
 
-
-        console.log("hämtar resultat från api");
-
         const options = {
             method: 'GET',
             url: 'https://football98.p.rapidapi.com/premierleague/results',
@@ -243,8 +240,6 @@ export function Home() {
 
     function fetchFixtures() {
 
-        console.log("hämtar matcher från api");
-
         const options = {
             method: 'GET',
             url: 'https://football98.p.rapidapi.com/premierleague/fixtures',
@@ -284,22 +279,9 @@ export function Home() {
 
     return (<main>
 
-        {/* <button onClick={fetchResults}>fetch results</button>
-        <button onClick={fetchFixtures}>fetch fixtures</button> */}
-
         <div className="logo">
             <LinearGradient className="braggy animate__animated animate__zoomIn animate__fast" gradient={['to left', '#17acff ,#ff68f0']}>
                 <span>BRAGGY</span>
-                {/* <TypeAnimation
-                    sequence={[
-                        'BRAGGY',
-                        2000,
-                    ]}
-                    wrapper="div"
-                    cursor={false}
-                    repeat={Infinity}
-                    style={{ fontSize: '4rem', letterSpacing: "5px", fontWeight: "300" }}
-                /> */}
             </LinearGradient>
 
 
@@ -335,7 +317,7 @@ export function Home() {
                         </LinearGradient>
                         <AnimatedNumbers
                             animateToNumber={highScore}
-                            fontStyle={{ fontSize: 32, color: "#caeaf8d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
+                            fontStyle={{ fontSize: 32, color: "#d6ebf4d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
                             configs={[
                                 { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
                             ]}
