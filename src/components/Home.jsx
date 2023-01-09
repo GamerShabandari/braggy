@@ -108,7 +108,7 @@ export function Home() {
 
             if (hoursSinceLastFetch < 24) {
                 console.log("timmar sedan: ", hoursSinceLastFetch);
-                // checkResults();
+                checkResults();
                 return
             }
         }
@@ -118,109 +118,16 @@ export function Home() {
 
     }, []);
 
-    useEffect(() => {
-
-        console.log("checkresults");
-        //  console.log("matchdays från rättningen", matchdays);
-
-        if (justCheckedResults === true) {
-
-            return
-
-        }
-
-        let score = 0;
-        let timeLeftOnMyLastRound = 0;
-
-        if (yourFinalPicksForThisMatchDay.length === 0) {
-            //alert("finns inget att rätta")
-            console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
-            alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
-            return
-        }
-
-        console.log("finns något att rätta eftersom du åtminstånde gjort dina picks tidigare");
-        for (let i = 0; i < matchdays.length; i++) {
-            const matchday = matchdays[i];
-            //  console.log("i loop inne i checkresults, matchday: ", matchday);
-
-            if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
-                // console.log("vi har resultat för matchday: ", matchday + " och du har spelat denna rond säger du: " + yourLastPlayedMatchDay);
-                //  console.log("oj oj oj vi har en match på index: ", i);
-                // console.log("det här är vad vi ska jämföra mot, det är facit", results[i]);
-                //   console.log("här är valen du gjorde", yourFinalPicksForThisMatchDay[1]);
-                //  console.log("och hur många sekunder du hade över", yourFinalPicksForThisMatchDay[0]);
-
-                timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
-
-                for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
-
-                    for (const fixtureResult of testFacit) {
-                        //  console.log("gissning: " + fixtureGuessed + " resultat: " +fixtureResult);
-                        if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-
-                            if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
-                                // if any of the fixtures hasnt been played yet, stop checking results
-                                alert("någon match saknar fortfarande resultat!")
-                                return
-                            }
-
-                            let winner = fixtureResult.homeTeam
-
-                            if (Number(fixtureResult.awayTeamScore) > Number(fixtureResult.homeTeamScore)) {
-                                winner = fixtureResult.awayTeam
-                            }
-                            if (Number(fixtureResult.awayTeamScore) === Number(fixtureResult.homeTeamScore)) {
-                                winner = fixtureResult.homeTeam + fixtureResult.awayTeam
-                            }
-
-                            if (fixtureGuessed.myWinner === winner) {
-                                score += 1
-                            }
-                            break
-                        }
-                    }
-                }
-
-                //If you guessed all matches correct you get an extra bonus
-                if (score === yourFinalPicksForThisMatchDay[1].length) {
-                    score = score * 2;
-                    console.log("alla rätt bonus poäng");
-                }
-                console.log(score);
-                // // score is number of right guesses x timeLeftOnMyLastRound.
-                score = score * timeLeftOnMyLastRound * 1000;
-                console.log(score);
-                // console.log(score);
-
-                if (score > highScore) {
-                    setHighScore(score)
-                }
-
-                justCheckedResults = true;
-
-
-                // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
-                // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
-                // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
-
-
-                // MÅSTE OCKSÅ KOLLA ATT ÄVEN OM MATCHDAY FINNS I RESULTATEN FRÅN API ÄR DET INTE SÄKERT ATT ALLA MATCHER HUNNIT SPELAS ÄNNU, OM NÅGON MATCH SAKNAR RESULTAT SÅ MÅSTE AVBRYTA OCH VÄNTA PÅ ALLA RESULTAT 
-
-            }
-
-        }
-
-
-
-    }, [])
-
-
-    // function checkResults() {
-
+    // useEffect(() => {
 
     //     console.log("checkresults");
     //     //  console.log("matchdays från rättningen", matchdays);
+
+    //     if (justCheckedResults === true) {
+
+    //         return
+
+    //     }
 
     //     let score = 0;
     //     let timeLeftOnMyLastRound = 0;
@@ -228,7 +135,7 @@ export function Home() {
     //     if (yourFinalPicksForThisMatchDay.length === 0) {
     //         //alert("finns inget att rätta")
     //         console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
-    //        alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
+    //         alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
     //         return
     //     }
 
@@ -275,19 +182,22 @@ export function Home() {
     //                 }
     //             }
 
-    //             // If you guessed all matches correct you get an extra bonus
-    //             // if (score === yourFinalPicksForThisMatchDay[1].length) {
-    //             //     score = score * 2;
-    //             // }
+    //             //If you guessed all matches correct you get an extra bonus
+    //             if (score === yourFinalPicksForThisMatchDay[1].length) {
+    //                 score = score * 2;
+    //                 console.log("alla rätt bonus poäng");
+    //             }
     //             console.log(score);
-    //             // score is number of right guesses x timeLeftOnMyLastRound.
+    //             // // score is number of right guesses x timeLeftOnMyLastRound.
     //             score = score * timeLeftOnMyLastRound * 1000;
-    //             //  console.log(score);
     //             console.log(score);
+    //             // console.log(score);
 
     //             if (score > highScore) {
     //                 setHighScore(score)
     //             }
+
+    //             justCheckedResults = true;
 
 
     //             // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
@@ -301,7 +211,97 @@ export function Home() {
 
     //     }
 
-    // }
+
+
+    // }, [])
+
+
+    function checkResults() {
+
+
+        console.log("checkresults");
+        //  console.log("matchdays från rättningen", matchdays);
+
+        let score = 0;
+        let timeLeftOnMyLastRound = 0;
+
+        if (yourFinalPicksForThisMatchDay.length === 0) {
+            //alert("finns inget att rätta")
+            console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
+           alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
+            return
+        }
+
+        console.log("finns något att rätta eftersom du åtminstånde gjort dina picks tidigare");
+        for (let i = 0; i < matchdays.length; i++) {
+            const matchday = matchdays[i];
+            //  console.log("i loop inne i checkresults, matchday: ", matchday);
+
+            if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
+                // console.log("vi har resultat för matchday: ", matchday + " och du har spelat denna rond säger du: " + yourLastPlayedMatchDay);
+                //  console.log("oj oj oj vi har en match på index: ", i);
+                // console.log("det här är vad vi ska jämföra mot, det är facit", results[i]);
+                //   console.log("här är valen du gjorde", yourFinalPicksForThisMatchDay[1]);
+                //  console.log("och hur många sekunder du hade över", yourFinalPicksForThisMatchDay[0]);
+
+                timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
+
+                for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
+
+                    for (const fixtureResult of testFacit) {
+                        //  console.log("gissning: " + fixtureGuessed + " resultat: " +fixtureResult);
+                        if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
+
+                            if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
+                                // if any of the fixtures hasnt been played yet, stop checking results
+                                alert("någon match saknar fortfarande resultat!")
+                                return
+                            }
+
+                            let winner = fixtureResult.homeTeam
+
+                            if (Number(fixtureResult.awayTeamScore) > Number(fixtureResult.homeTeamScore)) {
+                                winner = fixtureResult.awayTeam
+                            }
+                            if (Number(fixtureResult.awayTeamScore) === Number(fixtureResult.homeTeamScore)) {
+                                winner = fixtureResult.homeTeam + fixtureResult.awayTeam
+                            }
+
+                            if (fixtureGuessed.myWinner === winner) {
+                                score += 1
+                            }
+                            break
+                        }
+                    }
+                }
+
+                // If you guessed all matches correct you get an extra bonus
+                // if (score === yourFinalPicksForThisMatchDay[1].length) {
+                //     score = score * 2;
+                // }
+                console.log(score);
+                // score is number of right guesses x timeLeftOnMyLastRound.
+                score = score * timeLeftOnMyLastRound * 1000;
+                //  console.log(score);
+                console.log(score);
+
+                if (score > highScore) {
+                    setHighScore(score)
+                }
+
+
+                // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
+                // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
+                // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
+
+
+                // MÅSTE OCKSÅ KOLLA ATT ÄVEN OM MATCHDAY FINNS I RESULTATEN FRÅN API ÄR DET INTE SÄKERT ATT ALLA MATCHER HUNNIT SPELAS ÄNNU, OM NÅGON MATCH SAKNAR RESULTAT SÅ MÅSTE AVBRYTA OCH VÄNTA PÅ ALLA RESULTAT 
+
+            }
+
+        }
+
+    }
 
     function fetchResults() {
 
@@ -343,7 +343,7 @@ export function Home() {
             let setThisTimeAsLastFetchFromApi = new Date();
             setTimeOfLastResultsFetchFromApi(setThisTimeAsLastFetchFromApi);
 
-            //checkResults();
+            checkResults();
             fetchFixtures();
 
         }).catch(function (error) {
