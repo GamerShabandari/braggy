@@ -9,10 +9,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif;
   background: rgb(24, 15, 27);
+  -ms-overflow-style: none;
 }
 
 body::-webkit-scrollbar{
   display: none;
+}
+
+html {
+  scrollbar-width: none;
 }
 
 code {
