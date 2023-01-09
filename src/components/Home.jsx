@@ -26,49 +26,49 @@ export function Home() {
         {
             "homeTeam": "Chelsea",
             "awayTeam": "Crystal Palace",
-            "homeTeamScore": "0",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Brentford",
             "awayTeam": "Bournemouth",
-            "homeTeamScore": "0",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Brighton",
             "awayTeam": "Liverpool",
-            "homeTeamScore": "0",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Wolves",
             "awayTeam": "West Ham",
-            "homeTeamScore": "1",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Nottingham Forest",
             "awayTeam": "Leicester",
-            "homeTeamScore": "1",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Everton",
             "awayTeam": "Southampton",
-            "homeTeamScore": "1",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Manchester United",
             "awayTeam": "Manchester City",
-            "homeTeamScore": "1",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         },
         {
             "homeTeam": "Aston Villa",
             "awayTeam": "Leeds",
-            "homeTeamScore": "1",
+            "homeTeamScore": "2",
             "awayTeamScore": "1"
         }
     ]
