@@ -150,8 +150,9 @@ export function Game() {
             // }
             // myPicks.push(pick)
             setIsDone(true);
-            filterResultsForDuplicates();
+        //    filterResultsForDuplicates();
             console.log("mypicks, dubletter i dev men inte live?: " , myPicks);
+            saveMyPicksToLocalstorage(myPicks)
             // console.log("det var sista kortet nu ska vi spara");
             // console.table(myPicks)
         }
