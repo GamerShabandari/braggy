@@ -31,14 +31,14 @@ export function Game() {
 
     // SAVE PICKS TO LOCALSTORAGE
     function saveMyPicksToLocalstorage(filteredResultsList) {
-      //  console.log("inne i spara funktionen, måste köras för att spara till LS");
+        //  console.log("inne i spara funktionen, måste köras för att spara till LS");
         // setYourLastPlayedMatchDay(matchdayToPlay[0]);
         setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
-       // console.log("det här är vad som skulle ha sparats till LS från spara funktionen: " + myTimeLeft + picksArrayWithTimeTakenToComplete);
+        // console.log("det här är vad som skulle ha sparats till LS från spara funktionen: " + myTimeLeft + picksArrayWithTimeTakenToComplete);
         return
     }
 
@@ -92,14 +92,14 @@ export function Game() {
         console.log("här i swipes");
         //ALL CARDS SWIPED
         if (i === 0) {
-         //   console.log(i + " : " + match.homeTeam + match.awayTeam);
+            //   console.log(i + " : " + match.homeTeam + match.awayTeam);
             // console.table(match)
-            let pick = {
-                homeTeam: match.homeTeam,
-                awayTeam: match.awayTeam,
-                myWinner: match.homeTeam
-            }
-            myPicks.push(pick)
+            // let pick = {
+            //     homeTeam: match.homeTeam,
+            //     awayTeam: match.awayTeam,
+            //     myWinner: match.homeTeam
+            // }
+            // myPicks.push(pick)
             setIsDone(true);
             filterResultsForDuplicates();
             // console.log("det var sista kortet nu ska vi spara");
@@ -139,21 +139,37 @@ export function Game() {
             }
             myPicks.push(pick)
         }
+
+        if (i === 0) {
+            //   console.log(i + " : " + match.homeTeam + match.awayTeam);
+            // console.table(match)
+            // let pick = {
+            //     homeTeam: match.homeTeam,
+            //     awayTeam: match.awayTeam,
+            //     myWinner: match.homeTeam
+            // }
+            // myPicks.push(pick)
+            setIsDone(true);
+            filterResultsForDuplicates();
+            // console.log("det var sista kortet nu ska vi spara");
+            // console.table(myPicks)
+        }
     }
 
     return (<main>
 
-        {timeIsUp && <div>
-            <h1>
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>TIMES UP! RETRY?</LinearGradient>
-            </h1>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
-                <HiHome className='btnIcon'></HiHome>
-            </button>
-            <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
-                <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
-            </button>
-        </div>}
+        {timeIsUp &&
+            <div>
+                <h1 className="animate__animated animate__fadeIn">
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>TIMES UP! RETRY?</LinearGradient>
+                </h1>
+                <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
+                    <HiHome className='btnIcon'></HiHome>
+                </button>
+                <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
+                    <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
+                </button>
+            </div>}
 
         {!timeIsUp && <>
 
@@ -185,10 +201,10 @@ export function Game() {
             }
 
             {isDone && <>
-                <h1>
+                <h1 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>
-                <h3>
+                <h3 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY IS FINISHED FOR RESULTS</LinearGradient>
                 </h3>
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
