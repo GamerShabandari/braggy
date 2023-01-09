@@ -15,61 +15,61 @@ export function Home() {
             "homeTeam": "Tottenham",
             "awayTeam": "Arsenal",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Newcastle United",
             "awayTeam": "Fulham",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Chelsea",
             "awayTeam": "Crystal Palace",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Brentford",
             "awayTeam": "Bournemouth",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Brighton",
             "awayTeam": "Liverpool",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Wolves",
             "awayTeam": "West Ham",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Nottingham Forest",
             "awayTeam": "Leicester",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Everton",
             "awayTeam": "Southampton",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Manchester United",
             "awayTeam": "Manchester City",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         },
         {
             "homeTeam": "Aston Villa",
             "awayTeam": "Leeds",
             "homeTeamScore": "2",
-            "awayTeamScore": "3"
+            "awayTeamScore": "2"
         }
     ]
 
@@ -167,7 +167,10 @@ export function Home() {
                             }
                             if (Number(fixtureResult.awayTeamScore) === Number(fixtureResult.homeTeamScore)) {
                                 winner = fixtureResult.homeTeam + fixtureResult.awayTeam
+                                console.log("draw, should be teamname+teamname: " + winner);
                             }
+
+                            console.log("gissat resultat är: " + fixtureGuessed.myWinner +  " och rätt resultat var: " + winner);
 
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
