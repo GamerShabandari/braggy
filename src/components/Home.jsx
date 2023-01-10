@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../useLocalStorage";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { LinearGradient } from 'react-text-gradients';
