@@ -138,7 +138,7 @@ export function Game() {
 
         {!timeIsUp && <>
 
-            {!isDone &&
+            {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
                 <>
                     <div className='timerContainer  animate__animated animate__pulse animate__infinite	infinite'>
                         <Countdown date={Date.now() + 30000} renderer={renderer} className='timerContainer' />
@@ -156,7 +156,7 @@ export function Game() {
                                         <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="" />
                                     </div>
                                     <h4>
-                                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>matchday {matchdayToPlay[0]}</LinearGradient>
+                                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>MATCHDAY {matchdayToPlay[0]}</LinearGradient>
                                     </h4>
                                     <h3>
                                         <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> {match.homeTeam} - {match.awayTeam}</LinearGradient>
@@ -168,7 +168,7 @@ export function Game() {
                 </>
             }
 
-            {isDone && <>
+            {isDone && setYourFinalPicksForThisMatchDay.length === 0 && <>
                 <h1 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>

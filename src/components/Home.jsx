@@ -85,7 +85,7 @@ export function Home() {
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", []);
     const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "");
     const [highScore, setHighScore] = useLocalStorage("highScore", 0);
-   // const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage(false);
+    const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -177,7 +177,7 @@ export function Home() {
                 }
 
 
-                // setShowYourResultsUI(true);
+                setShowYourResultsUI(true);
 
                 // VI MÅSTE VISA RESULTAT FRÅN SENASTE MATCHEN OAVSETT OM DET ÄR HIGHSCORE ELLER INTE, SEN EFTER DET SÅ RENSAR VI SENAST SPELAD INFO OCH HÄMTAR NÄSTA MATCH
                 // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
@@ -335,7 +335,7 @@ export function Home() {
             </section>
         </div>
 
-        {/* {showYourResultsUI &&
+        {showYourResultsUI &&
             <div>
 
                 <h1>
@@ -346,21 +346,15 @@ export function Home() {
                 </h1>
 
             </div>
-        } */}
+        }
 
-        {/* {yourFinalPicksForThisMatchDay === [] &&
+        {yourFinalPicksForThisMatchDay.length === 0 &&
             <div className="animate__animated animate__fadeIn">
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
-        } */}
+        }
 
-
-            <div className="animate__animated animate__fadeIn">
-                <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
-            </div>
-    
-
-        {yourFinalPicksForThisMatchDay !== [] &&
+        {yourFinalPicksForThisMatchDay.length !== 0 &&
             <div className="information">
                 <span className="animate__animated animate__fadeIn">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
