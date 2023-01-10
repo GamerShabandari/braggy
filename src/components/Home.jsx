@@ -75,6 +75,8 @@ export function Home() {
 
     const navigate = useNavigate();
 
+    const [isLoadingApiData, setIsLoadingApiData] = useState(false)
+
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
     const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
@@ -125,8 +127,10 @@ export function Home() {
         let score = 0;
         let timeLeftOnMyLastRound = 0;
 
+        setIsLoadingApiData(false);
+
         if (yourFinalPicksForThisMatchDay.length === 0) {
-            //alert("finns inget att rätta")
+            
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
             return
         }
@@ -197,6 +201,8 @@ export function Home() {
     }
 
     function fetchResults() {
+
+        setIsLoadingApiData(true);
 
         const options = {
             method: 'GET',
@@ -335,6 +341,16 @@ export function Home() {
             </section>
         </div>
 
+        {isLoadingApiData &&
+            <div>
+                <h1>
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+                        LOADING ANIMATION SKA VARa HÄR
+                    </LinearGradient>
+                </h1>
+            </div>
+        }
+
         {showYourResultsUI &&
             <div>
 
@@ -348,7 +364,7 @@ export function Home() {
             </div>
         }
 
-        {yourFinalPicksForThisMatchDay.length === 0 &&
+        {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
             <div className="animate__animated animate__fadeIn">
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
