@@ -277,7 +277,7 @@ h3 {
 
 .card h3 {
   background-color: rgb(24, 15, 27);
-  font-size: 01rem;
+  font-size: 1rem;
   font-weight: 400;
   width: 250px;
   height: fit-content;
@@ -291,6 +291,18 @@ h3 {
   left: 25px;
   border-radius: 15px;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
+}
+
+.card h4 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  position: absolute;
+  bottom: 100px;
+  left: 25px;
+  width: 250px;
+  height: fit-content;
+  margin: 0px;
+  padding: 0px;
 }
 
 .scoreContainer{

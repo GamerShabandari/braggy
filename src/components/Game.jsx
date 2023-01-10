@@ -28,11 +28,10 @@ export function Game() {
 
     }, [])
 
-
     // SAVE PICKS TO LOCALSTORAGE
     function saveMyPicksToLocalstorage(filteredResultsList) {
-        // setYourLastPlayedMatchDay(matchdayToPlay[0]);
-        setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
+        setYourLastPlayedMatchDay(matchdayToPlay[0]);
+        // setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
@@ -62,7 +61,7 @@ export function Game() {
 
     // react bug, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
-      
+
         let filteredResults = myPicks.reduce((finalArray, current) => {
 
             let obj = finalArray.find((match) => match.homeTeam === current.homeTeam);
@@ -80,7 +79,7 @@ export function Game() {
     }
 
     function handleSwipes(direction, match, i) {
-    
+
         if (direction === "left") {
             console.log(i);
 
@@ -156,6 +155,9 @@ export function Game() {
                                         <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="" />
                                         <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="" />
                                     </div>
+                                    <h4>
+                                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>matchday {matchdayToPlay[0]}</LinearGradient>
+                                    </h4>
                                     <h3>
                                         <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> {match.homeTeam} - {match.awayTeam}</LinearGradient>
                                     </h3>
@@ -171,7 +173,7 @@ export function Game() {
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>
                 <h3 className='animate__animated animate__fadeIn'>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY IS FINISHED FOR RESULTS</LinearGradient>
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS</LinearGradient>
                 </h3>
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
             </>}

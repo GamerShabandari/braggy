@@ -10,81 +10,82 @@ import AnimatedNumbers from "react-animated-numbers";
 
 export function Home() {
 
-    let testFacit = [
-        {
-            "homeTeam": "Tottenham",
-            "awayTeam": "Arsenal",
-            "homeTeamScore": "3",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Newcastle United",
-            "awayTeam": "Fulham",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Chelsea",
-            "awayTeam": "Crystal Palace",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Brentford",
-            "awayTeam": "Bournemouth",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Brighton",
-            "awayTeam": "Liverpool",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Wolves",
-            "awayTeam": "West Ham",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Nottingham Forest",
-            "awayTeam": "Leicester",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Everton",
-            "awayTeam": "Southampton",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Manchester United",
-            "awayTeam": "Manchester City",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        },
-        {
-            "homeTeam": "Aston Villa",
-            "awayTeam": "Leeds",
-            "homeTeamScore": "2",
-            "awayTeamScore": "2"
-        }
-    ]
+    // let testFacit = [
+    //     {
+    //         "homeTeam": "Tottenham",
+    //         "awayTeam": "Arsenal",
+    //         "homeTeamScore": "3",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Newcastle United",
+    //         "awayTeam": "Fulham",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Chelsea",
+    //         "awayTeam": "Crystal Palace",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Brentford",
+    //         "awayTeam": "Bournemouth",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Brighton",
+    //         "awayTeam": "Liverpool",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Wolves",
+    //         "awayTeam": "West Ham",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Nottingham Forest",
+    //         "awayTeam": "Leicester",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Everton",
+    //         "awayTeam": "Southampton",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Manchester United",
+    //         "awayTeam": "Manchester City",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     },
+    //     {
+    //         "homeTeam": "Aston Villa",
+    //         "awayTeam": "Leeds",
+    //         "homeTeamScore": "2",
+    //         "awayTeamScore": "2"
+    //     }
+    // ]
 
     const navigate = useNavigate();
 
-    const [results, setResults] = useLocalStorage("results", [""])
-    const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""])
-    const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", [])
-    const [latestMatchD, setLatestMatchD] = useLocalStorage("latestMatchday", 0)
-    const [nextMatchD, setNextMatchD] = useLocalStorage("nextMatchday", 0)
-    const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "")
-    const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
-    const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
-    const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "")
-    const [highScore, setHighScore] = useLocalStorage("highScore", 0)
+    const [results, setResults] = useLocalStorage("results", [""]);
+    const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
+    const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
+    const [latestMatchD, setLatestMatchD] = useLocalStorage("latestMatchday", 0);
+    const [nextMatchD, setNextMatchD] = useLocalStorage("nextMatchday", 0);
+    const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "");
+    const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", []);
+    const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", []);
+    const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "");
+    const [highScore, setHighScore] = useLocalStorage("highScore", 0);
+   // const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage(false);
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -96,7 +97,7 @@ export function Home() {
 
     useEffect(() => {
 
-        // only fetch results from api every 24h
+        // only fetch from api & check results every 24h
         if (timeOfLastResultsFetchFromApi !== "") {
             console.log("inne i api timecheck ifsats ", timeOfLastResultsFetchFromApi);
 
@@ -105,8 +106,8 @@ export function Home() {
             let hoursSinceLastFetch = Math.floor(timeSinceLastFetch / (1000 * 60 * 60));
 
             if (hoursSinceLastFetch < 24) {
-                console.log("timmar sedan: ", hoursSinceLastFetch);
-                checkResults();
+                console.log("timmar sedan senaste fetch och check: ", hoursSinceLastFetch);
+                //  checkResults();
                 return
             }
         }
@@ -118,7 +119,6 @@ export function Home() {
 
     function checkResults() {
 
-
         console.log("checkresults");
         //  console.log("matchdays från rättningen", matchdays);
 
@@ -128,7 +128,6 @@ export function Home() {
         if (yourFinalPicksForThisMatchDay.length === 0) {
             //alert("finns inget att rätta")
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
-            alert("fixa det här, du har inte spelat innan så vi kan inte rätta något");
             return
         }
 
@@ -141,13 +140,13 @@ export function Home() {
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
 
-                    for (const fixtureResult of testFacit) {
+                    // for (const fixtureResult of testFacit) {
+                    for (const fixtureResult of results[i]) {
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
-                                alert("någon match saknar fortfarande resultat!")
                                 return
                             }
 
@@ -170,18 +169,26 @@ export function Home() {
                 // If you guessed all matches correct you get an extra bonus
                 if (score === yourFinalPicksForThisMatchDay[1].length) {
                     score = score * 2;
-                    alert("alla rätt! bonus!")
                 }
                 // score is number of right guesses x timeLeftOnMyLastRound.
                 score = score * timeLeftOnMyLastRound * 1000;
                 if (score > highScore) {
                     setHighScore(score)
                 }
+
+
+                // setShowYourResultsUI(true);
+
+                // VI MÅSTE VISA RESULTAT FRÅN SENASTE MATCHEN OAVSETT OM DET ÄR HIGHSCORE ELLER INTE, SEN EFTER DET SÅ RENSAR VI SENAST SPELAD INFO OCH HÄMTAR NÄSTA MATCH
                 // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
                 // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
                 // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
 
                 // MÅSTE OCKSÅ KOLLA ATT ÄVEN OM MATCHDAY FINNS I RESULTATEN FRÅN API ÄR DET INTE SÄKERT ATT ALLA MATCHER HUNNIT SPELAS ÄNNU, OM NÅGON MATCH SAKNAR RESULTAT SÅ MÅSTE AVBRYTA OCH VÄNTA PÅ ALLA RESULTAT 
+
+
+                // clear previous play and let user play next round
+                setYourFinalPicksForThisMatchDay([]);
 
             }
 
@@ -226,7 +233,7 @@ export function Home() {
             let setThisTimeAsLastFetchFromApi = new Date();
             setTimeOfLastResultsFetchFromApi(setThisTimeAsLastFetchFromApi);
 
-            checkResults();
+            // checkResults();
             fetchFixtures();
 
         }).catch(function (error) {
@@ -265,9 +272,11 @@ export function Home() {
                 }
             }
 
-            if (yourLastPlayedMatchDay < nextMatchD) {
-                alert("finns nytt att spela")
-            }
+            checkResults();
+
+            // if (yourLastPlayedMatchDay < nextMatchday) {
+            //     alert("finns nytt att spela")
+            // }
 
         }).catch(function (error) {
             console.error(error);
@@ -326,17 +335,36 @@ export function Home() {
             </section>
         </div>
 
-        {yourFinalPicksForThisMatchDay === [] &&
+        {/* {showYourResultsUI &&
+            <div>
+
+                <h1>
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+                        HÄR SKA VI VISA ETT KORT MED DIN RÄTTNING OCH RESULTAT, NÄR DU STÄNGER DEN KAN DU SEN SPELA NÄSTA OMGÅNG
+                    </LinearGradient>
+
+                </h1>
+
+            </div>
+        } */}
+
+        {/* {yourFinalPicksForThisMatchDay === [] &&
             <div className="animate__animated animate__fadeIn">
                 <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
-        }
+        } */}
+
+
+            <div className="animate__animated animate__fadeIn">
+                <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
+            </div>
+    
 
         {yourFinalPicksForThisMatchDay !== [] &&
             <div className="information">
                 <span className="animate__animated animate__fadeIn">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        We are still waiting for the results to come in from your last played round (Matchday: {yourLastPlayedMatchDay}). <br /> Check back again soon!
+                        We are still waiting for the results to come in from your last played round (Matchday: {yourLastPlayedMatchDay}). <br /> Check back in 24h!
                     </LinearGradient>
                 </span>
             </div>
