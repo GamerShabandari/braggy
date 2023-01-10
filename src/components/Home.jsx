@@ -127,10 +127,10 @@ export function Home() {
         let score = 0;
         let timeLeftOnMyLastRound = 0;
 
-      //  setIsLoadingApiData(false);
+        setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
-            
+
             console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
             return
         }
@@ -347,13 +347,13 @@ export function Home() {
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                         LOADING
                     </LinearGradient>
-                    <Player 
-                    className="loader"
-                    autoplay
-                    loop
-                    src="https://assets8.lottiefiles.com/packages/lf20_p8bfn5to.json"
-                >
-                </Player>
+                    <Player
+                        className="loader"
+                        autoplay
+                        loop
+                        src="https://assets8.lottiefiles.com/packages/lf20_p8bfn5to.json"
+                    >
+                    </Player>
                 </h3>
             </div>
         }
