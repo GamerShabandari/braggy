@@ -86,6 +86,7 @@ export function Home() {
     const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "");
     const [highScore, setHighScore] = useLocalStorage("highScore", 0);
     const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
+    const [isDone, setIsDone] = useState(false)
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -189,6 +190,7 @@ export function Home() {
 
                 // clear previous play and let user play next round
                 setYourFinalPicksForThisMatchDay([]);
+                setIsDone(false);
 
             }
 

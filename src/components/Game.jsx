@@ -168,7 +168,7 @@ export function Game() {
                 </>
             }
 
-            {isDone && setYourFinalPicksForThisMatchDay.length === 0 && <>
+            {isDone && <>
                 <h1 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>
