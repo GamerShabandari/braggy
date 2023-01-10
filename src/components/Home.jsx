@@ -351,7 +351,7 @@ export function Home() {
                         className="loader"
                         autoplay
                         loop
-                        src="https://assets8.lottiefiles.com/packages/lf20_p8bfn5to.json"
+                        src="https://assets3.lottiefiles.com/packages/lf20_0omj4rn0.json"
                     >
                     </Player>
                 </h3>

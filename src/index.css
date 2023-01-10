@@ -338,10 +338,23 @@ h3 {
 
 .loaderContainer {
   width: 200px;
-  height: fit-content;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.loaderContainer h3{
+  font-size: 1.2rem;
+  letter-spacing: 4px;
 }
 
 .loader {
-  width: 100px;
-  filter: grayscale(100);
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  filter: saturate(0.5);
 }
