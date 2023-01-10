@@ -127,7 +127,7 @@ export function Home() {
         let score = 0;
         let timeLeftOnMyLastRound = 0;
 
-        setIsLoadingApiData(false);
+      //  setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
             
@@ -342,12 +342,19 @@ export function Home() {
         </div>
 
         {isLoadingApiData &&
-            <div>
-                <h1>
+            <div className="loaderContainer animate__animated animate__fadeIn">
+                <h3>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        LOADING ANIMATION SKA VARa HÄR
+                        LOADING
                     </LinearGradient>
-                </h1>
+                    <Player 
+                    className="loader"
+                    autoplay
+                    loop
+                    src="https://assets8.lottiefiles.com/packages/lf20_p8bfn5to.json"
+                >
+                </Player>
+                </h3>
             </div>
         }
 
