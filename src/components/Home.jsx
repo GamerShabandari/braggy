@@ -374,7 +374,6 @@ export function Home() {
 
         {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
             <div className="animate__animated animate__fadeIn">
-                {/* <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button> */}
                 <button className="btn" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
         }
