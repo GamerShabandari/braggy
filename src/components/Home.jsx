@@ -443,16 +443,6 @@ export function Home() {
                 </Player>
             </div>
 
-            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe up mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Draw.</LinearGradient>
-                <Player className="swipeUpIcon animate__animated  animate__zoomIn animate__delay-1s"
-                    autoplay
-                    loop
-                    src="https://assets7.lottiefiles.com/packages/lf20_tl8tqdw9.json"
-                >
-                </Player>
-            </div>
-
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe right mechanic for playing Braggy">
                 <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Awayteam win.</LinearGradient>
                 <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
@@ -463,8 +453,18 @@ export function Home() {
                 </Player>
             </div>
 
+            <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe up mechanic for playing Braggy">
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Draw.</LinearGradient>
+                <Player className="swipeUpIcon animate__animated  animate__zoomIn animate__delay-1s"
+                    autoplay
+                    loop
+                    src="https://assets7.lottiefiles.com/packages/lf20_tl8tqdw9.json"
+                >
+                </Player>
+            </div>
+
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining time limit when playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>You've got 30 seconds.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>30 seconds.</LinearGradient>
                 <Player className="timerIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop

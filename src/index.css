@@ -80,7 +80,7 @@ a {
 
 .swipesContainer {
   height: fit-content;
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -370,15 +370,14 @@ h3 {
   width: 90vw;
   top: 15px;
   z-index: 999;
-  /* From https://css.glass */
-background: rgba(30, 20, 40, 0.5019607843137255);
-border-radius: 15px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(10.3px);
--webkit-backdrop-filter: blur(10.3px);
+  background: rgba(30, 20, 40, 0.5019607843137255);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.3px);
+  -webkit-backdrop-filter: blur(10.3px);
 }
 
-.closeBtn{
+.closeBtn {
   position: absolute;
   right: 20px;
   top: 20px;
