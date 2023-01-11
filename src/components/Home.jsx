@@ -290,9 +290,36 @@ export function Home() {
 
     }
 
+    // used to fake result to test app
+    function insertFakeResult() {
+
+        let matchdayKey = " Matchday " + yourLastPlayedMatchDay + " ";
+        let fakeMatchday = {}
+        let tempArray = []
+
+        // loop through yourFinalPicks array from last played game and generate a fake result for this round        
+        for (const match of yourFinalPicksForThisMatchDay[1]) {
+            delete match.myWinner;
+            Object.assign(match, { homeTeamScore: "1", awayTeamScore: "2" });
+            tempArray.push(match)
+        }
+
+        // insert fake result round into results array and simulate that new results are in to check and score for user
+        Object.assign(fakeMatchday, { [matchdayKey]: [...tempArray] });
+        for (let prop in fakeMatchday) {
+            setResults([...results, fakeMatchday[prop]])
+            setMatchdays([...matchdays, prop])
+        }
+    }
+
     return (<main>
 
         <div className="logo">
+
+
+            <button onClick={insertFakeResult}>insert fake result</button>
+            <button onClick={checkResults}>Check results after faking above</button>
+
             <LinearGradient className="braggy animate__animated animate__zoomIn animate__fast" gradient={['to left', '#17acff ,#ff68f0']}>
                 <span>BRAGGY</span>
             </LinearGradient>
@@ -329,13 +356,16 @@ export function Home() {
                         <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                             Your Highscore:
                         </LinearGradient>
-                        <AnimatedNumbers
-                            animateToNumber={highScore}
-                            fontStyle={{ fontSize: 32, color: "#d6ebf4d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
-                            configs={[
-                                { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
-                            ]}
-                        ></AnimatedNumbers>
+                        {!isLoadingApiData && <>
+                            <AnimatedNumbers
+                                animateToNumber={highScore}
+                                fontStyle={{ fontSize: 32, color: "#d6ebf4d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
+                                configs={[
+                                    { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
+                                ]}
+                            ></AnimatedNumbers>
+
+                        </>}
                     </span>
                 </div>
 
@@ -390,7 +420,7 @@ export function Home() {
 
         <div className="swipesContainer">
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe left mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe left for hometeam win.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hometeam win.</LinearGradient>
                 <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -400,7 +430,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe up mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe up for draw.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Draw.</LinearGradient>
                 <Player className="swipeUpIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -410,7 +440,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe right mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>swipe right for awayteam win.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Awayteam win.</LinearGradient>
                 <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -420,7 +450,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining time limit when playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hurry! You have 30 seconds.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>You've got 30 seconds.</LinearGradient>
                 <Player className="timerIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
