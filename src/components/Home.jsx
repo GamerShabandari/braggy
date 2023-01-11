@@ -76,6 +76,7 @@ export function Home() {
     const navigate = useNavigate();
 
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
+    const [resultsUiScore, setResultsUiScore] = useState(0)
 
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
@@ -96,9 +97,6 @@ export function Home() {
 
     let latestMatchday = "";
     let nextMatchday = "";
-
-    let score = 0;
-    let timeLeftOnMyLastRound = 0;
 
     useEffect(() => {
 
@@ -125,16 +123,13 @@ export function Home() {
     function checkResults() {
 
         console.log("checkresults");
-        //  console.log("matchdays från rättningen", matchdays);
 
-        score = 0;
-        timeLeftOnMyLastRound = 0;
+        let score = 0;
+        let timeLeftOnMyLastRound = 0;
 
         setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
-
-            console.log("finns inget att rätta eftersom du aldrig gjort dina picks");
             return
         }
 
@@ -144,13 +139,17 @@ export function Home() {
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
 
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
+                console.log("en match har hittats! du sa din senast spelade match var: " + yourLastPlayedMatchDay + " och vi hittade detta i resultatarray: " + matchday + " på plats " + i + "i matchdayarray");
+                console.log("denna borde vara listan som hör till din gissade matchdag " + results[i] + "annars kommer det inte stämma");
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
+                    
 
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
+                            console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
@@ -168,6 +167,7 @@ export function Home() {
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
                             }
+                            console.log(score);
                             break
                         }
                     }
@@ -183,11 +183,7 @@ export function Home() {
                     setHighScore(score)
                 }
 
-                let score = 0;
-                let timeLeftOnMyLastRound = 0;
-
-                console.log("score: ", score);
-                console.log("timeleft: ", timeLeftOnMyLastRound);
+                setResultsUiScore(score)
 
                 setShowYourResultsUI(true);
 
@@ -324,9 +320,8 @@ export function Home() {
 
         <div className="logo">
 
-
-            <button onClick={insertFakeResult}>insert fake result</button>
-            <button onClick={checkResults}>Check results after faking above</button>
+            <button onClick={insertFakeResult}>Fake results</button>
+            <button onClick={checkResults}>check results</button>
 
             <LinearGradient className="braggy animate__animated animate__zoomIn animate__fast" gradient={['to left', '#17acff ,#ff68f0']}>
                 <span>BRAGGY</span>
@@ -406,9 +401,8 @@ export function Home() {
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                         Results:
 
-                        Score: {score}
+                        Score: {resultsUiScore}
 
-                        Timeleft: {timeLeftOnMyLastRound}
                     </LinearGradient>
 
                 </h1>
@@ -426,7 +420,7 @@ export function Home() {
             <div className="information">
                 <span className="animate__animated animate__fadeIn">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        We are still waiting for the results to come in from your last played round (Matchday: {yourLastPlayedMatchDay}). <br /> Check back in 24h!
+                        We are still waiting for the results to come in from your last played round. <br /> Check back in 24h!
                     </LinearGradient>
                 </span>
             </div>
@@ -474,7 +468,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining score system">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Play fast score more.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Play fast to score more.</LinearGradient>
                 <Player className="scoreIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
