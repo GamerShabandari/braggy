@@ -149,10 +149,11 @@ export function Home() {
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
                         console.log("i loop 2");
-                        console.log("fixtureResult inne i loop: " + fixtureResult);
+                        //console.log("fixtureResult inne i loop: " + fixtureResult);
+                        console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-                            console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
+                            console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
@@ -169,8 +170,8 @@ export function Home() {
                             }
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
+                                console.log(score);
                             }
-                            console.log(score);
                             break
                         }
                     }
