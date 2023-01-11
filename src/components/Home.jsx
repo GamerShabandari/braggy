@@ -143,10 +143,13 @@ export function Home() {
                 console.log("denna borde vara listan som hör till din gissade matchdag " + results[i] + "annars kommer det inte stämma");
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
+                    console.log("i loop 1");
                     
 
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
+                        console.log("i loop 2");
+                        console.log("fixtureResult inne i loop: " + fixtureResult);
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
                             console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
@@ -197,6 +200,7 @@ export function Home() {
 
                 // clear previous play and let user play next round
                 setYourFinalPicksForThisMatchDay([]);
+                console.log("längst ner i results check");
 
             }
 
