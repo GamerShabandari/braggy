@@ -77,6 +77,10 @@ export function Home() {
 
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
+    const [resultsUiTimeLeft, setResultsUiTimeLeft] = useState(0)
+    const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
+    const [guessedAllRight, setGuessedAllRight] = useState(false)
+    const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
 
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
@@ -144,7 +148,7 @@ export function Home() {
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
                     console.log("i loop 1");
-                    
+
 
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
@@ -180,14 +184,20 @@ export function Home() {
                 // If you guessed all matches correct you get an extra bonus
                 if (score === yourFinalPicksForThisMatchDay[1].length) {
                     score = score * 2;
+                    setGuessedAllRight(true)
                 }
+
+                setResultsUiAmountOfCorrectAnswers(score)
+
                 // score is number of right guesses x timeLeftOnMyLastRound.
                 score = score * timeLeftOnMyLastRound * 1000;
                 if (score > highScore) {
                     setHighScore(score)
+                    setHiscoreAchievment(true)
                 }
 
                 setResultsUiScore(score)
+                setResultsUiTimeLeft(timeLeftOnMyLastRound)
 
                 setShowYourResultsUI(true);
 
@@ -405,9 +415,16 @@ export function Home() {
                 <h1>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                         Results:
-
+                        <br />
                         Score: {resultsUiScore}
+                        <br />
+                        Time taken: {resultsUiTimeLeft}
+                        <br />
+                        {resultsUiAmountOfCorrectAnswers} of 10 guesses were correct
 
+                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span> }
+
+                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span> }
                     </LinearGradient>
 
                 </h1>
