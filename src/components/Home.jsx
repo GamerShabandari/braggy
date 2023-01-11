@@ -181,13 +181,13 @@ export function Home() {
                     }
                 }
 
+                setResultsUiAmountOfCorrectAnswers(score)
+
                 // If you guessed all matches correct you get an extra bonus
                 if (score === yourFinalPicksForThisMatchDay[1].length) {
                     score = score * 2;
                     setGuessedAllRight(true)
                 }
-
-                setResultsUiAmountOfCorrectAnswers(score)
 
                 // score is number of right guesses x timeLeftOnMyLastRound.
                 score = score * timeLeftOnMyLastRound * 1000;
@@ -329,6 +329,8 @@ export function Home() {
             setResults([...results, fakeMatchday[prop]])
             setMatchdays([...matchdays, prop])
         }
+
+        window.location.reload();
     }
 
     return (<main>
@@ -418,13 +420,13 @@ export function Home() {
                         <br />
                         Score: {resultsUiScore}
                         <br />
-                        Time taken: {resultsUiTimeLeft}
+                        Time left on clock: {resultsUiTimeLeft}
                         <br />
                         {resultsUiAmountOfCorrectAnswers} of 10 guesses were correct
-
-                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span> }
-
-                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span> }
+                        <br />
+                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span>}
+                        <br />
+                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span>}
                     </LinearGradient>
 
                 </h1>
