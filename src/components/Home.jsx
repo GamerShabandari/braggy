@@ -298,7 +298,7 @@ export function Home() {
             </LinearGradient>
 
 
-            {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+            <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                 <TypeAnimation
                     sequence={[
                         'Beat your friends!',
@@ -321,7 +321,7 @@ export function Home() {
                     repeat={Infinity}
                     style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "200" }}
                 />
-            </LinearGradient> */}
+            </LinearGradient>
 
             <section>
                 <div className="scoreContainer  animate__animated animate__fadeIn">
