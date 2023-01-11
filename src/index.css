@@ -10,6 +10,8 @@ body {
   font-family: 'Poppins', sans-serif;
   background: rgb(24, 15, 27);
   -ms-overflow-style: none;
+  background: rgb(24,15,27);
+background: linear-gradient(130deg, rgba(24,15,27,1) 0%, rgba(40,6,31,1) 100%);
 }
 
 body::-webkit-scrollbar {
@@ -321,7 +323,7 @@ h3 {
 .highscore {
   font-size: 1.5rem;
   font-weight: 100;
-  background-color: rgb(30, 20, 40);
+  background-color: rgba(30, 20, 40, 0.5);
   border-radius: 15px;
   padding: 20px;
   width: 300px;
@@ -330,7 +332,7 @@ h3 {
 .information {
   width: 300px;
   height: fit-content;
-  background-color: rgb(30, 20, 40);
+  background-color: rgb(30, 20, 40, 0.5);
   border-radius: 15px;
   padding: 20px;
   line-height: 30px;
@@ -346,7 +348,7 @@ h3 {
   overflow: hidden;
 }
 
-.loaderContainer h3{
+.loaderContainer h3 {
   font-size: 1.2rem;
   letter-spacing: 4px;
 }

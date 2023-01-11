@@ -140,7 +140,7 @@ export function Game() {
 
             {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
                 <>
-                    <div className='timerContainer  animate__animated animate__pulse animate__infinite	infinite'>
+                    <div className='timerContainer  animate__animated animate__zoomIn'>
                         <Countdown date={Date.now() + 30000} renderer={renderer} className='timerContainer' />
                     </div>
 
