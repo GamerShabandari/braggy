@@ -97,6 +97,9 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
+    let score = 0;
+    let timeLeftOnMyLastRound = 0;
+
     useEffect(() => {
 
         // only fetch from api & check results every 24h
@@ -124,8 +127,8 @@ export function Home() {
         console.log("checkresults");
         //  console.log("matchdays från rättningen", matchdays);
 
-        let score = 0;
-        let timeLeftOnMyLastRound = 0;
+        score = 0;
+        timeLeftOnMyLastRound = 0;
 
         setIsLoadingApiData(false);
 
@@ -180,6 +183,11 @@ export function Home() {
                     setHighScore(score)
                 }
 
+                let score = 0;
+                let timeLeftOnMyLastRound = 0;
+
+                console.log("score: ", score);
+                console.log("timeleft: ", timeLeftOnMyLastRound);
 
                 setShowYourResultsUI(true);
 
@@ -390,16 +398,22 @@ export function Home() {
         }
 
         {showYourResultsUI &&
-            <div>
+            <section className="resultsContainer animate__animated animate__fadeIn">
 
+
+                <button className="closeBtn">close</button>
                 <h1>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        HÄR SKA VI VISA ETT KORT MED DIN RÄTTNING OCH RESULTAT, NÄR DU STÄNGER DEN KAN DU SEN SPELA NÄSTA OMGÅNG
+                        Results:
+
+                        Score: {score}
+
+                        Timeleft: {timeLeftOnMyLastRound}
                     </LinearGradient>
 
                 </h1>
 
-            </div>
+            </section>
         }
 
         {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
@@ -460,7 +474,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining score system">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Score is based on correct guesses & total time taken.</LinearGradient>
+                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Play fast score more.</LinearGradient>
                 <Player className="scoreIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
