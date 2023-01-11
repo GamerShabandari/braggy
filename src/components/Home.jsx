@@ -298,7 +298,7 @@ export function Home() {
             </LinearGradient>
 
 
-            <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+            {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                 <TypeAnimation
                     sequence={[
                         'Beat your friends!',
@@ -321,7 +321,8 @@ export function Home() {
                     repeat={Infinity}
                     style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "200" }}
                 />
-            </LinearGradient>
+            </LinearGradient> */}
+
             <section>
                 <div className="scoreContainer  animate__animated animate__fadeIn">
                     <span className="highscore">
@@ -373,7 +374,8 @@ export function Home() {
 
         {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
             <div className="animate__animated animate__fadeIn">
-                <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
+                {/* <button className="btn animate__animated animate__pulse animate__infinite	infinite" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button> */}
+                <button className="btn" onClick={() => { navigate("/game") }} aria-label="start button"><GiPlayButton className='btnIcon'></GiPlayButton></button>
             </div>
         }
 
