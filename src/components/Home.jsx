@@ -146,8 +146,8 @@ export function Home() {
                     setGuessedAllRight(true)
                 }
 
-                // score is number of right guesses x timeLeftOnMyLastRound.
-                score = score * timeLeftOnMyLastRound * 1000;
+                // score is number of right guesses x timeLeftOnMyLastRound * 100.
+                score = score * timeLeftOnMyLastRound * 100;
                 if (score > highScore) {
                     setHighScore(score)
                     setHiscoreAchievment(true)
@@ -399,9 +399,9 @@ export function Home() {
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <div>Score: {resultsUiScore}</div>
+                        <div>SCORE: {resultsUiScore}</div>
                         {hiscoreAchievment && <div>NEW HIGH SCORE!</div>}
-                        {guessedAllRight && <div>Great job! You got a 2x bonus since you guessed all the matches correctly</div>}
+                        {guessedAllRight && <div>BONUS! 10/10 CORRECT</div>}
                     </LinearGradient>
                 </div>
 

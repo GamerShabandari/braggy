@@ -12,6 +12,8 @@ body {
   -ms-overflow-style: none;
   background: rgb(24, 15, 27);
   background: linear-gradient(130deg, rgba(24, 15, 27, 1) 0%, rgba(40, 6, 31, 1) 100%);
+  min-height: 100vh;
+  height: fit-content;
 }
 
 body::-webkit-scrollbar {
@@ -172,6 +174,8 @@ main {
 
 .app {
   overflow: hidden;
+  min-height: 100vh;
+  height: fit-content;
 }
 
 .app>div {
