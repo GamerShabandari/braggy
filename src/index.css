@@ -146,6 +146,7 @@ a {
   justify-content: center;
   width: 100vw;
   min-height: 100vh;
+  height: fit-content;
   overflow: hidden;
 }
 
@@ -242,7 +243,7 @@ h3 {
   height: 500px;
   border: 1px solid rgba(107, 107, 107, 0.22);
   box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.098);
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   border-radius: 15px;
   transform: perspective(900px) rotateX(25deg);
   cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
@@ -371,7 +372,7 @@ h3 {
   color: white;
   min-height: 90vh;
   height: fit-content;
-  padding: 30px;
+  padding: 10px;
   width: 90vw;
   top: 15px;
   z-index: 999;
@@ -380,6 +381,10 @@ h3 {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.3px);
   -webkit-backdrop-filter: blur(10.3px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .closeBtn {
@@ -389,27 +394,30 @@ h3 {
 }
 
 .resultListFixture {
-  border: 1px solid red;
-  color: white;
-  padding: 20px;
+  color: black;
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 30px;
+  width: fit-content;
+  height: fit-content;
 }
 
 .hometeamContainer {
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 50px;
+  height: 100px;
   overflow: hidden;
-  font-size: 0.6rem;
-  font-weight: 100;
+  font-size: 0.8rem;
+  font-weight: 200;
   gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .hometeamContainer img{
@@ -417,30 +425,32 @@ h3 {
 }
 
 .resultsScoreContainer {
-  border: 1px solid yellow;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: fit-content;
   padding: 10px;
-  font-size: 1.5rem;
-  font-weight: 200;
+  font-size: 1rem;
+  font-weight: 300;
   overflow: hidden;
+  color: #ffffff;
 }
 
 .awayteamContainer {
-  border: 1px solid purple;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100px;
-  height: 50px;
+  height: 100px;
   overflow: hidden;
-  font-size: 0.6rem;
-  font-weight: 100;
+  font-size: 0.8rem;
+  font-weight: 200;
   gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .awayteamContainer img{
@@ -448,11 +458,13 @@ h3 {
 }
 
 .correct {
-  background-color: greenyellow;
+  color: #ffffff;;
+  font-size: 1.5rem;
 }
 
 .wrong {
-  background-color: red;
+  color: #ffffff;;
+  font-size: 1.5rem;
 }
 
 .resultsUIinformation{

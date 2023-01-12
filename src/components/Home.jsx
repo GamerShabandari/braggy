@@ -3,11 +3,15 @@ import useLocalStorage from "../useLocalStorage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
+import { TfiCheck, TfiClose } from "react-icons/tfi";
 import { LinearGradient } from 'react-text-gradients';
 import { TypeAnimation } from 'react-type-animation';
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion } from "framer-motion";
+
+
+
 
 export function Home() {
 
@@ -301,11 +305,11 @@ export function Home() {
                     <span>{fixt.awayTeam}</span>
                 </div>
                 {fixt.yourGuess === "correct" && <div className="correct">
-                    CORRECT GUESS
+                    <TfiCheck></TfiCheck>
                 </div>}
 
                 {fixt.yourGuess === "wrong" && <div className="wrong">
-                    WRONG GUESS
+                    <TfiClose></TfiClose>
                 </div>}
             </motion.div>
         )
@@ -395,9 +399,9 @@ export function Home() {
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <span>Score: {resultsUiScore}</span>
-                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span>}
-                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span>}
+                        <div>Score: {resultsUiScore}</div>
+                        {hiscoreAchievment && <div>NEW HIGH SCORE!</div>}
+                        {guessedAllRight && <div>Great job! You got a 2x bonus since you guessed all the matches correctly</div>}
                     </LinearGradient>
                 </div>
 
