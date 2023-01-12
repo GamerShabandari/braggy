@@ -10,69 +10,6 @@ import AnimatedNumbers from "react-animated-numbers";
 
 export function Home() {
 
-    // let testFacit = [
-    //     {
-    //         "homeTeam": "Tottenham",
-    //         "awayTeam": "Arsenal",
-    //         "homeTeamScore": "3",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Newcastle United",
-    //         "awayTeam": "Fulham",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Chelsea",
-    //         "awayTeam": "Crystal Palace",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Brentford",
-    //         "awayTeam": "Bournemouth",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Brighton",
-    //         "awayTeam": "Liverpool",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Wolves",
-    //         "awayTeam": "West Ham",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Nottingham Forest",
-    //         "awayTeam": "Leicester",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Everton",
-    //         "awayTeam": "Southampton",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Manchester United",
-    //         "awayTeam": "Manchester City",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     },
-    //     {
-    //         "homeTeam": "Aston Villa",
-    //         "awayTeam": "Leeds",
-    //         "homeTeamScore": "2",
-    //         "awayTeamScore": "2"
-    //     }
-    // ]
-
     const navigate = useNavigate();
 
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
@@ -82,7 +19,7 @@ export function Home() {
     const [guessedAllRight, setGuessedAllRight] = useState(false)
     const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
     const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
- 
+
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
     const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
@@ -103,7 +40,7 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
-    
+
 
     useEffect(() => {
 
@@ -157,12 +94,12 @@ export function Home() {
 
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
-                      //  console.log("i loop 2");
+                        //  console.log("i loop 2");
                         //console.log("fixtureResult inne i loop: " + fixtureResult);
-                      //  console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
+                        //  console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-                          //  console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
+                            //  console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
@@ -170,12 +107,12 @@ export function Home() {
                             }
 
                             let fixtureResultForUi = {
-                                homeTeam : fixtureResult.homeTeam,
-                                awayTeam : fixtureResult.awayTeam,
-                                score : fixtureResult.homeTeamScore + " : " + fixtureResult.awayTeamScore,
-                                yourGuess : "wrong"
+                                homeTeam: fixtureResult.homeTeam,
+                                awayTeam: fixtureResult.awayTeam,
+                                score: fixtureResult.homeTeamScore + " : " + fixtureResult.awayTeamScore,
+                                yourGuess: "wrong"
                             }
-                            
+
                             let winner = fixtureResult.homeTeam
 
                             if (Number(fixtureResult.awayTeamScore) > Number(fixtureResult.homeTeamScore)) {
@@ -188,7 +125,7 @@ export function Home() {
                                 score += 1
                                 console.log(score);
                                 fixtureResultForUi.yourGuess = "correct";
-                               //  Object.assign(match, { homeTeamScore: "1", awayTeamScore: "2" });
+                                //  Object.assign(match, { homeTeamScore: "1", awayTeamScore: "2" });
                             }
                             tempArrayToUpdateStateArray.push(fixtureResultForUi)
                             break
@@ -214,13 +151,16 @@ export function Home() {
                 setResultsUiScore(score)
                 setResultsUiTimeLeft(timeLeftOnMyLastRound)
 
+                setFixturesArrayForResultsUI([...tempArrayToUpdateStateArray])
+
                 setShowYourResultsUI(true);
 
                 // clear previous play and let user play next round
                 setYourFinalPicksForThisMatchDay([]);
+                console.log(fixturesArrayForResultsUI);
+                console.table(fixturesArrayForResultsUI);
                 console.log("längst ner i results check");
-                console.log("här är alla matcher: " , tempArrayToUpdateStateArray);
-
+                console.log("här är alla matcher: ", tempArrayToUpdateStateArray);
             }
 
         }
@@ -338,6 +278,34 @@ export function Home() {
         window.location.reload();
     }
 
+
+    let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
+        return (
+            <div className="resultListFixture" key={i}>
+                <div className="hometeamContainer">
+                    <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                    <span>{fixt.homeTeam}</span>
+                </div>
+
+                <div className="resultsScoreContainer">
+                    {fixt.score}
+                </div>
+
+                <div className="awayteamContainer">
+                    <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                    <span>{fixt.awayTeam}</span>
+                </div>
+                {fixt.yourGuess === "correct" && <div className="correct">
+                    CORRECT GUESS
+                </div>}
+
+                {fixt.yourGuess === "wrong" && <div className="wrong">
+                    WRONG GUESS
+                </div>}
+            </div>
+        )
+    })
+
     return (<main>
 
         <div className="logo">
@@ -419,7 +387,7 @@ export function Home() {
 
 
                 <button className="closeBtn">close</button>
-                <h1>
+                {/* <h1>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                         Results:
                         <br />
@@ -432,9 +400,20 @@ export function Home() {
                         {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span>}
                         <br />
                         {hiscoreAchievment && <span>NEW HIGH SCORE!</span>}
+
+                        <div>
+                            {resultListHtml}
+                        </div>
+
                     </LinearGradient>
 
-                </h1>
+                </h1> */}
+
+                <div>
+                    {resultListHtml}
+                </div>
+
+
 
             </section>
         }
