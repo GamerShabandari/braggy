@@ -7,6 +7,7 @@ import { LinearGradient } from 'react-text-gradients';
 import { TypeAnimation } from 'react-type-animation';
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
+import { motion } from "framer-motion";
 
 export function Home() {
 
@@ -281,7 +282,11 @@ export function Home() {
 
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
         return (
-            <div className="resultListFixture" key={i}>
+            <motion.div className="resultListFixture" key={i}
+                initial={{ opacity: 0, translateY: -20 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{ ease: "easeInOut", duration: 0.2, delay: i * 0.2 }}
+            >
                 <div className="hometeamContainer">
                     <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
                     <span>{fixt.homeTeam}</span>
@@ -302,7 +307,7 @@ export function Home() {
                 {fixt.yourGuess === "wrong" && <div className="wrong">
                     WRONG GUESS
                 </div>}
-            </div>
+            </motion.div>
         )
     })
 
@@ -387,6 +392,15 @@ export function Home() {
 
 
                 <button className="closeBtn">close</button>
+
+                <div className="resultsUIinformation">
+                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+                        <span>Score: {resultsUiScore}</span>
+                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span>}
+                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span>}
+                    </LinearGradient>
+                </div>
+
                 {/* <h1>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
                         Results:
@@ -405,7 +419,7 @@ export function Home() {
                             {resultListHtml}
                         </div>
 
-                    </LinearGradient>
+                    
 
                 </h1> */}
 

@@ -369,7 +369,9 @@ h3 {
 .resultsContainer {
   position: absolute;
   color: white;
-  height: 90vh;
+  min-height: 90vh;
+  height: fit-content;
+  padding: 30px;
   width: 90vw;
   top: 15px;
   z-index: 999;
@@ -402,10 +404,16 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100px;
+  height: 50px;
+  overflow: hidden;
+  font-size: 0.6rem;
+  font-weight: 100;
+  gap: 10px;
 }
 
 .hometeamContainer img{
-  width: 100px;
+  width: 30px;
 }
 
 .resultsScoreContainer {
@@ -414,6 +422,11 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 200;
+  overflow: hidden;
 }
 
 .awayteamContainer {
@@ -422,10 +435,16 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100px;
+  height: 50px;
+  overflow: hidden;
+  font-size: 0.6rem;
+  font-weight: 100;
+  gap: 10px;
 }
 
 .awayteamContainer img{
-  width: 100px;
+  width: 30px;
 }
 
 .correct {
@@ -434,4 +453,9 @@ h3 {
 
 .wrong {
   background-color: red;
+}
+
+.resultsUIinformation{
+  display: flex;
+  flex-direction: column;
 }
