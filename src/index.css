@@ -16,14 +16,6 @@ body {
   height: fit-content;
 }
 
-body::-webkit-scrollbar {
-  display: none;
-}
-
-html {
-  scrollbar-width: none;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -66,7 +58,6 @@ code {
 .btnIcon {
   font-size: 2.5rem;
   color: rgb(24, 15, 27);
-  ;
 }
 
 a {
@@ -100,7 +91,6 @@ a {
   align-items: center;
   justify-content: center;
   position: relative;
-
 }
 
 .swipesContainer div span {
@@ -149,7 +139,6 @@ a {
   width: 100vw;
   min-height: 100vh;
   height: fit-content;
-  overflow: hidden;
 }
 
 main {
@@ -173,7 +162,6 @@ main {
 }
 
 .app {
-  overflow: hidden;
   min-height: 100vh;
   height: fit-content;
 }
@@ -374,14 +362,13 @@ h3 {
 .resultsContainer {
   position: absolute;
   color: white;
-  min-height: 90vh;
+  min-height: 100vh;
   height: fit-content;
   padding: 10px;
-  width: 90vw;
-  top: 15px;
+  width: 100vw;
+  top: 0px;
   z-index: 999;
   background: rgba(30, 20, 40, 0.5019607843137255);
-  border-radius: 15px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.3px);
   -webkit-backdrop-filter: blur(10.3px);
@@ -398,12 +385,11 @@ h3 {
 }
 
 .resultListFixture {
-  color: black;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   width: fit-content;
   height: fit-content;
 }
@@ -413,8 +399,8 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   font-size: 0.8rem;
   font-weight: 200;
@@ -422,6 +408,7 @@ h3 {
   background-color: #ffffff;
   padding: 10px;
   border-radius: 15px;
+  color: black;
 }
 
 .hometeamContainer img{
@@ -433,7 +420,7 @@ h3 {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  width: 30px;
   padding: 10px;
   font-size: 1rem;
   font-weight: 300;
@@ -446,8 +433,8 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   font-size: 0.8rem;
   font-weight: 200;
@@ -455,6 +442,7 @@ h3 {
   background-color: #ffffff;
   padding: 10px;
   border-radius: 15px;
+  color: black;
 }
 
 .awayteamContainer img{
