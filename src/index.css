@@ -14,7 +14,6 @@ body {
   background: linear-gradient(130deg, rgba(24, 15, 27, 1) 0%, rgba(40, 6, 31, 1) 100%);
   min-height: 100vh;
   height: fit-content;
-  width: 100vw;
 }
 
 code {
@@ -23,7 +22,7 @@ code {
 }
 
 .logo {
-  width: 100vw;
+  width: auto;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -137,7 +136,7 @@ a {
   text-align: center;
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: auto;
   min-height: 100vh;
   height: fit-content;
   border: 1px solid green;
@@ -151,7 +150,7 @@ main {
   gap: 20px;
   position: relative;
   border: 1px solid red;
-  width: auto;
+  width: 100%;
   height: fit-content;
 }
 
@@ -165,7 +164,7 @@ main {
   justify-content: flex-start;
   align-items: center;
   border: 1px solid yellow;
-  width: auto;
+  /* width: auto; */
   height: fit-content;
 }
 
@@ -173,7 +172,7 @@ main {
   min-height: 100vh;
   height: fit-content;
   border: 1px solid white;
-  width: auto;
+  width: 100%;
 }
 
 .app>div {
@@ -181,6 +180,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: auto;
 }
 
 .row {
