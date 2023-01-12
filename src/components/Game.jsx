@@ -36,6 +36,7 @@ export function Game() {
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
+        setMatchdayToPlay([])
         return
     }
 

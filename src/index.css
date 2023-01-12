@@ -151,6 +151,8 @@ main {
   gap: 20px;
   position: relative;
   border: 1px solid red;
+  width: auto;
+  height: fit-content;
 }
 
 * {
@@ -163,13 +165,15 @@ main {
   justify-content: flex-start;
   align-items: center;
   border: 1px solid yellow;
+  width: auto;
+  height: fit-content;
 }
 
 .app {
   min-height: 100vh;
   height: fit-content;
   border: 1px solid white;
-  width: 100vw;
+  width: auto;
 }
 
 .app>div {
