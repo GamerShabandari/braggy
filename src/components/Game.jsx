@@ -155,9 +155,6 @@ export function Game() {
                                         <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="" />
                                         <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="" />
                                     </div>
-                                    <h4>
-                                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>MATCHDAY {matchdayToPlay[0]}</LinearGradient>
-                                    </h4>
                                     <h3>
                                         <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> {match.homeTeam} - {match.awayTeam}</LinearGradient>
                                     </h3>

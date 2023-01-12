@@ -280,7 +280,8 @@ h3 {
 }
 
 .card h3 {
-  background-color: rgb(24, 15, 27);
+  border: 1px solid rgba(107, 107, 107, 0.22);
+  box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.198);
   font-size: 1rem;
   font-weight: 400;
   width: 250px;
@@ -294,7 +295,6 @@ h3 {
   bottom: 20px;
   left: 25px;
   border-radius: 15px;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.112);
 }
 
 .card h4 {

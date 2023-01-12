@@ -81,7 +81,8 @@ export function Home() {
     const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
     const [guessedAllRight, setGuessedAllRight] = useState(false)
     const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
-
+    const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
+ 
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
     const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
@@ -101,6 +102,8 @@ export function Home() {
 
     let latestMatchday = "";
     let nextMatchday = "";
+
+    
 
     useEffect(() => {
 
@@ -131,6 +134,8 @@ export function Home() {
         let score = 0;
         let timeLeftOnMyLastRound = 0;
 
+        let tempArrayToUpdateStateArray = []
+
         setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
@@ -152,18 +157,25 @@ export function Home() {
 
                     // for (const fixtureResult of testFacit) {
                     for (const fixtureResult of results[i]) {
-                        console.log("i loop 2");
+                      //  console.log("i loop 2");
                         //console.log("fixtureResult inne i loop: " + fixtureResult);
-                        console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
+                      //  console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-                            console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
+                          //  console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
                                 return
                             }
 
+                            let fixtureResultForUi = {
+                                homeTeam : fixtureResult.homeTeam,
+                                awayTeam : fixtureResult.awayTeam,
+                                score : fixtureResult.homeTeamScore + " : " + fixtureResult.awayTeamScore,
+                                yourGuess : "wrong"
+                            }
+                            
                             let winner = fixtureResult.homeTeam
 
                             if (Number(fixtureResult.awayTeamScore) > Number(fixtureResult.homeTeamScore)) {
@@ -175,7 +187,10 @@ export function Home() {
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
                                 console.log(score);
+                                fixtureResultForUi.yourGuess = "correct";
+                               //  Object.assign(match, { homeTeamScore: "1", awayTeamScore: "2" });
                             }
+                            tempArrayToUpdateStateArray.push(fixtureResultForUi)
                             break
                         }
                     }
@@ -201,17 +216,10 @@ export function Home() {
 
                 setShowYourResultsUI(true);
 
-                // VI MÅSTE VISA RESULTAT FRÅN SENASTE MATCHEN OAVSETT OM DET ÄR HIGHSCORE ELLER INTE, SEN EFTER DET SÅ RENSAR VI SENAST SPELAD INFO OCH HÄMTAR NÄSTA MATCH
-                // här ska vi rätta, sätta poäng och visa vilka gissningar som var rätt och fel på något vis,
-                // OBS I PICKS ARRAY ÄR INDEX 0 TIDEN SOM FANNS KVAR OCH INTEX 1 SJÄLVA VALEN
-                // sen ska vi  rensa förra rondens picks setYourFinalPicksForThisMatchDay([]); och köra fetchFixtures som hämtar nästa match
-
-                // MÅSTE OCKSÅ KOLLA ATT ÄVEN OM MATCHDAY FINNS I RESULTATEN FRÅN API ÄR DET INTE SÄKERT ATT ALLA MATCHER HUNNIT SPELAS ÄNNU, OM NÅGON MATCH SAKNAR RESULTAT SÅ MÅSTE AVBRYTA OCH VÄNTA PÅ ALLA RESULTAT 
-
-
                 // clear previous play and let user play next round
                 setYourFinalPicksForThisMatchDay([]);
                 console.log("längst ner i results check");
+                console.log("här är alla matcher: " , tempArrayToUpdateStateArray);
 
             }
 
@@ -258,7 +266,6 @@ export function Home() {
             let setThisTimeAsLastFetchFromApi = new Date();
             setTimeOfLastResultsFetchFromApi(setThisTimeAsLastFetchFromApi);
 
-            // checkResults();
             fetchFixtures();
 
         }).catch(function (error) {
@@ -292,8 +299,6 @@ export function Home() {
                     //second index is array of fixtures to play
                     fixturesArray.push(response.data[0][prop]);
                     setMatchdayToPlay(fixturesArray);
-                    //clear previous round picks
-                    //setYourFinalPicksForThisMatchDay([]);
                 }
             }
 
