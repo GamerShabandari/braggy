@@ -288,10 +288,9 @@ export function Home() {
 
     }, []);
 
+
     // checks if results are in from last played game and then calculates score 
     function checkResults() {
-
-        console.log("checkresults");
 
         let score = 0;
         let timeLeftOnMyLastRound = 0;
@@ -310,13 +309,8 @@ export function Home() {
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
 
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
-                console.log("en match har hittats! du sa din senast spelade match var: " + yourLastPlayedMatchDay + " och vi hittade detta i resultatarray: " + matchday + " på plats " + i + "i matchdayarray");
-                console.log("denna borde vara listan som hör till din gissade matchdag " + results[i] + "annars kommer det inte stämma");
-
+              
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
-                    console.log("i loop 1");
-
-
                     
                     for (const fixtureResult of results[i]) {
 
@@ -368,19 +362,13 @@ export function Home() {
                     setHiscoreAchievment(true)
                 }
 
+                // UI to display results and score
                 setResultsUiScore(score)
                 setResultsUiTimeLeft(timeLeftOnMyLastRound)
-
                 setFixturesArrayForResultsUI([...tempArrayToUpdateStateArray])
-
                 setShowYourResultsUI(true);
-
                 // clear previous play and let user play next round
                 setYourFinalPicksForThisMatchDay([]);
-                console.log(fixturesArrayForResultsUI);
-                console.table(fixturesArrayForResultsUI);
-                console.log("längst ner i results check");
-                console.log("här är alla matcher: ", tempArrayToUpdateStateArray);
             }
 
         }
@@ -482,10 +470,6 @@ export function Home() {
             }
 
             checkResults();
-
-            // if (yourLastPlayedMatchDay < nextMatchday) {
-            //     alert("finns nytt att spela")
-            // }
 
         }).catch(function (error) {
             console.error(error);
