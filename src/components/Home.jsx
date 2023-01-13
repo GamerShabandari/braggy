@@ -279,16 +279,16 @@ export function Home() {
 
             if (hoursSinceLastFetch < 24) {
                 console.log("timmar sedan senaste fetch och check: ", hoursSinceLastFetch);
-                //  checkResults();
                 return
             }
         }
 
-        //if no previous fetch has been made or the last fetch was more than 24h ago, fetch new data
+        //if no previous fetch has been made or the last fetch was more than 24h ago, fetch new data and then check for results
         fetchResults()
 
     }, []);
 
+    // checks if results are in from last played game and then calculates score 
     function checkResults() {
 
         console.log("checkresults");
@@ -317,15 +317,11 @@ export function Home() {
                     console.log("i loop 1");
 
 
-                    // for (const fixtureResult of testFacit) {
+                    
                     for (const fixtureResult of results[i]) {
-                        //  console.log("i loop 2");
-                        //console.log("fixtureResult inne i loop: " + fixtureResult);
-                        //  console.log("min gissad vinnare " + fixtureGuessed.myWinner + " borde vara någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-                            //  console.log("match vinnare " + fixtureGuessed.myWinner + " är  någon av dem här två lagen: " + fixtureResult.homeTeam + " - " + fixtureResult.awayTeam);
-
+            
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
                                 return
@@ -348,9 +344,8 @@ export function Home() {
                             }
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
-                                console.log(score);
                                 fixtureResultForUi.yourGuess = "correct";
-                                //  Object.assign(match, { homeTeamScore: "1", awayTeamScore: "2" });
+                               
                             }
                             tempArrayToUpdateStateArray.push(fixtureResultForUi)
                             break
