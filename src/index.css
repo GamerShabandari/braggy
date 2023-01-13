@@ -137,7 +137,7 @@ a {
   opacity: 0.8;
 }
 
-#root {
+/* #root {
   text-align: center;
   display: flex;
   justify-content: center;
@@ -145,7 +145,7 @@ a {
   min-height: 100vh;
   height: fit-content;
   border: 1px solid green;
-}
+} */
 
 main {
   display: flex;
@@ -164,30 +164,30 @@ main {
   user-select: none;
 }
 
-#root>div {
+/* #root>div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   border: 1px solid yellow;
-  /* width: auto; */
+  width: auto;
   height: fit-content;
-}
+} */
 
-.app {
+/* .app {
   min-height: 100vh;
   height: fit-content;
   border: 1px solid white;
   width: 100%;
-}
+} */
 
-.app>div {
+/* .app>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: auto;
-}
+} */
 
 .row {
   flex-direction: row !important;
