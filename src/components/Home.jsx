@@ -309,13 +309,13 @@ export function Home() {
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
 
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
-              
+
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
-                    
+
                     for (const fixtureResult of results[i]) {
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
-            
+
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
                                 return
@@ -339,7 +339,7 @@ export function Home() {
                             if (fixtureGuessed.myWinner === winner) {
                                 score += 1
                                 fixtureResultForUi.yourGuess = "correct";
-                               
+
                             }
                             tempArrayToUpdateStateArray.push(fixtureResultForUi)
                             break
@@ -584,7 +584,6 @@ export function Home() {
                                     { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
                                 ]}
                             ></AnimatedNumbers>
-
                         </>}
                     </span>
                 </div>
@@ -612,44 +611,38 @@ export function Home() {
         {showYourResultsUI &&
             <section className="resultsContainer animate__animated animate__fadeIn">
 
-
                 <button className="closeBtn">close</button>
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <div>SCORE: {resultsUiScore}</div>
-                        {hiscoreAchievment && <div>NEW HIGH SCORE!</div>}
-                        {guessedAllRight && <div>BONUS! 10/10 CORRECT</div>}
+                        <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
+                        {hiscoreAchievment &&
+                            <div className="resultsHighscoreDiv">
+                                NEW HIGH SCORE!
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                                >
+                                </Player>
+                            </div>}
+                        {guessedAllRight &&
+                            <div className="resultsBonusDiv">
+                                BONUS! 10/10 CORRECT
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets5.lottiefiles.com/packages/lf20_obhph3sh.json"
+                                >
+                                </Player>
+                            </div>}
                     </LinearGradient>
                 </div>
-
-                {/* <h1>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        Results:
-                        <br />
-                        Score: {resultsUiScore}
-                        <br />
-                        Time left on clock: {resultsUiTimeLeft}
-                        <br />
-                        {resultsUiAmountOfCorrectAnswers} of 10 guesses were correct
-                        <br />
-                        {guessedAllRight && <span>Great job! You got a 2x bonus since you guessed all the matches correctly</span>}
-                        <br />
-                        {hiscoreAchievment && <span>NEW HIGH SCORE!</span>}
-
-                        <div>
-                            {resultListHtml}
-                        </div>
-
-                    
-
-                </h1> */}
-
                 <div>
                     {resultListHtml}
                 </div>
-
-
 
             </section>
         }
