@@ -573,7 +573,7 @@ export function Home() {
                     wrapper="div"
                     cursor={false}
                     repeat={Infinity}
-                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "200" }}
+                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
                 />
             </LinearGradient>
 
@@ -617,8 +617,6 @@ export function Home() {
 
         {showYourResultsUI &&
             <section className="resultsContainer animate__animated animate__fadeIn">
-
-                <button onClick={closeResultsUI} className="closeBtn"><TfiClose></TfiClose></button>
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
@@ -666,6 +664,8 @@ export function Home() {
                 <div>
                     {resultListHtml}
                 </div>
+
+                <button onClick={closeResultsUI} className="closeBtn"><TfiClose></TfiClose></button>
 
             </section>
         }

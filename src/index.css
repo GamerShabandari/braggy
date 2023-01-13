@@ -293,7 +293,7 @@ h3 {
 
 .highscore {
   font-size: 1.5rem;
-  font-weight: 100;
+  font-weight: 200;
   background-color: rgba(30, 20, 40, 0.5);
   border-radius: 15px;
   padding: 20px;
@@ -309,7 +309,7 @@ h3 {
   padding: 20px;
   line-height: 30px;
   font-size: 1rem;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 .loaderContainer {
@@ -356,15 +356,13 @@ h3 {
 }
 
 .closeBtn {
-  position: absolute;
-  right: 30px;
-  top: 30px;
+  margin: 20px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
+  width: 50px;
+  height: 40px;
+  border-radius: 15px;
   border: none;
   box-shadow: 0 1px 15px 0 rgba(255, 104, 240, 0.255);
   cursor: pointer;
@@ -440,12 +438,28 @@ h3 {
 
 .correct {
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  margin: 0px 10px;
+  border: 1px solid #17acff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 100%;
 }
 
 .wrong {
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
+  margin: 0px 10px;
+  border: 1px solid #ff68f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 100%;
 }
 
 .resultsUIinformation {
