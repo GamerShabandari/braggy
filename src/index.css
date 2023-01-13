@@ -15,6 +15,7 @@ body {
   min-height: 100vh;
   height: fit-content;
   width: 100vw;
+  overflow: hidden;
   /* border: 1px solid blue; */
 }
 
