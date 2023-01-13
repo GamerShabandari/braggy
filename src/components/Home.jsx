@@ -665,7 +665,7 @@ export function Home() {
                     {resultListHtml}
                 </div>
 
-                <button onClick={closeResultsUI} className="closeBtn"><TfiClose></TfiClose></button>
+                <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
 
             </section>
         }

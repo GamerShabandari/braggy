@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import 'animate.css';
 import { HiHome, HiOutlineRefresh } from "react-icons/hi";
 import { LinearGradient } from 'react-text-gradients'
+import { Player } from '@lottiefiles/react-lottie-player';
 
 export function Game() {
 
@@ -129,12 +130,22 @@ export function Game() {
                 <h1 className="animate__animated animate__fadeIn">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>TIMES UP! RETRY?</LinearGradient>
                 </h1>
-                <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
-                    <HiHome className='btnIcon'></HiHome>
-                </button>
-                <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
-                    <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
-                </button>
+                <Player
+                    className="timesUp"
+                    loop
+                    autoplay
+                    src="https://assets2.lottiefiles.com/temp/lf20_b321aq.json"
+                >
+                </Player>
+                <div className='timesUpBtnContainer'>
+                    <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
+                        <HiHome className='btnIcon'></HiHome>
+                    </button>
+                    <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
+                        <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
+                    </button>
+                </div>
+
             </div>}
 
         {!timeIsUp && <>
@@ -170,10 +181,17 @@ export function Game() {
                 <h1 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
                 </h1>
+                <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+                <Player
+                    className="confetti"
+                    autoplay
+                    src="https://assets10.lottiefiles.com/packages/lf20_rovf9gzu.json"
+                >
+                </Player>
                 <h3 className='animate__animated animate__fadeIn'>
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS</LinearGradient>
                 </h3>
-                <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+
             </>}
 
         </>}

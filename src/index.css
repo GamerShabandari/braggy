@@ -291,6 +291,22 @@ h3 {
   justify-content: center;
 }
 
+.confetti{
+  width: 200px;
+}
+.timesUp {
+  width: 300px;
+  filter: invert(1);
+}
+
+.timesUpBtnContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
 .highscore {
   font-size: 1.5rem;
   font-weight: 200;
@@ -368,6 +384,11 @@ h3 {
   cursor: pointer;
   background: rgb(255, 104, 240);
   background: linear-gradient(90deg, rgba(255, 104, 240, 1) 0%, rgba(23, 172, 255, 1) 100%);
+}
+
+.closebtnIcon{
+  font-size: 1rem;
+  color: rgb(24, 15, 27);
 }
 
 .resultListFixture {
