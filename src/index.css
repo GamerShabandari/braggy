@@ -14,9 +14,10 @@ body {
   background: linear-gradient(130deg, rgba(24, 15, 27, 1) 0%, rgba(40, 6, 31, 1) 100%);
   min-height: 100vh;
   height: fit-content;
-  width: 100vw;
+  width: auto;
   overflow-x: hidden;
-  border: 1px solid blue;
+  outline: 3px solid blue;
+  background: #ff68f0;
 }
 
 code {
@@ -157,6 +158,7 @@ main {
   border: 1px solid red;
   width: 100%;
   width: auto;
+  min-height: 100vh;
   height: fit-content;
 }
 
