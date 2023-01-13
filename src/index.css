@@ -31,6 +31,7 @@ code {
   margin: 20px;
   margin-top: 10px;
   gap: 0px;
+  border: 1px solid orange;
 }
 
 .braggy {
@@ -81,6 +82,7 @@ a {
   align-items: center;
   gap: 30px;
   margin: 40px;
+  border: 1px slateblue solid;
 }
 
 .swipesContainer div {
@@ -236,7 +238,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  border: 1px solid pink;
 }
 
 .card {
@@ -375,13 +377,14 @@ h3 {
   min-height: 100vh;
   height: fit-content;
   padding: 10px;
-  width: 100vw;
+  width: 400px;
   top: 0px;
   z-index: 999;
   background: rgba(30, 20, 40, 0.5019607843137255);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.3px);
   -webkit-backdrop-filter: blur(10.3px);
+  background:red;
   display: flex;
   flex-direction: column;
   align-items: center;
