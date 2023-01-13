@@ -19,7 +19,6 @@ export function Home() {
 
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
-    const [resultsUiTimeLeft, setResultsUiTimeLeft] = useState(0)
     const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
     const [guessedAllRight, setGuessedAllRight] = useState(false)
     const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
@@ -364,7 +363,6 @@ export function Home() {
 
                 // UI to display results and score
                 setResultsUiScore(score)
-                setResultsUiTimeLeft(timeLeftOnMyLastRound)
                 setFixturesArrayForResultsUI([...tempArrayToUpdateStateArray])
                 setShowYourResultsUI(true);
                 // clear previous play and let user play next round
@@ -452,7 +450,7 @@ export function Home() {
 
             // API problems during development, suddenly not giving proper data response 23-01-13. In these cases we supply dummy data.
             if (matchdayToPlay.length === 0) {
-                console.log("something wrong with API, not giving proper data for next round... here is some dummy data: " + fakeFixturesForNow[0]);
+                console.log("something wrong with API, not giving proper data for next round... here is some dummy data.");
 
                 for (let prop in fakeFixturesForNow[0]) {
 
@@ -499,6 +497,15 @@ export function Home() {
         }
 
         window.location.reload();
+    }
+
+    function closeResultsUI() {
+
+        setResultsUiScore(0)
+        setFixturesArrayForResultsUI([])
+        setShowYourResultsUI(false)
+        setGuessedAllRight(false)
+        setHiscoreAchievment(false)
     }
 
 
@@ -611,14 +618,16 @@ export function Home() {
         {showYourResultsUI &&
             <section className="resultsContainer animate__animated animate__fadeIn">
 
-                <button className="closeBtn">close</button>
+                <button onClick={closeResultsUI} className="closeBtn"><TfiClose></TfiClose></button>
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <div className="resultsScoreDiv animate__animated animate__zoomIn animate__faster">SCORE: {resultsUiScore}p</div>
+                        <div className="resultsScoreDiv">{resultsUiAmountOfCorrectAnswers} CORRECT GUESSES</div>
+
+                        <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
                         {hiscoreAchievment &&
-                            <div className="resultsHighscoreDiv animate__animated animate__tada animate__fast">
-                                 <Player
+                            <div className="resultsHighscoreDiv">
+                                <Player
                                     className="resultsAnimations"
                                     autoplay
                                     loop
@@ -635,7 +644,7 @@ export function Home() {
                                 </Player>
                             </div>}
                         {guessedAllRight &&
-                            <div className="resultsBonusDiv animate__animated animate__bounceIn animate__fast">
+                            <div className="resultsBonusDiv">
                                 <Player
                                     className="resultsAnimations"
                                     autoplay
