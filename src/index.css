@@ -14,10 +14,10 @@ body {
   background: linear-gradient(130deg, rgba(24, 15, 27, 1) 0%, rgba(40, 6, 31, 1) 100%);
   min-height: 100vh;
   height: fit-content;
-  width: auto;
+  width: 100vw;
   overflow-x: hidden;
   outline: 3px solid blue;
-  background: #ff68f0;
+  background: #50a6db;
 }
 
 code {
