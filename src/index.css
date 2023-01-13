@@ -8,14 +8,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Poppins', sans-serif;
-  background: rgb(24, 15, 27);
   -ms-overflow-style: none;
   background: rgb(24, 15, 27);
   background: linear-gradient(130deg, rgba(24, 15, 27, 1) 0%, rgba(40, 6, 31, 1) 100%);
   min-height: 100vh;
   height: fit-content;
   width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
   outline: 3px solid blue;
   background: #50a6db;
 }
