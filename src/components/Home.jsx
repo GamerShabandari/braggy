@@ -615,9 +615,16 @@ export function Home() {
 
                 <div className="resultsUIinformation">
                     <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
+                        <div className="resultsScoreDiv animate__animated animate__zoomIn animate__faster">SCORE: {resultsUiScore}p</div>
                         {hiscoreAchievment &&
-                            <div className="resultsHighscoreDiv">
+                            <div className="resultsHighscoreDiv animate__animated animate__tada animate__fast">
+                                 <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                                >
+                                </Player>
                                 NEW HIGH SCORE!
                                 <Player
                                     className="resultsAnimations"
@@ -628,13 +635,20 @@ export function Home() {
                                 </Player>
                             </div>}
                         {guessedAllRight &&
-                            <div className="resultsBonusDiv">
+                            <div className="resultsBonusDiv animate__animated animate__bounceIn animate__fast">
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                                >
+                                </Player>
                                 BONUS! 10/10 CORRECT
                                 <Player
                                     className="resultsAnimations"
                                     autoplay
                                     loop
-                                    src="https://assets5.lottiefiles.com/packages/lf20_obhph3sh.json"
+                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
                                 >
                                 </Player>
                             </div>}

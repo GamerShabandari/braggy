@@ -442,7 +442,6 @@ h3 {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  border: 1px solid blue;
   padding: 10px;
   font-size: 1.4rem;
   font-weight: 500;
@@ -463,6 +462,7 @@ h3 {
   font-size: 0.9rem;
   font-weight: 200;
   letter-spacing: 3px;
+  margin: 20px 0px;
 }
 
 .resultsBonusDiv {
@@ -474,4 +474,5 @@ h3 {
   font-size: 0.9rem;
   font-weight: 200;
   letter-spacing: 3px;
+  
 }
