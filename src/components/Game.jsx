@@ -47,19 +47,19 @@ export function Game() {
         if (completed && !isDone) {
             // Render if time is up
             setTimeIsUp(true);
-            return <TimesUP />;
+            
         } else {
             // Render a countdown
             myTimeLeft = seconds;
             return (
-                <span>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> Seconds left: <span className='seconds'>{seconds}</span></LinearGradient>
-                </span>
+
+                <span className='seconds'>Time left: {seconds}</span>
+
             );
         }
     };
 
-    const TimesUP = () => <span>TIMES UP!</span>;
+  
 
     // react bug, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
@@ -127,16 +127,10 @@ export function Game() {
 
         {timeIsUp &&
             <div>
-                <h1 className="animate__animated animate__fadeIn">
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>TIMES UP! RETRY?</LinearGradient>
+                <h1 className="timesUpText animate__animated animate__fadeIn">
+                    Times up!
                 </h1>
-                <Player
-                    className="timesUp"
-                    loop
-                    autoplay
-                    src="https://assets2.lottiefiles.com/temp/lf20_b321aq.json"
-                >
-                </Player>
+
                 <div className='timesUpBtnContainer'>
                     <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
                         <HiHome className='btnIcon'></HiHome>
@@ -145,6 +139,13 @@ export function Game() {
                         <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
                     </button>
                 </div>
+                <Player
+                    className="timesUp"
+                    loop
+                    autoplay
+                    src="https://assets2.lottiefiles.com/temp/lf20_b321aq.json"
+                >
+                </Player>
 
             </div>}
 
@@ -168,7 +169,7 @@ export function Game() {
                                         <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
                                     </div>
                                     <h3>
-                                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> {match.homeTeam} - {match.awayTeam}</LinearGradient>
+                                        {match.homeTeam} - {match.awayTeam}
                                     </h3>
                                 </div>
                             </TinderCard>
@@ -178,9 +179,12 @@ export function Game() {
             }
 
             {isDone && <>
-                <h1 className='animate__animated animate__fadeIn'>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>GREAT JOB!</LinearGradient>
+                <h1 className='done animate__animated animate__fadeIn'>
+                    GREAT JOB!
                 </h1>
+                <h3 className='checkBack animate__animated animate__fadeIn'>
+                    CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS
+                </h3>
                 <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
                 <Player
                     className="confetti"
@@ -188,9 +192,7 @@ export function Game() {
                     src="https://assets10.lottiefiles.com/packages/lf20_rovf9gzu.json"
                 >
                 </Player>
-                <h3 className='animate__animated animate__fadeIn'>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS</LinearGradient>
-                </h3>
+
 
             </>}
 

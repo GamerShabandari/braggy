@@ -423,6 +423,8 @@ export function Home() {
 
     function fetchFixtures() {
 
+        let fixturesArray = []
+
         const options = {
             method: 'GET',
             url: 'https://football98.p.rapidapi.com/premierleague/fixtures',
@@ -439,7 +441,7 @@ export function Home() {
 
                 if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
 
-                    let fixturesArray = []
+                    //let fixturesArray = []
                     //first index is the number of the matchday
                     fixturesArray.push(Number(nextMatchday))
                     //second index is array of fixtures to play
@@ -449,14 +451,14 @@ export function Home() {
             }
 
             // API problems during development, suddenly not giving proper data response 23-01-13. In these cases we supply dummy data.
-            if (matchdayToPlay.length === 0) {
+            if (fixturesArray.length === 0) {
                 console.log("something wrong with API, not giving proper data for next round... here is some dummy data.");
 
                 for (let prop in fakeFixturesForNow[0]) {
 
                     if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
 
-                        let fixturesArray = []
+                        // let fixturesArray = []
                         //first index is the number of the matchday
                         fixturesArray.push(Number(nextMatchday))
                         //second index is array of fixtures to play
@@ -525,6 +527,7 @@ export function Home() {
                     {fixt.score}
                 </div>
 
+
                 <div className="awayteamContainer">
                     <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
                     <span>{fixt.awayTeam}</span>
@@ -547,12 +550,14 @@ export function Home() {
             <button onClick={insertFakeResult}>Fake results</button>
             <button onClick={checkResults}>check results</button>
 
-            <LinearGradient className="braggy animate__animated animate__zoomIn animate__fast" gradient={['to left', '#17acff ,#ff68f0']}>
-                <span>BRAGGY</span>
-            </LinearGradient>
+
+            <span className="braggy animate__animated animate__zoomIn animate__fast">
+                Braggy
+            </span>
 
 
-            <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
+
+            {/* <LinearGradient gradient={['to left', '#ffde68 ,#17acff']}>
                 <TypeAnimation
                     sequence={[
                         'Beat your friends!',
@@ -575,18 +580,18 @@ export function Home() {
                     repeat={Infinity}
                     style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
                 />
-            </LinearGradient>
+            </LinearGradient> */}
 
             <section>
                 <div className="scoreContainer  animate__animated animate__fadeIn">
                     <span className="highscore">
-                        <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                            Your Highscore:
-                        </LinearGradient>
+                        {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> */}
+                        Your Highscore:
+                        {/* </LinearGradient> */}
                         {!isLoadingApiData && <>
                             <AnimatedNumbers
                                 animateToNumber={highScore}
-                                fontStyle={{ fontSize: 32, color: "#d6ebf4d2", fontWeight: "300", textShadow: "1px 1px 5px #fff, 0px 1px 10px rgba(255, 104, 240, 0.255)", letterSpacing: "5px" }}
+                                fontStyle={{ fontSize: 32, color: "#FB2576", fontWeight: "300", letterSpacing: "5px" }}
                                 configs={[
                                     { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
                                 ]}
@@ -601,9 +606,7 @@ export function Home() {
         {isLoadingApiData &&
             <div className="loaderContainer animate__animated animate__fadeIn">
                 <h3>
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        LOADING
-                    </LinearGradient>
+                    LOADING
                     <Player
                         className="loader"
                         autoplay
@@ -619,51 +622,57 @@ export function Home() {
             <section className="resultsContainer animate__animated animate__fadeIn">
 
                 <div className="resultsUIinformation">
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        <div className="resultsScoreDiv">{resultsUiAmountOfCorrectAnswers} CORRECT GUESSES</div>
 
-                        <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
-                        {hiscoreAchievment &&
-                            <div className="resultsHighscoreDiv">
-                                <Player
-                                    className="resultsAnimations"
-                                    autoplay
-                                    loop
-                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
-                                >
-                                </Player>
-                                NEW HIGH SCORE!
-                                <Player
-                                    className="resultsAnimations"
-                                    autoplay
-                                    loop
-                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
-                                >
-                                </Player>
-                            </div>}
-                        {guessedAllRight &&
-                            <div className="resultsBonusDiv">
-                                <Player
-                                    className="resultsAnimations"
-                                    autoplay
-                                    loop
-                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
-                                >
-                                </Player>
-                                BONUS! 10/10 CORRECT
-                                <Player
-                                    className="resultsAnimations"
-                                    autoplay
-                                    loop
-                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
-                                >
-                                </Player>
-                            </div>}
-                    </LinearGradient>
+                    <div className="resultsScoreDiv">
+                        {resultsUiAmountOfCorrectAnswers} CORRECT GUESSES
+                    </div>
+
+                    <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
+                    {hiscoreAchievment &&
+                        <div className="resultsHighscoreDiv">
+                            <Player
+                                className="resultsAnimations"
+                                autoplay
+                                loop
+                                src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                            >
+                            </Player>
+
+                            <p>NEW HIGH SCORE!</p>
+
+                            <Player
+                                className="resultsAnimations"
+                                autoplay
+                                loop
+                                src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                            >
+                            </Player>
+                        </div>}
+                    {guessedAllRight &&
+                        <div className="resultsBonusDiv">
+                            <Player
+                                className="resultsAnimations"
+                                autoplay
+                                loop
+                                src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                            >
+                            </Player>
+                            <p>BONUS! 10/10 CORRECT</p>
+
+                            <Player
+                                className="resultsAnimations"
+                                autoplay
+                                loop
+                                src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                            >
+                            </Player>
+                        </div>}
+
+                    <div className="listOfGamesUI">
+                        {resultListHtml}
+                    </div>
                 </div>
-                <div>
-                    {resultListHtml}
-                </div>
+
 
                 <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
 
@@ -679,16 +688,14 @@ export function Home() {
         {yourFinalPicksForThisMatchDay.length !== 0 &&
             <div className="information">
                 <span className="animate__animated animate__fadeIn">
-                    <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                        We are still waiting for the results to come in from your last played round. <br /> Check back in 24h!
-                    </LinearGradient>
+                    We are still waiting for the results to come in from your last played round. <br /> Check back in 24h!
                 </span>
             </div>
         }
 
         <div className="swipesContainer">
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe left mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Hometeam win.</LinearGradient>
+                Hometeam win
                 <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -698,7 +705,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe right mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Awayteam win.</LinearGradient>
+                Awayteam win
                 <Player className="swipeIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -708,7 +715,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining swipe up mechanic for playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Draw.</LinearGradient>
+                Draw
                 <Player className="swipeUpIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -718,7 +725,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining time limit when playing Braggy">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>30 seconds.</LinearGradient>
+                30 seconds
                 <Player className="timerIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -728,7 +735,7 @@ export function Home() {
             </div>
 
             <div className="animate__animated animate__fadeIn" aria-label="animated icon explaining score system">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>Play fast to score more.</LinearGradient>
+                Play fast to score more
                 <Player className="scoreIcon animate__animated  animate__zoomIn animate__delay-1s"
                     autoplay
                     loop
@@ -740,9 +747,7 @@ export function Home() {
 
         <footer>
             <a className="animate__animated animate__fadeInUp" href="https://github.com/GamerShabandari" target="_blank" rel="noreferrer" aria-label="link to Gamer Shabandari Github page">
-                <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}>
-                    Gamer Shabandari ©
-                </LinearGradient>
+                Gamer Shabandari ©
             </a>
         </footer>
     </main>)
