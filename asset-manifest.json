@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/braggy/static/css/main.46a9a338.css",
-    "main.js": "/braggy/static/js/main.9ba26db4.js",
+    "main.css": "/braggy/static/css/main.175a90e9.css",
+    "main.js": "/braggy/static/js/main.11f37e8f.js",
     "static/js/787.d4e271bb.chunk.js": "/braggy/static/js/787.d4e271bb.chunk.js",
     "index.html": "/braggy/index.html",
-    "main.46a9a338.css.map": "/braggy/static/css/main.46a9a338.css.map",
-    "main.9ba26db4.js.map": "/braggy/static/js/main.9ba26db4.js.map",
+    "main.175a90e9.css.map": "/braggy/static/css/main.175a90e9.css.map",
+    "main.11f37e8f.js.map": "/braggy/static/js/main.11f37e8f.js.map",
     "787.d4e271bb.chunk.js.map": "/braggy/static/js/787.d4e271bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.46a9a338.css",
-    "static/js/main.9ba26db4.js"
+    "static/css/main.175a90e9.css",
+    "static/js/main.11f37e8f.js"
   ]
 }
