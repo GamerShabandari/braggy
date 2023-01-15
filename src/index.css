@@ -417,7 +417,7 @@ h3 {
   width: 100%;
   top: 0px;
   z-index: 999;
-  background: rgba(30, 20, 40, 0.5019607843137255);
+  background: rgba(0, 0, 0, 0.502);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10.3px);
   -webkit-backdrop-filter: blur(10.3px);
@@ -474,7 +474,7 @@ h3 {
 }
 
 .hometeamContainer img {
-  width: 30px;
+  width: 50px;
   background-color: #EDEDED;
   padding: 10px;
   border-radius: 15px;
@@ -482,10 +482,11 @@ h3 {
 
 .resultsScoreContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30px;
+  width: 50px;
+  gap: 10px;
   padding: 10px;
   font-size: 1rem;
   font-weight: 300;
@@ -508,7 +509,7 @@ h3 {
 }
 
 .awayteamContainer img {
-  width: 30px;
+  width: 70px;
   background-color: #EDEDED;
   padding: 10px;
   border-radius: 15px;
@@ -538,16 +539,15 @@ h3 {
   font-weight: 500;
   letter-spacing: 3px;
   margin: 0px;
-  background: #3F0071;
+  /* background: #3F0071;
   background: linear-gradient(to right, #6600B8 0%, #FB2576 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 .resultsAnimations {
   width: 50px;
-
 }
 
 .resultsHighscoreDiv {
@@ -562,11 +562,7 @@ h3 {
   margin: 20px 0px;
   background-color: #1c1c1c;
   border-radius: 15px;
-}
-
-.resultsHighscoreDiv p{
-  color: #EDEDED;
-  border: 5px solid red;
+  width: 100%;
 }
 
 .resultsBonusDiv {
@@ -580,6 +576,7 @@ h3 {
   letter-spacing: 3px;
   background-color: #1c1c1c;
   border-radius: 15px;
+  width: 100%;
 }
 
 .listOfGamesUI{

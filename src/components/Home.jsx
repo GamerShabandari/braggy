@@ -520,25 +520,27 @@ export function Home() {
             >
                 <div className="hometeamContainer">
                     <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-                    <span>{fixt.homeTeam}</span>
+                    {/* <span>{fixt.homeTeam}</span> */}
                 </div>
 
                 <div className="resultsScoreContainer">
-                    {fixt.score}
+                    <div>{fixt.score}</div>
+                    {fixt.yourGuess === "correct" && <div className="correct">
+                        <TfiCheck></TfiCheck>
+                    </div>}
+
+                    {fixt.yourGuess === "wrong" && <div className="wrong">
+                        <TfiClose></TfiClose>
+                    </div>}
+
                 </div>
 
 
                 <div className="awayteamContainer">
                     <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-                    <span>{fixt.awayTeam}</span>
+                    {/* <span>{fixt.awayTeam}</span> */}
                 </div>
-                {fixt.yourGuess === "correct" && <div className="correct">
-                    <TfiCheck></TfiCheck>
-                </div>}
 
-                {fixt.yourGuess === "wrong" && <div className="wrong">
-                    <TfiClose></TfiClose>
-                </div>}
             </motion.div>
         )
     })
