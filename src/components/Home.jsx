@@ -4,13 +4,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose } from "react-icons/tfi";
-import { LinearGradient } from 'react-text-gradients';
-import { TypeAnimation } from 'react-type-animation';
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion } from "framer-motion";
-
-
 
 
 export function Home() {

@@ -5,7 +5,6 @@ import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 import 'animate.css';
 import { HiHome, HiOutlineRefresh } from "react-icons/hi";
-import { LinearGradient } from 'react-text-gradients'
 import { Player } from '@lottiefiles/react-lottie-player';
 
 export function Game() {
