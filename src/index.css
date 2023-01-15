@@ -30,7 +30,7 @@ code {
   align-items: center;
   margin: 10px 0px;
   margin-top: 40px;
-  gap: 20px;
+  gap: 10px;
 }
 
 .braggy {
@@ -52,13 +52,9 @@ code {
   height: 50px;
   border-radius: 15px;
   border: none;
-
   cursor: pointer;
   padding: 10px;
-  /* background: rgb(255, 104, 240);
-  background: linear-gradient(90deg, rgba(255, 104, 240, 1) 0%, rgba(23, 172, 255, 1) 100%); */
   background-color: #6600B8;
-
 }
 
 .btnIcon {
@@ -183,12 +179,9 @@ h3 {
 }
 
 .timerContainer {
-  /* color: rgb(61 25 91); */
   font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 2px;
-  /* border: 1px solid #FB2576; */
-  /* border-radius: 15px; */
   padding: 20px;
   width: 220px;
   height: 30px;
@@ -196,7 +189,6 @@ h3 {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  /* box-shadow: 0 1px 15px 0 rgba(255, 104, 240, 0.255); */
   color: #EDEDED;
   font-weight: 400;
   font-size: 1.85rem;
@@ -204,12 +196,6 @@ h3 {
   border-radius: 15px;
   border: 1px solid rgba(56, 56, 56, 0.721);
 }
-
-/* .seconds {
-  font-weight: 500;
-  font-size: 2rem;
-  
-} */
 
 .cardContainer {
   width: 500px;
@@ -224,7 +210,6 @@ h3 {
   width: 300px;
   height: 500px;
   border: 1px solid rgba(107, 107, 107, 0.22);
-  /* box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.098); */
   background: #EDEDED;
   border-radius: 15px;
   transform: perspective(900px) rotateX(25deg);
@@ -263,9 +248,6 @@ h3 {
 }
 
 .card h3 {
-  /* border: 1px solid rgba(107, 107, 107, 0.22);
-  background-color: #1c1c1c; */
-  /* box-shadow: 0 1px 10px 0 rgba(255, 104, 240, 0.198); */
   font-size: 1rem;
   font-weight: 500;
   width: 250px;
@@ -279,11 +261,6 @@ h3 {
   bottom: 20px;
   left: 25px;
   border-radius: 15px;
-  /* background: #3F0071;
-  background: linear-gradient(to right, #6600B8 0%, #FB2576 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   color: #FB2576;
 }
 
@@ -334,11 +311,6 @@ h3 {
   font-size: 2rem;
   color: #FB2576;
   font-weight: 600;
-  /* background: #3F0071;
-  background: linear-gradient(to right, #6600B8 0%, #FB2576 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 .done {
@@ -362,7 +334,6 @@ h3 {
 .highscore {
   font-size: 1.5rem;
   font-weight: 400;
-  /* background-color: rgba(30, 20, 40, 0.5); */
   background-color: #1c1c1c;
   border-radius: 15px;
   padding: 20px;
@@ -541,11 +512,6 @@ h3 {
   font-weight: 500;
   letter-spacing: 3px;
   margin: 0px;
-  /* background: #3F0071;
-  background: linear-gradient(to right, #6600B8 0%, #FB2576 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 .resultsAnimations {
@@ -605,4 +571,9 @@ h3 {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.Ddate{
+  font-weight: 400;
+  color: #FB2576;
 }

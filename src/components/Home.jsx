@@ -439,8 +439,6 @@ export function Home() {
             for (let prop in response.data[0]) {
 
                 if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
-
-                    //let fixturesArray = []
                     //first index is the number of the matchday
                     fixturesArray.push(Number(nextMatchday))
                     //second index is array of fixtures to play
@@ -456,8 +454,6 @@ export function Home() {
                 for (let prop in fakeFixturesForNow[0]) {
 
                     if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
-
-                        // let fixturesArray = []
                         //first index is the number of the matchday
                         fixturesArray.push(Number(nextMatchday))
                         //second index is array of fixtures to play
@@ -528,7 +524,6 @@ export function Home() {
             >
                 <div className="hometeamContainer">
                     <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-                    {/* <span>{fixt.homeTeam}</span> */}
                 </div>
 
                 <div className="resultsScoreContainer">
@@ -546,7 +541,6 @@ export function Home() {
 
                 <div className="awayteamContainer">
                     <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-                    {/* <span>{fixt.awayTeam}</span> */}
                 </div>
 
             </motion.div>
@@ -574,9 +568,7 @@ export function Home() {
         <section>
             <div className="scoreContainer  animate__animated animate__fadeIn">
                 <span className="highscore">
-                    {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> */}
                     Your Highscore:
-                    {/* </LinearGradient> */}
                     {!isLoadingApiData && <>
                         <AnimatedNumbers
                             animateToNumber={highScore}
@@ -676,7 +668,7 @@ export function Home() {
         {yourFinalPicksForThisMatchDay.length !== 0 &&
             <div className="information">
                 <span className="animate__animated animate__fadeIn">
-                    We are still waiting for the results to come in from your last played round. <br /> Check back in 24h!
+                    We are still waiting for the results to come in from your last played round. <br /> Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
                 </span>
             </div>
         }

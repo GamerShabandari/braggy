@@ -13,6 +13,7 @@ export function Game() {
 
     let myPicks = []
     let myTimeLeft;
+    let dateOfLastFixtureInThisMatchday = ""
 
     const [isDone, setIsDone] = useState(false)
     const [timeIsUp, setTimeIsUp] = useState(false)
@@ -26,15 +27,31 @@ export function Game() {
             setIsDone(true)
         }
 
+        let datesArray = [];
+        for (const fixture of matchdayToPlay[1]) {
+            let day = {
+                date: fixture.MatchDay
+            }
+            datesArray.push(day)
+        }
+        let result = datesArray.reduce((r, { date }) => {
+            if (!r) return { min: date, max: date };
+            if (r.min > date) r.min = date;
+            if (r.max < date) r.max = date;
+            return r;
+        }, undefined);
+
+        dateOfLastFixtureInThisMatchday = result.max;
+
     }, [])
 
-    // SAVE PICKS TO LOCALSTORAGE
+    // SAVE PICKS TO LOCALSTORAGE, index 0 is time left on round, index 1 is array of all fixtures, index 2 is date of last fixture to be played
     function saveMyPicksToLocalstorage(filteredResultsList) {
         setYourLastPlayedMatchDay(matchdayToPlay[0]);
-        // setYourLastPlayedMatchDay(19); // tillfälligt hårdkodat för att testa rättning
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
         picksArrayWithTimeTakenToComplete.push(filteredResultsList)
+        picksArrayWithTimeTakenToComplete.push(dateOfLastFixtureInThisMatchday)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
         setMatchdayToPlay([])
         return
@@ -180,10 +197,10 @@ export function Game() {
             {isDone && <>
                 <section className='postGameSection'>
                     <h1 className='done animate__animated animate__fadeIn'>
-                        GREAT JOB!
+                        Great job!
                     </h1>
                     <h3 className='checkBack animate__animated animate__fadeIn'>
-                        CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS
+                        Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
                     </h3>
                     <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
                     <Player
