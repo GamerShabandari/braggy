@@ -29,22 +29,19 @@ code {
   justify-content: center;
   align-items: center;
   margin: 10px 0px;
-  margin-top: 10px;
+  margin-top: 40px;
   gap: 20px;
 }
 
 .braggy {
-  /* font-size: 7rem;
-  letter-spacing: 5px;
+  width: 150px;
+}
+
+.braggyText{
+  color: #FB2576;
   font-weight: 700;
-  margin-top: 10px;
-  color: #FB2576; */
-  /* background: #3F0071;
-  background: linear-gradient(to right, #6600B8 0%, #FB2576 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  width: 200px;
+  font-size: 0.7rem;
+  letter-spacing: 15px;
 }
 
 .btn {
@@ -568,6 +565,7 @@ h3 {
   background-color: #1c1c1c;
   border-radius: 15px;
   width: 100%;
+  border: 1px solid rgba(56, 56, 56, 0.721);
 }
 
 .resultsBonusDiv {
@@ -582,6 +580,7 @@ h3 {
   background-color: #1c1c1c;
   border-radius: 15px;
   width: 100%;
+  border: 1px solid rgba(56, 56, 56, 0.721);
 }
 
 .listOfGamesUI{
@@ -597,4 +596,13 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.devBtnContainer{
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

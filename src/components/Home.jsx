@@ -17,6 +17,7 @@ export function Home() {
 
     const navigate = useNavigate();
 
+    const [showDevBtns, setShowDevBtns] = useState(false)
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
     const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
@@ -43,6 +44,8 @@ export function Home() {
 
     let latestMatchday = "";
     let nextMatchday = "";
+
+    let devClickCount = 0;
 
     let fakeFixturesForNow = [
         {
@@ -510,6 +513,15 @@ export function Home() {
         setHiscoreAchievment(false)
     }
 
+    function showDevBtnsDiv() {
+        devClickCount += 1
+
+        if (devClickCount === 10) {
+            setShowDevBtns(current => !current);
+            devClickCount = 0
+        }
+    }
+
 
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
         return (
@@ -547,65 +559,41 @@ export function Home() {
 
     return (<main>
 
+        {showDevBtns && <div className="devBtnContainer">
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
+            <button className="btn" onClick={checkResults}>2: Check</button>
+            <button className="btn" onClick={()=>{localStorage.clear();}}>3: Clear</button>  
+        </div>}
+
+
         <div className="logo">
-
-            <button onClick={insertFakeResult}>Fake results</button>
-            <button onClick={checkResults}>check results</button>
-
-{/* 
-            <span className="braggy animate__animated animate__zoomIn animate__fast">
-                B
-            </span> */}
-
-            <img className="braggy animate__animated animate__zoomIn animate__fast" src = "./img/B.svg" alt="B logo"/>
+            <img onClick={showDevBtnsDiv} className="braggy animate__animated animate__zoomIn animate__fast" src="./img/B.svg" alt="B logo" />
+            <span className="braggyText animate__animated animate__fadeInUp">
+                BRAGGY
+            </span>
 
 
-
-            {/* <LinearGradient gradient={['to left', '#ffde68 ,#17acff']}>
-                <TypeAnimation
-                    sequence={[
-                        'Beat your friends!',
-                        2000,
-                        'Beat your family!',
-                        2000,
-                        'Beat your coworkers!',
-                        2000,
-                        'Beat your boss!',
-                        2000,
-                        'Beat your spouse!',
-                        2000,
-                        'Beat your nemesis!',
-                        2000,
-                        'Beat & brag about it!',
-                        2000,
-                    ]}
-                    wrapper="div"
-                    cursor={false}
-                    repeat={Infinity}
-                    style={{ fontSize: '1rem', letterSpacing: "2px", fontWeight: "300" }}
-                />
-            </LinearGradient> */}
-
-            <section>
-                <div className="scoreContainer  animate__animated animate__fadeIn">
-                    <span className="highscore">
-                        {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> */}
-                        Your Highscore:
-                        {/* </LinearGradient> */}
-                        {!isLoadingApiData && <>
-                            <AnimatedNumbers
-                                animateToNumber={highScore}
-                                fontStyle={{ fontSize: 32, color: "#FB2576", fontWeight: "300", letterSpacing: "5px" }}
-                                configs={[
-                                    { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
-                                ]}
-                            ></AnimatedNumbers>
-                        </>}
-                    </span>
-                </div>
-
-            </section>
         </div>
+
+        <section>
+            <div className="scoreContainer  animate__animated animate__fadeIn">
+                <span className="highscore">
+                    {/* <LinearGradient gradient={['to left', '#17acff ,#ff68f0']}> */}
+                    Your Highscore:
+                    {/* </LinearGradient> */}
+                    {!isLoadingApiData && <>
+                        <AnimatedNumbers
+                            animateToNumber={highScore}
+                            fontStyle={{ fontSize: 32, color: "#FB2576", fontWeight: "300", letterSpacing: "5px" }}
+                            configs={[
+                                { "mass": 1, "tension": 130, "friction": 40 }, { "mass": 2, "tension": 140, "friction": 40 }, { "mass": 3, "tension": 130, "friction": 40 }
+                            ]}
+                        ></AnimatedNumbers>
+                    </>}
+                </span>
+            </div>
+
+        </section>
 
         {isLoadingApiData &&
             <div className="loaderContainer animate__animated animate__fadeIn">
