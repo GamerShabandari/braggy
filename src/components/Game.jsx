@@ -47,7 +47,7 @@ export function Game() {
         if (completed && !isDone) {
             // Render if time is up
             setTimeIsUp(true);
-            
+
         } else {
             // Render a countdown
             myTimeLeft = seconds;
@@ -59,7 +59,7 @@ export function Game() {
         }
     };
 
-  
+
 
     // react bug, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
@@ -126,7 +126,7 @@ export function Game() {
     return (<main>
 
         {timeIsUp &&
-            <div>
+            <section className='postGameSection'>
                 <h1 className="timesUpText animate__animated animate__fadeIn">
                     Times up!
                 </h1>
@@ -143,11 +143,11 @@ export function Game() {
                     className="timesUp"
                     loop
                     autoplay
-                    src="https://assets2.lottiefiles.com/temp/lf20_b321aq.json"
+                    src="https://assets8.lottiefiles.com/packages/lf20_xFpiNt.json"
                 >
                 </Player>
 
-            </div>}
+            </section>}
 
         {!timeIsUp && <>
 
@@ -179,21 +179,22 @@ export function Game() {
             }
 
             {isDone && <>
-                <h1 className='done animate__animated animate__fadeIn'>
-                    GREAT JOB!
-                </h1>
-                <h3 className='checkBack animate__animated animate__fadeIn'>
-                    CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS
-                </h3>
-                <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
-                <Player
-                    className="confetti"
-                    autoplay
-                    src="https://assets10.lottiefiles.com/packages/lf20_rovf9gzu.json"
-                >
-                </Player>
-
-
+                <section className='postGameSection'>
+                    <h1 className='done animate__animated animate__fadeIn'>
+                        GREAT JOB!
+                    </h1>
+                    <h3 className='checkBack animate__animated animate__fadeIn'>
+                        CHECK BACK AFTER MATCHDAY {matchdayToPlay[0]} IS FINISHED FOR RESULTS
+                    </h3>
+                    <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+                    <Player
+                        className="fans"
+                        autoplay
+                        loop
+                        src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
+                    >
+                    </Player>
+                </section>
             </>}
 
         </>}

@@ -552,10 +552,12 @@ export function Home() {
             <button onClick={insertFakeResult}>Fake results</button>
             <button onClick={checkResults}>check results</button>
 
-
+{/* 
             <span className="braggy animate__animated animate__zoomIn animate__fast">
-                Braggy
-            </span>
+                B
+            </span> */}
+
+            <img className="braggy animate__animated animate__zoomIn animate__fast" src = "./img/B.svg" alt="B logo"/>
 
 
 
