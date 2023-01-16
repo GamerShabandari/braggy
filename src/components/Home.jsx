@@ -264,7 +264,6 @@ export function Home() {
         }
     ]
 
-
     useEffect(() => {
 
         // only fetch from api & check results every 24h
@@ -520,13 +519,13 @@ export function Home() {
             <motion.div className="resultListFixture" key={i}
                 initial={{ opacity: 0, translateY: -20 }}
                 animate={{ opacity: 1, translateY: 0 }}
-                transition={{ 
+                transition={{
                     type: "spring",
                     stiffness: 217,
                     mass: 1,
                     damping: 5,
-                    duration: 0.3, 
-                    delay: i * 0.3 
+                    duration: 0.3,
+                    delay: i * 0.3
                 }}
             >
                 <div className="hometeamContainer">
@@ -559,17 +558,18 @@ export function Home() {
         {showDevBtns && <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
             <button className="btn" onClick={checkResults}>2: Check</button>
-            <button className="btn" onClick={()=>{localStorage.clear();}}>3: Clear</button>  
+            <button className="btn" onClick={() => { localStorage.clear(); }}>3: Clear</button>
         </div>}
 
 
         <div className="logo">
-            <img onClick={showDevBtnsDiv} className="braggy animate__animated animate__zoomIn animate__fast" src="./img/B.svg" alt="B logo" />
-            <span className="braggyText animate__animated animate__fadeInUp">
-                BRAGGY
-            </span>
+            <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0">
+            </g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" stroke-width="0.72" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+            </motion.svg>
 
-
+            <div className="logotext animate__animated animate__fadeInUp">
+                braggy
+            </div>
         </div>
 
         <section>

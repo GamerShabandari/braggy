@@ -30,18 +30,20 @@ code {
   align-items: center;
   margin: 10px 0px;
   margin-top: 40px;
-  gap: 10px;
+  gap: 0px;
+  position: relative;
 }
 
-.braggy {
+.svg{
   width: 150px;
 }
 
-.braggyText{
-  color: #FB2576;
+.logotext{
+  color: #EDEDED;
   font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 15px;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 0px;
 }
 
 .btn {
