@@ -625,44 +625,6 @@ export function Home() {
         )
     })
 
-    // let latestPlayedRoundListHtml = yourFinalPicksForThisMatchDay[1].map((fixt, i) => {
-    //     return (
-    //         <motion.div className="playedRoundListFixture" key={i}
-    //             initial={{ opacity: 0, translateY: -20 }}
-    //             animate={{ opacity: 1, translateY: 0 }}
-    //             transition={{
-    //                 type: "spring",
-    //                 stiffness: 217,
-    //                 mass: 1,
-    //                 damping: 5,
-    //                 duration: 0.3,
-    //                 delay: i * 0.3
-    //             }}
-    //         >
-    //             <div className="playedHometeamContainer">
-    //                 <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-    //             </div>
-
-    //             <div className="playedAwayteamContainer">
-    //                 <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-    //             </div>
-
-    //             {/* <div className="resultsScoreContainer">
-    //                 <div>{fixt.score}</div>
-    //                 {fixt.yourGuess === "correct" && <div className="correct">
-    //                     <TfiCheck></TfiCheck>
-    //                 </div>}
-
-    //                 {fixt.yourGuess === "wrong" && <div className="wrong">
-    //                     <TfiClose></TfiClose>
-    //                 </div>}
-
-    //             </div> */}
-
-    //         </motion.div>
-    //     )
-    // })
-
     return (<main>
 
         {showDevBtns && <div className="devBtnContainer">
@@ -678,7 +640,7 @@ export function Home() {
             </motion.svg>
 
             <div className="logotext animate__animated animate__fadeInUp">
-                bragy
+                braggy
             </div>
         </div>
 
@@ -861,13 +823,6 @@ export function Home() {
                 Gamer Shabandari ©
             </a>
         </footer>
-
-
-
-
-        {/* <div className="listOfGamesUI">
-            {latestPlayedRoundListHtml}
-        </div> */}
 
     </main>)
 }
