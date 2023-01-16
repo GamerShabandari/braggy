@@ -625,43 +625,43 @@ export function Home() {
         )
     })
 
-    let latestPlayedRoundListHtml = yourFinalPicksForThisMatchDay[1].map((fixt, i) => {
-        return (
-            <motion.div className="playedRoundListFixture" key={i}
-                initial={{ opacity: 0, translateY: -20 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                transition={{
-                    type: "spring",
-                    stiffness: 217,
-                    mass: 1,
-                    damping: 5,
-                    duration: 0.3,
-                    delay: i * 0.3
-                }}
-            >
-                <div className="playedHometeamContainer">
-                    <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-                </div>
+    // let latestPlayedRoundListHtml = yourFinalPicksForThisMatchDay[1].map((fixt, i) => {
+    //     return (
+    //         <motion.div className="playedRoundListFixture" key={i}
+    //             initial={{ opacity: 0, translateY: -20 }}
+    //             animate={{ opacity: 1, translateY: 0 }}
+    //             transition={{
+    //                 type: "spring",
+    //                 stiffness: 217,
+    //                 mass: 1,
+    //                 damping: 5,
+    //                 duration: 0.3,
+    //                 delay: i * 0.3
+    //             }}
+    //         >
+    //             <div className="playedHometeamContainer">
+    //                 <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+    //             </div>
 
-                <div className="playedAwayteamContainer">
-                    <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-                </div>
+    //             <div className="playedAwayteamContainer">
+    //                 <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+    //             </div>
 
-                {/* <div className="resultsScoreContainer">
-                    <div>{fixt.score}</div>
-                    {fixt.yourGuess === "correct" && <div className="correct">
-                        <TfiCheck></TfiCheck>
-                    </div>}
+    //             {/* <div className="resultsScoreContainer">
+    //                 <div>{fixt.score}</div>
+    //                 {fixt.yourGuess === "correct" && <div className="correct">
+    //                     <TfiCheck></TfiCheck>
+    //                 </div>}
 
-                    {fixt.yourGuess === "wrong" && <div className="wrong">
-                        <TfiClose></TfiClose>
-                    </div>}
+    //                 {fixt.yourGuess === "wrong" && <div className="wrong">
+    //                     <TfiClose></TfiClose>
+    //                 </div>}
 
-                </div> */}
+    //             </div> */}
 
-            </motion.div>
-        )
-    })
+    //         </motion.div>
+    //     )
+    // })
 
     return (<main>
 
@@ -865,9 +865,9 @@ export function Home() {
 
 
 
-        <div className="listOfGamesUI">
+        {/* <div className="listOfGamesUI">
             {latestPlayedRoundListHtml}
-        </div>
+        </div> */}
 
     </main>)
 }
