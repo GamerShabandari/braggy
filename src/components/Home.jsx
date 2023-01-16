@@ -260,6 +260,78 @@ export function Home() {
                     "awayTeam": "Manchester City",
                     "MatchDay": "05/02/2023"
                 }
+            ],
+            " Matchday 23 ": [
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F198.png",
+                    "homeTeam": "West Ham",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F9.png",
+                    "awayTeam": "Chelsea",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F2.png",
+                    "homeTeam": "Arsenal",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F671.png",
+                    "awayTeam": "Brentford",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F211.png",
+                    "homeTeam": "Fulham",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F577.png",
+                    "awayTeam": "Nottingham Forest",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F572.png",
+                    "homeTeam": "Leicester",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F202.png",
+                    "awayTeam": "Tottenham",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F615.png",
+                    "homeTeam": "Southampton",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F203.png",
+                    "awayTeam": "Wolves",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F567.png",
+                    "homeTeam": "Crystal Palace",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F670.png",
+                    "awayTeam": "Brighton",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F622.png",
+                    "homeTeam": "Bournemouth",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F207.png",
+                    "awayTeam": "Newcastle United",
+                    "MatchDay": "11/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F571.png",
+                    "homeTeam": "Leeds",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F21.png",
+                    "awayTeam": "Manchester United",
+                    "MatchDay": "12/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F209.png",
+                    "homeTeam": "Manchester City",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F199.png",
+                    "awayTeam": "Aston Villa",
+                    "MatchDay": "12/02/2023"
+                },
+                {
+                    "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F18.png",
+                    "homeTeam": "Liverpool",
+                    "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F197.png",
+                    "awayTeam": "Everton",
+                    "MatchDay": "13/02/2023"
+                }
             ]
         }
     ]
@@ -553,6 +625,44 @@ export function Home() {
         )
     })
 
+    let latestPlayedRoundListHtml = yourFinalPicksForThisMatchDay[1].map((fixt, i) => {
+        return (
+            <motion.div className="playedRoundListFixture" key={i}
+                initial={{ opacity: 0, translateY: -20 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 217,
+                    mass: 1,
+                    damping: 5,
+                    duration: 0.3,
+                    delay: i * 0.3
+                }}
+            >
+                <div className="playedHometeamContainer">
+                    <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                </div>
+
+                <div className="playedAwayteamContainer">
+                    <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                </div>
+
+                {/* <div className="resultsScoreContainer">
+                    <div>{fixt.score}</div>
+                    {fixt.yourGuess === "correct" && <div className="correct">
+                        <TfiCheck></TfiCheck>
+                    </div>}
+
+                    {fixt.yourGuess === "wrong" && <div className="wrong">
+                        <TfiClose></TfiClose>
+                    </div>}
+
+                </div> */}
+
+            </motion.div>
+        )
+    })
+
     return (<main>
 
         {showDevBtns && <div className="devBtnContainer">
@@ -563,8 +673,8 @@ export function Home() {
 
 
         <div className="logo">
-            <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0">
-            </g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" stroke-width="0.72" stroke-linecap="round" stroke-linejoin="round"></path> </g>
+            <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
+            </g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" strokeWidth="0.72" strokeLinecap="round" strokeLinejoin="round"></path> </g>
             </motion.svg>
 
             <div className="logotext animate__animated animate__fadeInUp">
@@ -574,6 +684,13 @@ export function Home() {
 
         <section>
             <div className="scoreContainer  animate__animated animate__fadeIn">
+                <Player
+                    className="highScoreAnimation"
+                    autoplay
+                    loop
+                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                >
+                </Player>
                 <span className="highscore">
                     Your Highscore:
                     {!isLoadingApiData && <>
@@ -674,6 +791,13 @@ export function Home() {
 
         {yourFinalPicksForThisMatchDay.length !== 0 &&
             <div className="information">
+                <Player
+                    className="highScoreAnimation"
+                    autoplay
+                    loop
+                    src="https://assets8.lottiefiles.com/packages/lf20_xFpiNt.json"
+                >
+                </Player>
                 <span className="animate__animated animate__fadeIn">
                     We are still waiting for the results to come in from your last played round. <br /> Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
                 </span>
@@ -737,5 +861,13 @@ export function Home() {
                 Gamer Shabandari ©
             </a>
         </footer>
+
+
+
+
+        <div className="listOfGamesUI">
+            {latestPlayedRoundListHtml}
+        </div>
+
     </main>)
 }

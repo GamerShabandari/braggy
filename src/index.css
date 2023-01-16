@@ -34,11 +34,11 @@ code {
   position: relative;
 }
 
-.svg{
+.svg {
   width: 150px;
 }
 
-.logotext{
+.logotext {
   color: #EDEDED;
   font-weight: 700;
   letter-spacing: 1px;
@@ -283,7 +283,13 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: #1c1c1c;
+  border-radius: 15px;
   padding: 20px;
+  width: 300px;
+  height: fit-content;
+  color: #EDEDED;
+  border: 1px solid rgba(56, 56, 56, 0.721);
 }
 
 .animated-container {
@@ -336,13 +342,10 @@ h3 {
 .highscore {
   font-size: 1.5rem;
   font-weight: 400;
-  background-color: #1c1c1c;
-  border-radius: 15px;
-  padding: 20px;
-  width: 300px;
-  height: 100px;
-  color: #EDEDED;
-  border: 1px solid rgba(56, 56, 56, 0.721);
+}
+
+.highScoreAnimation {
+  width: 50px;
 }
 
 .information {
@@ -551,14 +554,14 @@ h3 {
   border: 1px solid rgba(56, 56, 56, 0.721);
 }
 
-.listOfGamesUI{
+.listOfGamesUI {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.postGameSection{
+.postGameSection {
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -566,7 +569,7 @@ h3 {
   align-items: center;
 }
 
-.devBtnContainer{
+.devBtnContainer {
   padding: 40px;
   display: flex;
   flex-direction: row;
@@ -575,7 +578,63 @@ h3 {
   gap: 20px;
 }
 
-.Ddate{
+.Ddate {
   font-weight: 400;
   color: #FB2576;
+}
+
+.playedRoundListFixture {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: fit-content;
+  margin-top: 20px;
+  background-color: #1c1c1c;
+  border-radius: 15px;
+  border: 1px solid rgba(56, 56, 56, 0.721);
+}
+
+.playedHometeamContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  font-size: 0.8rem;
+  font-weight: 200;
+  gap: 10px;
+  color: #EDEDED;
+}
+
+.playedAwayteamContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  font-size: 0.8rem;
+  font-weight: 200;
+  gap: 10px;
+  color: #EDEDED;
+}
+
+.playedHometeamContainer img {
+  width: 20px;
+  background-color: #EDEDED;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.playedAwayteamContainer img {
+  width: 20px;
+  background-color: #EDEDED;
+  padding: 10px;
+  border-radius: 15px;
 }
