@@ -647,10 +647,6 @@ export function Home() {
                     <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
                 </div>
 
-                <div>
-                    {fixt.myWinner}
-                </div>
-
                 {/* <div className="resultsScoreContainer">
                     <div>{fixt.score}</div>
                     {fixt.yourGuess === "correct" && <div className="correct">
@@ -682,7 +678,7 @@ export function Home() {
             </motion.svg>
 
             <div className="logotext animate__animated animate__fadeInUp">
-                braggy
+                bragy
             </div>
         </div>
 
