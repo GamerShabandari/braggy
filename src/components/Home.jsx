@@ -64,7 +64,7 @@ export function Home() {
         }
 
         //if no previous fetch has been made or the last fetch was more than 24h ago, fetch new data and then check for results
-        //  fetchResults()
+        fetchResults()
 
     }, []);
 
@@ -363,13 +363,7 @@ export function Home() {
     return (<main>
 
         {showDevBtns && <div className="devBtnContainer">
-            <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="btn"
-                onClick={insertFakeResult}>
-                1: Fake
-            </motion.button>
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
             <button className="btn" onClick={() => { setShowDevBtns(false); checkResults() }}>2: Check</button>
             <button className="btn" onClick={() => { localStorage.clear(); }}>3: Clear</button>
         </div>}

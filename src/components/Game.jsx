@@ -77,7 +77,7 @@ export function Game() {
 
 
 
-    // react bug, renders state twice in dev mode so have to filter list, in production this function is unnecessary
+    // react bug/feature, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
 
         let filteredResults = myPicks.reduce((finalArray, current) => {
