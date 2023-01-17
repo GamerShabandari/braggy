@@ -3,7 +3,7 @@ import useLocalStorage from "../useLocalStorage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
-import { TfiCheck, TfiClose } from "react-icons/tfi";
+import { TfiCheck, TfiClose, TfiEye } from "react-icons/tfi";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion } from "framer-motion";
@@ -579,7 +579,7 @@ export function Home() {
     function showDevBtnsDiv() {
         devClickCount += 1
 
-        if (devClickCount === 10) {
+        if (devClickCount === 5) {
             setShowDevBtns(current => !current);
             devClickCount = 0
         }
@@ -629,7 +629,7 @@ export function Home() {
 
         {showDevBtns && <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={checkResults}>2: Check</button>
+            <button className="btn" onClick={() => { setShowDevBtns(false); checkResults() }}>2: Check</button>
             <button className="btn" onClick={() => { localStorage.clear(); }}>3: Clear</button>
         </div>}
 
@@ -654,7 +654,7 @@ export function Home() {
                 >
                 </Player>
                 <span className="highscore">
-                    Your Highscore:
+                    High score:
                     {!isLoadingApiData && <>
                         <AnimatedNumbers
                             animateToNumber={highScore}
@@ -672,7 +672,7 @@ export function Home() {
         {isLoadingApiData &&
             <div className="loaderContainer animate__animated animate__fadeIn">
                 <h3>
-                    LOADING
+                    Loading
                     <Player
                         className="loader"
                         autoplay
@@ -690,10 +690,11 @@ export function Home() {
                 <div className="resultsUIinformation">
 
                     <div className="resultsScoreDiv">
-                        {resultsUiAmountOfCorrectAnswers} CORRECT GUESSES
+                        <strong>Results are in!</strong>
+                        {resultsUiAmountOfCorrectAnswers} Correct guesses
                     </div>
 
-                    <div className="resultsScoreDiv">SCORE: {resultsUiScore}p</div>
+                    <div className="resultsScoreDiv">Score: {resultsUiScore}p</div>
                     {hiscoreAchievment &&
                         <div className="resultsHighscoreDiv">
                             <Player
@@ -704,7 +705,7 @@ export function Home() {
                             >
                             </Player>
 
-                            <p>NEW HIGH SCORE!</p>
+                            <p>New high score!</p>
 
                             <Player
                                 className="resultsAnimations"
@@ -723,7 +724,7 @@ export function Home() {
                                 src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
                             >
                             </Player>
-                            <p>BONUS! 10/10 CORRECT</p>
+                            <p>Bonus! 10/10 correct</p>
 
                             <Player
                                 className="resultsAnimations"

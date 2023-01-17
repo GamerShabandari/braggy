@@ -638,3 +638,18 @@ h3 {
   padding: 10px;
   border-radius: 15px;
 }
+
+.resultsScoreDiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-weight: 400;
+}
+
+.resultsScoreDiv strong {
+  color: #FB2576;
+  font-weight: 600;
+}
