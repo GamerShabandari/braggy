@@ -239,7 +239,7 @@ export function Home() {
                         //first index is the number of the matchday
                         fixturesArray.push(Number(nextMatchday))
                         //second index is array of fixtures to play
-                        console.log("fakedata: " , fakeFixturesForNow);
+                        console.log("fakedata: ", fakeFixturesForNow);
                         fixturesArray.push(fakeFixturesForNow[0][prop]);
                         setMatchdayToPlay(fixturesArray);
                     }
@@ -328,10 +328,11 @@ export function Home() {
                 initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
                 animate={{ opacity: 1, translateY: 0, scale: 1 }}
                 transition={{
-                    type: "spring",
-                    stiffness: 217,
-                    mass: 1,
-                    damping: 5,
+                    // type: "spring",
+                    // stiffness: 117,
+                    // mass: 2,
+                    // damping: 15,
+                    ease: "easeInOut",
                     duration: 0.3,
                     delay: i * 0.3
                 }}
@@ -483,13 +484,16 @@ export function Home() {
 
         {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
             <div className="animate__animated animate__fadeIn">
-                <motion.button whileHover={{ scale: 1.1 }}
+                <button className="btn" onClick={() => { navigate("/game") }} aria-label="start button">
+                    <GiPlayButton className='btnIcon'></GiPlayButton>
+                </button>
+                {/* <motion.button whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="btn"
                     onClick={() => { navigate("/game") }}
                     aria-label="start button">
                     <GiPlayButton className='btnIcon'></GiPlayButton>
-                </motion.button>
+                </motion.button> */}
             </div>
         }
 
