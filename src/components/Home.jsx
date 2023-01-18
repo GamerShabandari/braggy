@@ -6,7 +6,7 @@ import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose, TfiEye } from "react-icons/tfi";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { fakeFixturesForNow } from "../fakeData";
 
 
@@ -22,6 +22,10 @@ export function Home() {
     const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
     const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
 
+    const [showHistory, setShowHistory] = useState(false)
+    const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
+
+
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
     const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
@@ -35,7 +39,7 @@ export function Home() {
     const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
 
 
-    // const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
+    const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -239,7 +243,6 @@ export function Home() {
                         //first index is the number of the matchday
                         fixturesArray.push(Number(nextMatchday))
                         //second index is array of fixtures to play
-                        console.log("fakedata: ", fakeFixturesForNow);
                         fixturesArray.push(fakeFixturesForNow[0][prop]);
                         setMatchdayToPlay(fixturesArray);
                     }
@@ -283,17 +286,15 @@ export function Home() {
 
         // // before closing and cleaning up, we want to structure and save this round to players history in thisRoundToBeSavedToYourHistory[]
         // // structure is, index 0 = round played (yourLastPlayedMatchDay), index 1 is final score (resultsUiScore), index 2 is all fixtures fixturesArrayForResultsUI
-        // let historyArray = [...historyOfPlayedRounds]
-        // let thisRoundToBeSavedToYourHistory = [];
-        // thisRoundToBeSavedToYourHistory.push(yourLastPlayedMatchDay)
-        // thisRoundToBeSavedToYourHistory.push(resultsUiScore)
-        // thisRoundToBeSavedToYourHistory.push(fixturesArrayForResultsUI)
+        let historyArray = [...historyOfPlayedRounds]
+        let thisRoundToBeSavedToYourHistory = [];
+        thisRoundToBeSavedToYourHistory.push(yourLastPlayedMatchDay)
+        thisRoundToBeSavedToYourHistory.push(resultsUiScore)
+        thisRoundToBeSavedToYourHistory.push(fixturesArrayForResultsUI)
 
-        // historyArray.push(thisRoundToBeSavedToYourHistory)
+        historyArray.push(thisRoundToBeSavedToYourHistory)
 
-        // setHistoryOfPlayedRounds([...historyArray])
-
-
+        setHistoryOfPlayedRounds([...historyArray])
 
         setResultsUiScore(0)
         setFixturesArrayForResultsUI([])
@@ -313,13 +314,158 @@ export function Home() {
 
 
 
-    // let historyListHtml = historyOfPlayedRounds.map((fixt, i) => {
-    //     return (<>
-    //         <div key={i}>
-    //             {fixt[0]}
-    //         </div>
-    //     </>)
-    // })
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
+
+    let testSkit = [
+        212,
+        2252000,
+        [
+            {
+                "homeTeam": "test",
+                "awayTeam": "test",
+                "score": "221 : 2222",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Arsenal",
+                "awayTeam": "Manchester United",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Manchester City",
+                "awayTeam": "Wolves",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Leeds",
+                "awayTeam": "Brentford",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Crystal Palace",
+                "awayTeam": "Newcastle United",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Bournemouth",
+                "awayTeam": "Nottingham Forest",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "West Ham",
+                "awayTeam": "Everton",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Southampton",
+                "awayTeam": "Aston Villa",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Leicester",
+                "awayTeam": "Brighton",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Liverpool",
+                "awayTeam": "Chelsea",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            }
+        ]
+    ]
+
+    function testaSig() {
+        let historyArray = [...historyOfPlayedRounds]
+
+        historyArray.push(testSkit)
+
+        setHistoryOfPlayedRounds([...historyArray])
+    }
+
+    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+
+    // fixt [0] = roundNr ----- [1] = points ----- [2] = fixtures
+    let historyListHtml = historyOfPlayedRounds.map((fixt, i) => {
+
+        return (
+            <motion.div className="historyListCard" key={i}
+
+                initial={{ opacity: 0, translateY: -20, scale: 0 }}
+                animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                exit={{
+                    opacity: 0,
+                    translateY: -20,
+                    scale: 0,
+                    transition: { duration: 0.2 }
+                }}
+                transition={{
+                    ease: "easeInOut",
+                    duration: 0.2,
+                    delay: i * 0.2
+                }}>
+                <div>Round: {fixt[0]}</div>
+                <div>{fixt[1]}p</div>
+                <button onClick={() => { setChosenHistoryRoundOfFixtures([...fixt[2]]) }}>Details</button>
+            </motion.div>
+
+        )
+    })
+
+    let historyDetailsHtml = chosenHistoryRoundOfFixtures.map((fixt, i) => {
+        return (
+            <div key={i}>
+                <motion.div className="historyDetailCard"
+                    key="details"
+                    initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
+                    animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                    exit={{
+                        opacity: 0,
+                        translateY: -20,
+                        scale: 0,
+                        transition: { duration: 0.2 }
+                    }}
+                    transition={{
+                        ease: "easeInOut",
+                        duration: 0.2,
+                        delay: i * 0.2
+                    }}
+                >
+                    <div>{fixt.homeTeam} - {fixt.awayTeam}</div>
+                    <div>Score: {fixt.score}</div>
+                    <div>You guessed: {fixt.yourGuess}</div>
+                </motion.div>
+
+            </div>
+
+
+        )
+    })
 
 
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
@@ -328,13 +474,9 @@ export function Home() {
                 initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
                 animate={{ opacity: 1, translateY: 0, scale: 1 }}
                 transition={{
-                    // type: "spring",
-                    // stiffness: 117,
-                    // mass: 2,
-                    // damping: 15,
                     ease: "easeInOut",
-                    duration: 0.3,
-                    delay: i * 0.3
+                    duration: 0.2,
+                    delay: i * 0.2
                 }}
             >
                 <div className="hometeamContainer">
@@ -369,6 +511,8 @@ export function Home() {
             <button className="btn" onClick={() => { setShowDevBtns(false); checkResults() }}>2: Check</button>
             <button className="btn" onClick={() => { localStorage.clear(); }}>3: Clear</button>
         </div>}
+
+        <button className="btn" onClick={testaSig}>TEST</button>
 
         <div className="logo">
             <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
@@ -569,6 +713,20 @@ export function Home() {
                 Gamer Shabandari ©
             </a>
         </footer>
+
+
+        <button onClick={() => { setShowHistory(true) }}>show history</button>
+        <AnimatePresence>
+            {showHistory &&
+                <div className="historyContainer">
+                    <button onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>close history</button>
+                    <div className="historyRounds">{historyListHtml}</div>
+                    <div className="historyDetail">
+                        {historyDetailsHtml}
+                    </div>
+
+                </div>}
+        </AnimatePresence>
 
     </main>)
 }

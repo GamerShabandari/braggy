@@ -653,3 +653,46 @@ h3 {
   color: #FB2576;
   font-weight: 600;
 }
+
+.historyContainer{
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  gap: 10px;
+  width: auto;
+}
+
+.historyRounds{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+  border: 1px solid purple;
+}
+
+.historyDetail{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.historyListCard{
+  background: white;
+  width: 100px;
+  padding: 20px;
+  border: 1px solid blue;
+  border-radius: 15px;
+}
+
+.historyDetailCard{
+  background: pink;
+  width: 200px;
+  padding: 20px;
+  border: 1px solid greenyellow;
+  border-radius: 15px;
+}
