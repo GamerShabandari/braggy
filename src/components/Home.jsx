@@ -239,6 +239,7 @@ export function Home() {
                         //first index is the number of the matchday
                         fixturesArray.push(Number(nextMatchday))
                         //second index is array of fixtures to play
+                        console.log("fakedata: " , fakeFixturesForNow);
                         fixturesArray.push(fakeFixturesForNow[0][prop]);
                         setMatchdayToPlay(fixturesArray);
                     }
