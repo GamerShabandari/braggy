@@ -41,7 +41,8 @@ export function Home() {
 
 
 
-    const apiKey = process.env.REACT_APP_API_KEY;
+   // const apiKey = process.env.REACT_APP_API_KEY;
+    const apiKey = "2e4bc96176msh62bcb518484b1a0p1847bbjsnd2b7dbd5c57b"
 
     let allMatchdays = [];
     let allResultsArray = [];
@@ -323,10 +324,10 @@ export function Home() {
                     duration: 0.1,
                     delay: i * 0.1
                 }}>
-                <div>Matchday: {fixt[0]}</div>
+                <div className="historyListMatchdayTitle">Matchday: {fixt[0]}</div>
                 <div>{fixt[1]}p</div>
                 <div>
-                    <MdExpandMore className="eye"></MdExpandMore>
+                    <MdExpandMore className="more"></MdExpandMore>
                 </div>
             </motion.div>
 
@@ -335,7 +336,7 @@ export function Home() {
 
     let historyDetailsHtml = chosenHistoryRoundOfFixtures.map((fixt, i) => {
         return (
-            <motion.div className="historyDetailCard"
+            <motion.div className="resultListFixture"
                 key={i}
                 initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -351,13 +352,23 @@ export function Home() {
                     delay: i * 0.2
                 }}
             >
-                <div>
-                    
-                    {fixt.homeTeam} - {fixt.awayTeam}
+                <div className="hometeamContainer">
+                    <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                </div>
+                <div className="resultsScoreContainer">
+                    <div>{fixt.score}</div>
+                    {fixt.yourGuess === "correct" && <div className="correct">
+                        <TfiCheck></TfiCheck>
+                    </div>}
+
+                    {fixt.yourGuess === "wrong" && <div className="wrong">
+                        <TfiClose></TfiClose>
+                    </div>}
 
                 </div>
-                <div>Result: {fixt.score}</div>
-                <div>You were: {fixt.yourGuess}</div>
+                <div className="awayteamContainer">
+                    <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                </div>
             </motion.div>
         )
     })
@@ -405,103 +416,12 @@ export function Home() {
         )
     })
 
-
-     ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
-
-    let testSkit = [
-        212,
-        2252000,
-        [
-            {
-                "homeTeam": "test",
-                "awayTeam": "test",
-                "score": "221 : 2222",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Arsenal",
-                "awayTeam": "Manchester United",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Manchester City",
-                "awayTeam": "Wolves",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Leeds",
-                "awayTeam": "Brentford",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Crystal Palace",
-                "awayTeam": "Newcastle United",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Bournemouth",
-                "awayTeam": "Nottingham Forest",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "West Ham",
-                "awayTeam": "Everton",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Southampton",
-                "awayTeam": "Aston Villa",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Leicester",
-                "awayTeam": "Brighton",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Liverpool",
-                "awayTeam": "Chelsea",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            }
-        ]
-    ]
-
-    function testaSig() {
-        let historyArray = [...historyOfPlayedRounds]
-
-        historyArray.push(testSkit)
-
-        setHistoryOfPlayedRounds([...historyArray])
-    }
-
-    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
     return (<main>
+
+        <div className="devBtnContainer">
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
+            <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
+        </div>
 
         <AnimatePresence>
             {showHistory &&
@@ -595,7 +515,7 @@ export function Home() {
                     </Player>
                 </div>
                 <span className="animate__animated animate__fadeIn">
-                    View all your finished matchdays including score & details
+                    Click to view all your finished matchdays including score & details
                 </span>
             </div>
 
@@ -770,12 +690,6 @@ export function Home() {
                 Gamer Shabandari ©
             </a>
         </footer>
-
-        <div className="devBtnContainer">
-            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
-            <button className="btn" onClick={testaSig}>TEST</button>
-        </div>¯
 
     </main>)
 }
