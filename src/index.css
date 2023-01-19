@@ -658,7 +658,6 @@ h3 {
   color: #EDEDED;
   min-height: 100vh;
   height: fit-content;
-  padding: 10px;
   width: 100%;
   top: 0px;
   z-index: 997;
@@ -682,7 +681,7 @@ h3 {
   padding: 20px;
 }
 
-.historyDetail {
+/* .historyDetail {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -690,7 +689,8 @@ h3 {
   width: 100%;
   height: fit-content;
   padding: 20px;
-}
+  border: 1px solid yellow;
+} */
 
 .historyListCard {
   color: #EDEDED;
@@ -701,7 +701,11 @@ h3 {
   padding: 20px;
   border: 1px solid rgba(56, 56, 56, 0.721);
   cursor: pointer;
+}
 
+.historyListMatchdayTitle{
+  color: #FB2576;
+  font-weight: 500;
 }
 
 .historyDetailCard {
@@ -727,7 +731,7 @@ h3 {
   transform: rotate(180deg);
 }
 
-.eye {
+.more {
   font-size: 2rem;
   color: #FB2576;
 }

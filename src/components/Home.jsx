@@ -323,10 +323,10 @@ export function Home() {
                     duration: 0.1,
                     delay: i * 0.1
                 }}>
-                <div>Matchday: {fixt[0]}</div>
+                <div className="historyListMatchdayTitle">Matchday: {fixt[0]}</div>
                 <div>{fixt[1]}p</div>
                 <div>
-                    <MdExpandMore className="eye"></MdExpandMore>
+                    <MdExpandMore className="more"></MdExpandMore>
                 </div>
             </motion.div>
 
@@ -335,7 +335,7 @@ export function Home() {
 
     let historyDetailsHtml = chosenHistoryRoundOfFixtures.map((fixt, i) => {
         return (
-            <motion.div className="historyDetailCard"
+            <motion.div className="resultListFixture"
                 key={i}
                 initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -351,13 +351,23 @@ export function Home() {
                     delay: i * 0.2
                 }}
             >
-                <div>
-                    
-                    {fixt.homeTeam} - {fixt.awayTeam}
+                <div className="hometeamContainer">
+                    <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                </div>
+                <div className="resultsScoreContainer">
+                    <div>{fixt.score}</div>
+                    {fixt.yourGuess === "correct" && <div className="correct">
+                        <TfiCheck></TfiCheck>
+                    </div>}
+
+                    {fixt.yourGuess === "wrong" && <div className="wrong">
+                        <TfiClose></TfiClose>
+                    </div>}
 
                 </div>
-                <div>Result: {fixt.score}</div>
-                <div>You were: {fixt.yourGuess}</div>
+                <div className="awayteamContainer">
+                    <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                </div>
             </motion.div>
         )
     })
@@ -406,7 +416,7 @@ export function Home() {
     })
 
 
-     ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
 
     ////////////////////////////////////////////////////////////////////////////////
 
@@ -595,7 +605,7 @@ export function Home() {
                     </Player>
                 </div>
                 <span className="animate__animated animate__fadeIn">
-                    Click arrow to all your finished matchdays including score & details
+                    Click to view all your finished matchdays including score & details
                 </span>
             </div>
 
