@@ -595,7 +595,7 @@ export function Home() {
                     </Player>
                 </div>
                 <span className="animate__animated animate__fadeIn">
-                    Click arrow to all your finished matchdays including score & details
+                    View all your finished matchdays including score & details
                 </span>
             </div>
 
