@@ -473,6 +473,12 @@ export function Home() {
             <motion.div className="resultListFixture" key={i}
                 initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
                 animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                exit={{
+                    opacity: 0,
+                    translateY: -20,
+                    scale: 0,
+                    transition: { duration: 0.2 }
+                }}
                 transition={{
                     ease: "easeInOut",
                     duration: 0.2,
@@ -513,6 +519,38 @@ export function Home() {
         </div>}
 
         <button className="btn" onClick={testaSig}>TEST</button>
+
+        <button onClick={() => { setShowHistory(true) }}>show history</button>
+        <AnimatePresence>
+            {showHistory &&
+                <motion.div
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{
+                        opacity: 0,
+                        translateY: -20,
+                        transition: { duration: 0.2 }
+                    }}
+                    className="historyContainer">
+                    <button onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>close history</button>
+
+                    <div className="historyRounds">
+                        {historyListHtml}
+                    </div>
+                    <motion.div className="historyDetail"
+                        initial={{ opacity: 0, y: "-50%" }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{
+                            opacity: 0,
+                            translateY: -20,
+                            transition: { duration: 0.2 }
+                        }}
+                    >
+                        {historyDetailsHtml}
+                    </motion.div>
+
+                </motion.div>}
+        </AnimatePresence>
 
         <div className="logo">
             <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
@@ -564,67 +602,69 @@ export function Home() {
             </div>
         }
 
-        {showYourResultsUI &&
-            <section className="resultsContainer animate__animated animate__fadeIn">
+        <AnimatePresence>
+            {showYourResultsUI &&
+                <section className="resultsContainer animate__animated animate__fadeIn">
 
-                <div className="resultsUIinformation">
+                    <div className="resultsUIinformation">
 
-                    <div className="resultsScoreDiv">
-                        <strong>Results are in!</strong>
-                        {resultsUiAmountOfCorrectAnswers} Correct guesses
+                        <div className="resultsScoreDiv">
+                            <strong>Results are in!</strong>
+                            {resultsUiAmountOfCorrectAnswers} Correct guesses
+                        </div>
+
+                        <div className="resultsScoreDiv">Score: {resultsUiScore}p</div>
+                        {hiscoreAchievment &&
+                            <div className="resultsHighscoreDiv">
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                                >
+                                </Player>
+
+                                <p>New high score!</p>
+
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
+                                >
+                                </Player>
+                            </div>}
+                        {guessedAllRight &&
+                            <div className="resultsBonusDiv">
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                                >
+                                </Player>
+                                <p>Bonus! 10/10 correct</p>
+
+                                <Player
+                                    className="resultsAnimations"
+                                    autoplay
+                                    loop
+                                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                                >
+                                </Player>
+                            </div>}
+
+                        <div className="listOfGamesUI">
+                            {resultListHtml}
+                        </div>
                     </div>
 
-                    <div className="resultsScoreDiv">Score: {resultsUiScore}p</div>
-                    {hiscoreAchievment &&
-                        <div className="resultsHighscoreDiv">
-                            <Player
-                                className="resultsAnimations"
-                                autoplay
-                                loop
-                                src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
-                            >
-                            </Player>
 
-                            <p>New high score!</p>
+                    <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
 
-                            <Player
-                                className="resultsAnimations"
-                                autoplay
-                                loop
-                                src="https://assets4.lottiefiles.com/packages/lf20_rZQs81.json"
-                            >
-                            </Player>
-                        </div>}
-                    {guessedAllRight &&
-                        <div className="resultsBonusDiv">
-                            <Player
-                                className="resultsAnimations"
-                                autoplay
-                                loop
-                                src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
-                            >
-                            </Player>
-                            <p>Bonus! 10/10 correct</p>
-
-                            <Player
-                                className="resultsAnimations"
-                                autoplay
-                                loop
-                                src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
-                            >
-                            </Player>
-                        </div>}
-
-                    <div className="listOfGamesUI">
-                        {resultListHtml}
-                    </div>
-                </div>
-
-
-                <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
-
-            </section>
-        }
+                </section>
+            }
+        </AnimatePresence>
 
         {yourFinalPicksForThisMatchDay.length === 0 && matchdayToPlay.length !== 0 &&
             <div className="animate__animated animate__fadeIn">
@@ -715,18 +755,7 @@ export function Home() {
         </footer>
 
 
-        <button onClick={() => { setShowHistory(true) }}>show history</button>
-        <AnimatePresence>
-            {showHistory &&
-                <div className="historyContainer">
-                    <button onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>close history</button>
-                    <div className="historyRounds">{historyListHtml}</div>
-                    <div className="historyDetail">
-                        {historyDetailsHtml}
-                    </div>
 
-                </div>}
-        </AnimatePresence>
 
     </main>)
 }
