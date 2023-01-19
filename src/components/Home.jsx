@@ -517,7 +517,7 @@ export function Home() {
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
             <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
             <button className="btn" onClick={testaSig}>TEST</button>
-        </div>¯
+        </div>
 
         <AnimatePresence>
             {showHistory &&

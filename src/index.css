@@ -569,7 +569,7 @@ h3 {
 }
 
 .devBtnContainer {
-  padding: 40px;
+  padding: 0px;
   display: flex;
   flex-direction: row;
   justify-content: center;
