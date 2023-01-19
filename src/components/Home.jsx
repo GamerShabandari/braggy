@@ -418,8 +418,8 @@ export function Home() {
     return (<main>
 
         <div className="devBtnContainer">
-            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={() => { checkResults() }}>2:Check</button>
+            <button className="btn" onClick={insertFakeResult}>1- Fake</button>
+            <button className="btn" onClick={() => { checkResults() }}>2- Check</button>
         </div>
 
         <AnimatePresence>
