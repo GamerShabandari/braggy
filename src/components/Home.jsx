@@ -3,7 +3,8 @@ import useLocalStorage from "../useLocalStorage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
-import { TfiCheck, TfiClose, TfiEye } from "react-icons/tfi";
+import { TfiCheck, TfiClose } from "react-icons/tfi";
+import { MdExpandMore } from "react-icons/md";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,7 +15,6 @@ export function Home() {
 
     const navigate = useNavigate();
 
-    const [showDevBtns, setShowDevBtns] = useState(false)
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
     const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
@@ -25,7 +25,6 @@ export function Home() {
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
-
 
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
@@ -304,118 +303,12 @@ export function Home() {
         setHiscoreAchievment(false)
     }
 
-    function showDevBtnsDiv() {
-        devClickCount += 1
-
-        if (devClickCount === 5) {
-            setShowDevBtns(current => !current);
-            devClickCount = 0
-        }
-    }
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
-
-    let testSkit = [
-        212,
-        2252000,
-        [
-            {
-                "homeTeam": "test",
-                "awayTeam": "test",
-                "score": "221 : 2222",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Arsenal",
-                "awayTeam": "Manchester United",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Manchester City",
-                "awayTeam": "Wolves",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Leeds",
-                "awayTeam": "Brentford",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Crystal Palace",
-                "awayTeam": "Newcastle United",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Bournemouth",
-                "awayTeam": "Nottingham Forest",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "West Ham",
-                "awayTeam": "Everton",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Southampton",
-                "awayTeam": "Aston Villa",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Leicester",
-                "awayTeam": "Brighton",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            },
-            {
-                "homeTeam": "Liverpool",
-                "awayTeam": "Chelsea",
-                "score": "1 : 2",
-                "yourGuess": "correct"
-            }
-        ]
-    ]
-
-    function testaSig() {
-        let historyArray = [...historyOfPlayedRounds]
-
-        historyArray.push(testSkit)
-
-        setHistoryOfPlayedRounds([...historyArray])
-    }
-
-    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////////////////
-
-
     // fixt [0] = roundNr ----- [1] = points ----- [2] = fixtures
     let historyListHtml = historyOfPlayedRounds.map((fixt, i) => {
 
         return (
             <motion.div className="historyListCard"
+                onClick={() => { setChosenHistoryRoundOfFixtures([...fixt[2]]) }}
                 key={i}
                 initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -432,7 +325,9 @@ export function Home() {
                 }}>
                 <div>Matchday: {fixt[0]}</div>
                 <div>{fixt[1]}p</div>
-                <button onClick={() => { setChosenHistoryRoundOfFixtures([...fixt[2]]) }}>Details</button>
+                <div>
+                    <MdExpandMore className="eye"></MdExpandMore>
+                </div>
             </motion.div>
 
         )
@@ -456,9 +351,13 @@ export function Home() {
                     delay: i * 0.2
                 }}
             >
-                <div>{fixt.homeTeam} - {fixt.awayTeam}</div>
-                <div>Score: {fixt.score}</div>
-                <div>You guessed: {fixt.yourGuess}</div>
+                <div>
+                    
+                    {fixt.homeTeam} - {fixt.awayTeam}
+
+                </div>
+                <div>Result: {fixt.score}</div>
+                <div>You were: {fixt.yourGuess}</div>
             </motion.div>
         )
     })
@@ -508,15 +407,6 @@ export function Home() {
 
     return (<main>
 
-        {showDevBtns && <div className="devBtnContainer">
-            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={() => { setShowDevBtns(false); checkResults() }}>2: Check</button>
-            <button className="btn" onClick={() => { localStorage.clear(); }}>3: Clear</button>
-        </div>}
-
-        <button className="btn" onClick={testaSig}>TEST</button>
-
-        <button onClick={() => { setShowHistory(true) }}>show history</button>
         <AnimatePresence>
             {showHistory &&
                 <motion.div
@@ -530,7 +420,15 @@ export function Home() {
 
                     className="historyContainer">
 
-                    <button onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>close history</button>
+                    <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>
+                        <Player
+                            className="closeHistorybtn"
+                            autoplay
+                            loop
+                            src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                        >
+                        </Player>
+                    </div>
 
                     <div className="historyRounds">
                         {historyListHtml}
@@ -554,7 +452,7 @@ export function Home() {
         </AnimatePresence>
 
         <div className="logo">
-            <motion.svg className="svg animate__animated animate__fadeIn" onClick={showDevBtnsDiv} viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
+            <motion.svg className="svg animate__animated animate__fadeIn" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
             </g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" strokeWidth="0.72" strokeLinecap="round" strokeLinejoin="round"></path> </g>
             </motion.svg>
 
@@ -587,6 +485,27 @@ export function Home() {
             </div>
 
         </section>
+
+        {historyOfPlayedRounds.length > 0 &&
+
+            <div className="information">
+                <div onClick={() => { setShowHistory(true) }}>
+                    <Player
+                        className="showHistorybtn"
+                        autoplay
+                        loop
+                        src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                    >
+                    </Player>
+                </div>
+                <span className="animate__animated animate__fadeIn">
+                    Click arrow to all your finished matchdays including score & details
+                </span>
+            </div>
+
+
+
+        }
 
         {isLoadingApiData &&
             <div className="loaderContainer animate__animated animate__fadeIn">
@@ -756,8 +675,10 @@ export function Home() {
             </a>
         </footer>
 
-
-
+        <div className="devBtnContainer">
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
+            <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
+        </div>¯
 
     </main>)
 }

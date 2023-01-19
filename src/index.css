@@ -28,8 +28,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0px;
-  margin-top: 40px;
+  margin-bottom: 20px;
   gap: 0px;
   position: relative;
 }
@@ -69,7 +68,7 @@ a {
   text-decoration: none;
   font-weight: 300;
   font-size: 1rem;
-  margin: 0 auto;
+  margin: 40px 0px;
   margin-bottom: 20px;
   width: fit-content;
   letter-spacing: 5px;
@@ -89,7 +88,6 @@ a:visited {
   justify-content: space-evenly;
   align-items: center;
   gap: 40px;
-  margin: 50px 0px;
   color: #EDEDED;
   font-weight: 400;
   font-size: 0.85rem;
@@ -149,6 +147,7 @@ main {
   width: auto;
   min-height: 100vh;
   height: fit-content;
+  padding-top: 30px;
 }
 
 * {
@@ -639,7 +638,7 @@ h3 {
   border-radius: 15px;
 }
 
-.resultsScoreDiv{
+.resultsScoreDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -654,7 +653,7 @@ h3 {
   font-weight: 600;
 }
 
-.historyContainer{
+.historyContainer {
   position: absolute;
   color: #EDEDED;
   min-height: 100vh;
@@ -674,38 +673,61 @@ h3 {
   padding: 20px;
 }
 
-.historyRounds{
+.historyRounds {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   gap: 10px;
-  border: 1px solid red;
   padding: 20px;
 }
 
-.historyDetail{
+.historyDetail {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  background-color: #6600B8;
   width: 100%;
   height: fit-content;
   padding: 20px;
 }
 
-.historyListCard{
-  background: white;
-  width: 100px;
-  padding: 20px;
+.historyListCard {
+  color: #EDEDED;
+  font-weight: 400;
+  font-size: 0.85rem;
+  background-color: #1c1c1c;
   border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(56, 56, 56, 0.721);
+  cursor: pointer;
+
 }
 
-.historyDetailCard{
-  background: pink;
-  width: 200px;
-  padding: 20px;
-  border: 1px solid greenyellow;
+.historyDetailCard {
+  width: 300px;
+  border: 1px solid #FB2576;
+  color: #EDEDED;
+  font-weight: 400;
+  font-size: 0.85rem;
+  background-color: #1c1c1c;
   border-radius: 15px;
+  padding: 20px;
+}
+
+.showHistorybtn {
+  width: 60px;
+  filter: brightness(10);
+
+}
+
+.closeHistorybtn {
+  width: 60px;
+  filter: brightness(10);
+  transform: rotate(180deg);
+}
+
+.eye {
+  font-size: 2rem;
+  color: #FB2576;
 }
