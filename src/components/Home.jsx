@@ -690,5 +690,10 @@ export function Home() {
             </a>
         </footer>
 
+        <div className="devBtnContainer">
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
+            <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
+        </div>¯
+
     </main>)
 }
