@@ -24,6 +24,7 @@ export function Home() {
 
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
+    const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
 
 
     const [results, setResults] = useLocalStorage("results", [""]);
@@ -39,7 +40,7 @@ export function Home() {
     const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
 
 
-    const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
+
 
     const apiKey = process.env.REACT_APP_API_KEY;
 
@@ -414,22 +415,22 @@ export function Home() {
     let historyListHtml = historyOfPlayedRounds.map((fixt, i) => {
 
         return (
-            <motion.div className="historyListCard" key={i}
-
-                initial={{ opacity: 0, translateY: -20, scale: 0 }}
-                animate={{ opacity: 1, translateY: 0, scale: 1 }}
+            <motion.div className="historyListCard"
+                key={i}
+                initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{
                     opacity: 0,
-                    translateY: -20,
+                    y: "-50%",
                     scale: 0,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.1 }
                 }}
                 transition={{
                     ease: "easeInOut",
-                    duration: 0.2,
-                    delay: i * 0.2
+                    duration: 0.1,
+                    delay: i * 0.1
                 }}>
-                <div>Round: {fixt[0]}</div>
+                <div>Matchday: {fixt[0]}</div>
                 <div>{fixt[1]}p</div>
                 <button onClick={() => { setChosenHistoryRoundOfFixtures([...fixt[2]]) }}>Details</button>
             </motion.div>
@@ -439,31 +440,26 @@ export function Home() {
 
     let historyDetailsHtml = chosenHistoryRoundOfFixtures.map((fixt, i) => {
         return (
-            <div key={i}>
-                <motion.div className="historyDetailCard"
-                    key="details"
-                    initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
-                    animate={{ opacity: 1, translateY: 0, scale: 1 }}
-                    exit={{
-                        opacity: 0,
-                        translateY: -20,
-                        scale: 0,
-                        transition: { duration: 0.2 }
-                    }}
-                    transition={{
-                        ease: "easeInOut",
-                        duration: 0.2,
-                        delay: i * 0.2
-                    }}
-                >
-                    <div>{fixt.homeTeam} - {fixt.awayTeam}</div>
-                    <div>Score: {fixt.score}</div>
-                    <div>You guessed: {fixt.yourGuess}</div>
-                </motion.div>
-
-            </div>
-
-
+            <motion.div className="historyDetailCard"
+                key={i}
+                initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{
+                    opacity: 0,
+                    y: "-50%",
+                    scale: 0,
+                    transition: { duration: 0.1 }
+                }}
+                transition={{
+                    ease: "easeInOut",
+                    duration: 0.2,
+                    delay: i * 0.2
+                }}
+            >
+                <div>{fixt.homeTeam} - {fixt.awayTeam}</div>
+                <div>Score: {fixt.score}</div>
+                <div>You guessed: {fixt.yourGuess}</div>
+            </motion.div>
         )
     })
 
@@ -471,13 +467,13 @@ export function Home() {
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
         return (
             <motion.div className="resultListFixture" key={i}
-                initial={{ opacity: 0, translateY: -20, scale: 0.5 }}
-                animate={{ opacity: 1, translateY: 0, scale: 1 }}
+                initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{
                     opacity: 0,
-                    translateY: -20,
+                    y: "-50%",
                     scale: 0,
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.1 }
                 }}
                 transition={{
                     ease: "easeInOut",
@@ -525,30 +521,35 @@ export function Home() {
             {showHistory &&
                 <motion.div
                     initial={{ opacity: 0, y: "-50%" }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
                     exit={{
                         opacity: 0,
-                        translateY: -20,
-                        transition: { duration: 0.2 }
+                        y: "-50%",
+                        transition: { duration: 0.2, ease: "easeInOut" }
                     }}
+
                     className="historyContainer">
+
                     <button onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>close history</button>
 
                     <div className="historyRounds">
                         {historyListHtml}
                     </div>
-                    <motion.div className="historyDetail"
-                        initial={{ opacity: 0, y: "-50%" }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{
-                            opacity: 0,
-                            translateY: -20,
-                            transition: { duration: 0.2 }
-                        }}
-                    >
-                        {historyDetailsHtml}
-                    </motion.div>
 
+                    {historyDetailsHtml.length > 0 &&
+                        <motion.div
+                            initial={{ opacity: 0, y: "-50%" }}
+                            animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                            exit={{
+                                opacity: 0,
+                                y: "-50",
+                                transition: { duration: 0.2, ease: "easeInOut" }
+                            }}
+                            className="historyDetail"
+                        >
+                            {historyDetailsHtml}
+                        </motion.div>
+                    }
                 </motion.div>}
         </AnimatePresence>
 
