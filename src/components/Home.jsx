@@ -405,6 +405,102 @@ export function Home() {
         )
     })
 
+
+     ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
+
+    let testSkit = [
+        212,
+        2252000,
+        [
+            {
+                "homeTeam": "test",
+                "awayTeam": "test",
+                "score": "221 : 2222",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Arsenal",
+                "awayTeam": "Manchester United",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Manchester City",
+                "awayTeam": "Wolves",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Leeds",
+                "awayTeam": "Brentford",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Crystal Palace",
+                "awayTeam": "Newcastle United",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Bournemouth",
+                "awayTeam": "Nottingham Forest",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "West Ham",
+                "awayTeam": "Everton",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Southampton",
+                "awayTeam": "Aston Villa",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Leicester",
+                "awayTeam": "Brighton",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            },
+            {
+                "homeTeam": "Liverpool",
+                "awayTeam": "Chelsea",
+                "score": "1 : 2",
+                "yourGuess": "correct"
+            }
+        ]
+    ]
+
+    function testaSig() {
+        let historyArray = [...historyOfPlayedRounds]
+
+        historyArray.push(testSkit)
+
+        setHistoryOfPlayedRounds([...historyArray])
+    }
+
+    // TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT TA BORT
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////
+
     return (<main>
 
         <AnimatePresence>
@@ -678,6 +774,7 @@ export function Home() {
         <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
             <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
+            <button className="btn" onClick={testaSig}>TEST</button>
         </div>¯
 
     </main>)
