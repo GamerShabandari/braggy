@@ -605,7 +605,15 @@ export function Home() {
 
         <AnimatePresence>
             {showYourResultsUI &&
-                <section className="resultsContainer animate__animated animate__fadeIn">
+                <motion.section
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                    exit={{
+                        opacity: 0,
+                        y: "-50%",
+                        transition: { duration: 0.2, ease: "easeInOut" }
+                    }}
+                    className="resultsContainer">
 
                     <div className="resultsUIinformation">
 
@@ -663,7 +671,7 @@ export function Home() {
 
                     <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
 
-                </section>
+                </motion.section>
             }
         </AnimatePresence>
 
@@ -672,13 +680,6 @@ export function Home() {
                 <button className="btn" onClick={() => { navigate("/game") }} aria-label="start button">
                     <GiPlayButton className='btnIcon'></GiPlayButton>
                 </button>
-                {/* <motion.button whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="btn"
-                    onClick={() => { navigate("/game") }}
-                    aria-label="start button">
-                    <GiPlayButton className='btnIcon'></GiPlayButton>
-                </motion.button> */}
             </div>
         }
 
