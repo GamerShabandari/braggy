@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import 'animate.css';
 import { HiHome, HiOutlineRefresh } from "react-icons/hi";
 import { Player } from '@lottiefiles/react-lottie-player';
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Game() {
 
@@ -141,78 +142,109 @@ export function Game() {
 
     return (<main>
 
-        {timeIsUp &&
-            <section className='postGameSection'>
-                <h1 className="timesUpText animate__animated animate__fadeIn">
-                    Times up!
-                </h1>
+        <AnimatePresence exitBeforeEnter>
 
-                <div className='timesUpBtnContainer'>
-                    <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
-                        <HiHome className='btnIcon'></HiHome>
-                    </button>
-                    <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
-                        <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
-                    </button>
-                </div>
-                <Player
-                    className="timesUp"
-                    loop
-                    autoplay
-                    src="https://assets8.lottiefiles.com/packages/lf20_xFpiNt.json"
-                >
-                </Player>
-
-            </section>}
-
-        {!timeIsUp && <>
-
-            {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
-                <>
-                    <div className='timerContainer  animate__animated animate__zoomIn'>
-                        <Countdown date={Date.now() + 30000} renderer={renderer}/>
-                    </div>
-
-                    <div className='cardContainer animate__animated animate__fadeInDown animate__faster'>
-                        {matchdayToPlay[1].map((match, i) =>
-                            <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
-                                <div className='card'>
-                                    <div className='PLcontainer'>
-                                        <img src="./img/PL.png" draggable={false} alt="" />
-                                    </div>
-                                    <div className='logoContainer'>
-                                        <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-                                        <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-                                    </div>
-                                    <h3>
-                                        {match.homeTeam} - {match.awayTeam}
-                                    </h3>
-                                </div>
-                            </TinderCard>
-                        )}
-                    </div>
-                </>
-            }
-
-            {isDone && <>
-                <section className='postGameSection'>
-                    <h1 className='done animate__animated animate__fadeIn'>
-                        Great job!
+            {timeIsUp &&
+                <motion.section
+                    key="gameTimesUp"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                    exit={{
+                        opacity: 0,
+                        x: "+200%",
+                        transition: { duration: 1.2, ease: "easeInOut" }
+                    }}
+                    className='postGameSection'>
+                    <h1 className="timesUpText animate__animated animate__fadeIn">
+                        Times up!
                     </h1>
-                    <h3 className='checkBack animate__animated animate__fadeIn'>
-                        Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
-                    </h3>
-                    <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+
+                    <div className='timesUpBtnContainer'>
+                        <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
+                            <HiHome className='btnIcon'></HiHome>
+                        </button>
+                        <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
+                            <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
+                        </button>
+                    </div>
                     <Player
-                        className="fans"
-                        autoplay
+                        className="timesUp"
                         loop
-                        src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
+                        autoplay
+                        src="https://assets8.lottiefiles.com/packages/lf20_xFpiNt.json"
                     >
                     </Player>
-                </section>
-            </>}
 
-        </>}
+                </motion.section>
+            }
+
+            {!timeIsUp && <>
+
+                {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
+                    <motion.div
+                        key="gameCards"
+                        initial={{ opacity: 0, y: "-50%" }}
+                        animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                        exit={{
+                            opacity: 0,
+                            x: "+200%",
+                            transition: { duration: 0.2, ease: "easeInOut" }
+                        }}
+                    >
+                        <div className='timerContainer  animate__animated animate__zoomIn'>
+                            <Countdown date={Date.now() + 30000} renderer={renderer} />
+                        </div>
+
+                        <div className='cardContainer animate__animated animate__fadeInDown animate__faster'>
+                            {matchdayToPlay[1].map((match, i) =>
+                                <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
+                                    <div className='card'>
+                                        <div className='PLcontainer'>
+                                            <img src="./img/PL.png" draggable={false} alt="" />
+                                        </div>
+                                        <div className='logoContainer'>
+                                            <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                                            <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                                        </div>
+                                        <h3>
+                                            {match.homeTeam} - {match.awayTeam}
+                                        </h3>
+                                    </div>
+                                </TinderCard>
+                            )}
+                        </div>
+                    </motion.div>
+                }
+
+                {isDone && <>
+                    <motion.section
+                        key="gameDone"
+                        initial={{ opacity: 0, y: "-50%" }}
+                        animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                        exit={{
+                            opacity: 0,
+                            x: "+200%",
+                            transition: { duration: 1.2, ease: "easeInOut" }
+                        }}
+                        className='postGameSection'>
+                        <h1 className='done animate__animated animate__fadeIn'>
+                            Great job!
+                        </h1>
+                        <h3 className='checkBack animate__animated animate__fadeIn'>
+                            Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
+                        </h3>
+                        <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+                        <Player
+                            className="fans"
+                            autoplay
+                            loop
+                            src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
+                        >
+                        </Player>
+                    </motion.section>
+                </>}
+
+            </>}
+        </AnimatePresence>
     </main>)
 }
