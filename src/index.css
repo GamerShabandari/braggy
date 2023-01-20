@@ -189,7 +189,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   color: #EDEDED;
   font-weight: 400;
   font-size: 1.85rem;
@@ -324,7 +324,7 @@ h3 {
   font-size: 2rem;
   font-weight: 600;
   margin: 0px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   padding: 0px;
   color: #FB2576;
 }
@@ -561,7 +561,7 @@ h3 {
 }
 
 .postGameSection {
-  padding: 40px;
+  /* padding: 40px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -656,7 +656,7 @@ h3 {
 .historyContainer {
   position: absolute;
   color: #EDEDED;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   height: fit-content;
   width: 100%;
   top: 0px;
@@ -670,6 +670,7 @@ h3 {
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
+  padding-bottom: 40px;
 }
 
 .historyRounds {

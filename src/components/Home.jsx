@@ -41,7 +41,7 @@ export function Home() {
 
 
 
-   // const apiKey = process.env.REACT_APP_API_KEY;
+    // const apiKey = process.env.REACT_APP_API_KEY;
     const apiKey = "2e4bc96176msh62bcb518484b1a0p1847bbjsnd2b7dbd5c57b"
 
     let allMatchdays = [];
@@ -462,6 +462,17 @@ export function Home() {
                             className="historyDetail"
                         >
                             {historyDetailsHtml}
+
+
+                            <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>
+                                <Player
+                                    className="closeHistorybtn"
+                                    autoplay
+                                    loop
+                                    src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                                >
+                                </Player>
+                            </div>
                         </motion.div>
                     }
                 </motion.div>}
