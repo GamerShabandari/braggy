@@ -69,7 +69,7 @@ export function Game() {
             myTimeLeft = seconds;
             return (
 
-                <span className='seconds'>Time left: {seconds}</span>
+                <span>Time left: {seconds}</span>
 
             );
         }
@@ -170,7 +170,7 @@ export function Game() {
             {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
                 <>
                     <div className='timerContainer  animate__animated animate__zoomIn'>
-                        <Countdown date={Date.now() + 30000} renderer={renderer} className='timerContainer' />
+                        <Countdown date={Date.now() + 30000} renderer={renderer}/>
                     </div>
 
                     <div className='cardContainer animate__animated animate__fadeInDown animate__faster'>
