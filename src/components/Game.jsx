@@ -96,8 +96,6 @@ export function Game() {
     function handleSwipes(direction, match, i) {
 
         if (direction === "left") {
-            console.log(i);
-
             let pick = {
                 homeTeam: match.homeTeam,
                 awayTeam: match.awayTeam,
@@ -107,8 +105,6 @@ export function Game() {
         }
 
         if (direction === "right") {
-            console.log(i);
-
             let pick = {
                 homeTeam: match.homeTeam,
                 awayTeam: match.awayTeam,
@@ -118,8 +114,6 @@ export function Game() {
         }
 
         if (direction === "up") {
-            console.log(i);
-
             let pick = {
                 homeTeam: match.homeTeam,
                 awayTeam: match.awayTeam,
