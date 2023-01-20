@@ -22,13 +22,18 @@ export function Game() {
 
     let myPicks = []
     let myTimeLeft;
-    let dateOfLastFixtureInThisMatchday = ""
+    // let dateOfLastFixtureInThisMatchday = ""
 
     useEffect(() => {
 
         if (yourFinalPicksForThisMatchDay.length !== 0) {
             setIsDone(true)
         }
+
+    }, [])
+
+    // SAVE PICKS TO LOCALSTORAGE, index 0 is time left on round, index 1 is array of all fixtures, index 2 is date of last fixture to be played
+    function saveMyPicksToLocalstorage(listToSave) {
 
         let datesArray = [];
         for (const fixture of matchdayToPlay[1]) {
@@ -44,16 +49,12 @@ export function Game() {
             return r;
         }, undefined);
 
-        dateOfLastFixtureInThisMatchday = result.max;
+        let dateOfLastFixtureInThisMatchday = result.max;
 
-    }, [])
-
-    // SAVE PICKS TO LOCALSTORAGE, index 0 is time left on round, index 1 is array of all fixtures, index 2 is date of last fixture to be played
-    function saveMyPicksToLocalstorage(filteredResultsList) {
         setYourLastPlayedMatchDay(matchdayToPlay[0]);
         let picksArrayWithTimeTakenToComplete = []
         picksArrayWithTimeTakenToComplete.push(myTimeLeft)
-        picksArrayWithTimeTakenToComplete.push(filteredResultsList)
+        picksArrayWithTimeTakenToComplete.push(listToSave)
         picksArrayWithTimeTakenToComplete.push(dateOfLastFixtureInThisMatchday)
         setYourFinalPicksForThisMatchDay([...picksArrayWithTimeTakenToComplete]);
         setMatchdayToPlay([])
@@ -74,24 +75,24 @@ export function Game() {
         }
     };
 
-    // react bug/feature, renders state twice in dev mode so have to filter list, in production this function is unnecessary
-    function filterResultsForDuplicates() {
+    // // react bug/feature, renders state twice in dev mode so have to filter list, in production this function is unnecessary
+    // function filterResultsForDuplicates() {
 
-        let filteredResults = myPicks.reduce((finalArray, current) => {
+    //     let filteredResults = myPicks.reduce((finalArray, current) => {
 
-            let obj = finalArray.find((match) => match.homeTeam === current.homeTeam);
+    //         let obj = finalArray.find((match) => match.homeTeam === current.homeTeam);
 
-            if (obj) {
-                return finalArray
-            }
+    //         if (obj) {
+    //             return finalArray
+    //         }
 
-            return finalArray.concat([current]);
-        }, [])
+    //         return finalArray.concat([current]);
+    //     }, [])
 
-        if (filteredResults.length === matchdayToPlay[1].length) {
-            saveMyPicksToLocalstorage(filteredResults)
-        }
-    }
+    //     if (filteredResults.length === matchdayToPlay[1].length) {
+    //         saveMyPicksToLocalstorage(filteredResults)
+    //     }
+    // }
 
     function handleSwipes(direction, match, i) {
 
@@ -126,7 +127,8 @@ export function Game() {
         // all cards swiped
         if (i === 0) {
             setIsDone(true);
-            filterResultsForDuplicates();
+            // filterResultsForDuplicates();
+            saveMyPicksToLocalstorage(myPicks)
         }
     }
 

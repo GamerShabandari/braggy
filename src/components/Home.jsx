@@ -668,9 +668,10 @@ export function Home() {
             </a>
         </footer>
 
+        {/* -- development feature, test with fake results. Not for regular users -- 
         <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
             <button className="btn" onClick={() => { logoRef.current?.scrollIntoViewIfNeeded(); checkResults() }}>2: Check</button>
-        </div>
+        </div> */}
     </motion.main>)
 }
