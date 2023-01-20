@@ -417,12 +417,6 @@ export function Home() {
             transition: { duration: 0.2, ease: "easeInOut" }
         }}
     >
-
-        <div className="devBtnContainer">
-            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={() => { checkResults() }}>2: Check</button>
-        </div>
-
         <AnimatePresence>
             {showHistory &&
                 <motion.div
@@ -510,11 +504,9 @@ export function Home() {
                     </>}
                 </span>
             </div>
-
         </section>
 
         {historyOfPlayedRounds.length > 0 &&
-
             <div className="information">
                 <div onClick={() => { setShowHistory(true); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                     <Player
@@ -529,9 +521,6 @@ export function Home() {
                     Click to view all your finished matchdays including score & details
                 </span>
             </div>
-
-
-
         }
 
         {isLoadingApiData &&
@@ -613,10 +602,16 @@ export function Home() {
                             {resultListHtml}
                         </div>
                     </div>
-
-
-                    <button onClick={() => { closeResultsUI(); logoRef.current?.scrollIntoViewIfNeeded(); }} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
-
+                    <div onClick={() => { closeResultsUI(); logoRef.current?.scrollIntoViewIfNeeded(); }}>
+                        {/* <TfiClose className='closebtnIcon'></TfiClose> */}
+                        <Player
+                            className="closeHistorybtn"
+                            autoplay
+                            loop
+                            src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                        >
+                        </Player>
+                    </div>
                 </motion.section>
             }
         </AnimatePresence>
@@ -701,6 +696,11 @@ export function Home() {
                 Gamer Shabandari ©
             </a>
         </footer>
+
+        <div className="devBtnContainer">
+            <button className="btn" onClick={insertFakeResult}>1: Fake</button>
+            <button className="btn" onClick={() => {  logoRef.current?.scrollIntoViewIfNeeded(); checkResults() }}>2: Check</button>
+        </div>
 
     </motion.main>)
 }

@@ -12,15 +12,15 @@ export function Game() {
 
     const navigate = useNavigate();
 
-    let myPicks = []
-    let myTimeLeft;
-    let dateOfLastFixtureInThisMatchday = ""
-
     const [isDone, setIsDone] = useState(false)
     const [timeIsUp, setTimeIsUp] = useState(false)
     const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "")
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
     const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
+
+    let myPicks = []
+    let myTimeLeft;
+    let dateOfLastFixtureInThisMatchday = ""
 
     useEffect(() => {
 

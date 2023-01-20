@@ -53,9 +53,10 @@ code {
   height: 50px;
   border-radius: 15px;
   border: none;
-  cursor: pointer;
   padding: 10px;
   background-color: #6600B8;
+  margin: 30px 0px;
+  cursor: pointer;
 }
 
 .btnIcon {
@@ -186,7 +187,6 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 30px; */
   color: #EDEDED;
   font-weight: 400;
   font-size: 1.2rem;
@@ -323,7 +323,6 @@ h3 {
   font-size: 2rem;
   font-weight: 600;
   margin: 0px;
-  /* margin-top: 20px; */
   color: #FB2576;
 }
 
@@ -561,7 +560,6 @@ h3 {
 }
 
 .postGameSection {
-  /* padding: 40px; */
   padding: 0px 30px;
   display: flex;
   flex-direction: column;
@@ -657,7 +655,6 @@ h3 {
 .historyContainer {
   position: absolute;
   color: #EDEDED;
-  /* min-height: 100vh; */
   height: fit-content;
   width: 100%;
   top: 0px;
@@ -689,10 +686,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  /* width: 100%; */
   height: fit-content;
-  /* padding: 20px;
-  border: 1px solid yellow; */
 }
 
 .historyListCard {
