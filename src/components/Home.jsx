@@ -25,6 +25,8 @@ export function Home() {
     const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
+
+    /// LOCALSTORAGE /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
@@ -44,24 +46,18 @@ export function Home() {
     let nextMatchday = "";
 
     useEffect(() => {
-
         // only fetch from api & check results every 24h
         if (timeOfLastResultsFetchFromApi !== "") {
-            console.log("inne i api timecheck ifsats ", timeOfLastResultsFetchFromApi);
-
-
             let timeSinceLastFetch = new Date().getTime() - new Date(timeOfLastResultsFetchFromApi).getTime();
             let hoursSinceLastFetch = Math.floor(timeSinceLastFetch / (1000 * 60 * 60));
 
             if (hoursSinceLastFetch < 24) {
-                console.log("timmar sedan senaste fetch och check: ", hoursSinceLastFetch);
+                console.log("hours since last fetch: ", hoursSinceLastFetch);
                 return
             }
         }
-
         //if no previous fetch has been made or the last fetch was more than 24h ago, fetch new data and then check for results
         fetchResults()
-
     }, []);
 
 
@@ -70,9 +66,7 @@ export function Home() {
 
         let score = 0;
         let timeLeftOnMyLastRound = 0;
-
         let tempArrayToUpdateStateArray = []
-
         setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
@@ -180,15 +174,12 @@ export function Home() {
 
             latestMatchday = findingLatestMatchday;
             nextMatchday = findingLatestMatchday + 1;
-
             setResults(allResultsArray)
             setMatchdays(allMatchdays)
             setLatestMatchD(latestMatchday)
             setNextMatchD(nextMatchday)
-
             let setThisTimeAsLastFetchFromApi = new Date();
             setTimeOfLastResultsFetchFromApi(setThisTimeAsLastFetchFromApi);
-
             fetchFixtures();
 
         }).catch(function (error) {
@@ -196,7 +187,6 @@ export function Home() {
         });
 
     }
-
 
     function fetchFixtures() {
 
@@ -241,7 +231,6 @@ export function Home() {
                 }
 
             }
-
             checkResults();
 
         }).catch(function (error) {
@@ -270,12 +259,10 @@ export function Home() {
             setResults([...results, fakeMatchday[prop]])
             setMatchdays([...matchdays, prop])
         }
-
         window.location.reload();
     }
 
     function closeResultsUI() {
-
         // // before closing and cleaning up, we want to structure and save this round to players history in thisRoundToBeSavedToYourHistory[]
         // // structure is, index 0 = round played (yourLastPlayedMatchDay), index 1 is final score (resultsUiScore), index 2 is all fixtures fixturesArrayForResultsUI
         let historyArray = [...historyOfPlayedRounds]
@@ -283,11 +270,8 @@ export function Home() {
         thisRoundToBeSavedToYourHistory.push(yourLastPlayedMatchDay)
         thisRoundToBeSavedToYourHistory.push(resultsUiScore)
         thisRoundToBeSavedToYourHistory.push(fixturesArrayForResultsUI)
-
         historyArray.push(thisRoundToBeSavedToYourHistory)
-
         setHistoryOfPlayedRounds([...historyArray])
-
         setResultsUiScore(0)
         setFixturesArrayForResultsUI([])
         setShowYourResultsUI(false)
@@ -321,7 +305,6 @@ export function Home() {
                     <MdExpandMore className="more"></MdExpandMore>
                 </div>
             </motion.div>
-
         )
     })
 
@@ -364,7 +347,6 @@ export function Home() {
         )
     })
 
-
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
         return (
             <motion.div className="resultListFixture" key={i}
@@ -385,7 +367,6 @@ export function Home() {
                 <div className="hometeamContainer">
                     <img src={"./img/" + fixt.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
                 </div>
-
                 <div className="resultsScoreContainer">
                     <div>{fixt.score}</div>
                     {fixt.yourGuess === "correct" && <div className="correct">
@@ -397,12 +378,9 @@ export function Home() {
                     </div>}
 
                 </div>
-
-
                 <div className="awayteamContainer">
                     <img src={"./img/" + fixt.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
                 </div>
-
             </motion.div>
         )
     })
@@ -427,9 +405,7 @@ export function Home() {
                         y: "-50%",
                         transition: { duration: 0.2, ease: "easeInOut" }
                     }}
-
                     className="historyContainer">
-
                     <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                         <Player
                             className="closeHistorybtn"
@@ -439,11 +415,9 @@ export function Home() {
                         >
                         </Player>
                     </div>
-
                     <div className="historyRounds">
                         {historyListHtml}
                     </div>
-
                     {historyDetailsHtml.length > 0 &&
                         <motion.div
                             initial={{ opacity: 0, y: "-50%" }}
@@ -456,8 +430,6 @@ export function Home() {
                             className="historyDetail"
                         >
                             {historyDetailsHtml}
-
-
                             <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                                 <Player
                                     className="closeHistorybtn"
@@ -603,7 +575,6 @@ export function Home() {
                         </div>
                     </div>
                     <div onClick={() => { closeResultsUI(); logoRef.current?.scrollIntoViewIfNeeded(); }}>
-                        {/* <TfiClose className='closebtnIcon'></TfiClose> */}
                         <Player
                             className="closeHistorybtn"
                             autoplay
@@ -699,8 +670,7 @@ export function Home() {
 
         <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
-            <button className="btn" onClick={() => {  logoRef.current?.scrollIntoViewIfNeeded(); checkResults() }}>2: Check</button>
+            <button className="btn" onClick={() => { logoRef.current?.scrollIntoViewIfNeeded(); checkResults() }}>2: Check</button>
         </div>
-
     </motion.main>)
 }

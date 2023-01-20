@@ -14,6 +14,8 @@ export function Game() {
 
     const [isDone, setIsDone] = useState(false)
     const [timeIsUp, setTimeIsUp] = useState(false)
+
+    /// LOCALSTORAGE /////
     const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "")
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
     const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
@@ -60,23 +62,17 @@ export function Game() {
 
     // Timer to count down round
     const renderer = ({ hours, minutes, seconds, completed }) => {
-
         if (completed && !isDone) {
             // Render if time is up
             setTimeIsUp(true);
-
         } else {
             // Render a countdown
             myTimeLeft = seconds;
             return (
-
                 <span>Time left: {seconds}</span>
-
             );
         }
     };
-
-
 
     // react bug/feature, renders state twice in dev mode so have to filter list, in production this function is unnecessary
     function filterResultsForDuplicates() {
@@ -141,9 +137,7 @@ export function Game() {
     }
 
     return (<main>
-
         <AnimatePresence mode='wait'>
-
             {timeIsUp &&
                 <motion.section
                     key="gameTimesUp"
@@ -174,49 +168,47 @@ export function Game() {
                         src="https://assets8.lottiefiles.com/packages/lf20_xFpiNt.json"
                     >
                     </Player>
-
                 </motion.section>
             }
 
             {!timeIsUp && <>
-
-                {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
-                    <motion.div
-                        key="gameCards"
-                        initial={{ opacity: 0, x: "+200%" }}
-                        animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
-                        exit={{
-                            opacity: 0,
-                            x: "+200%",
-                            transition: { duration: 0.2, ease: "easeInOut" }
-                        }}
-                    >
-                        <div className='timerContainer'>
-                            <Countdown date={Date.now() + 30000} renderer={renderer} />
-                        </div>
-
-                        <div className='cardContainer'>
-                            {matchdayToPlay[1].map((match, i) =>
-                                <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
-                                    <div className='card'>
-                                        <div className='PLcontainer'>
-                                            <img src="./img/PL.png" draggable={false} alt="" />
-                                        </div>
-                                        <div className='logoContainer'>
-                                            <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
-                                            <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
-                                        </div>
-                                        <h3>
-                                            {match.homeTeam} - {match.awayTeam}
-                                        </h3>
-                                    </div>
-                                </TinderCard>
-                            )}
-                        </div>
-                    </motion.div>
-                }
-
                 <AnimatePresence mode='wait'>
+                    {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
+                        <motion.div
+                            key="gameCards"
+                            initial={{ opacity: 0, x: "+200%" }}
+                            animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                            exit={{
+                                opacity: 0,
+                                x: "+200%",
+                                transition: { duration: 0.2, ease: "easeInOut" }
+                            }}
+                        >
+                            <div className='timerContainer'>
+                                <Countdown date={Date.now() + 30000} renderer={renderer} />
+                            </div>
+
+                            <div className='cardContainer'>
+                                {matchdayToPlay[1].map((match, i) =>
+                                    <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
+                                        <div className='card'>
+                                            <div className='PLcontainer'>
+                                                <img src="./img/PL.png" draggable={false} alt="" />
+                                            </div>
+                                            <div className='logoContainer'>
+                                                <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
+                                                <img src={"./img/" + match.awayTeam + ".png"} draggable={false} alt="awayteam logo" />
+                                            </div>
+                                            <h3>
+                                                {match.homeTeam} - {match.awayTeam}
+                                            </h3>
+                                        </div>
+                                    </TinderCard>
+                                )}
+                            </div>
+                        </motion.div>
+                    }
+
                     {isDone && <>
                         <motion.section
                             key="gameDone"
