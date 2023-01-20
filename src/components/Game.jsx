@@ -152,7 +152,7 @@ export function Game() {
                     exit={{
                         opacity: 0,
                         x: "-200%",
-                        transition: { duration: 1.2, ease: "easeInOut" }
+                        transition: { duration: 0.2, ease: "easeInOut" }
                     }}
                     className='postGameSection'>
                     <h1 className="timesUpText animate__animated animate__fadeIn">
@@ -163,7 +163,7 @@ export function Game() {
                         <button className="btn  animate__animated animate__bounceIn" onClick={() => { navigate("/") }} aria-label="button for navigating back home">
                             <HiHome className='btnIcon'></HiHome>
                         </button>
-                        <button className="btn  animate__animated animate__bounceIn" onClick={() => { window.location.reload(); }} aria-label="button to restart round">
+                        <button className="btn  animate__animated animate__bounceIn" onClick={() => { setTimeIsUp(false) }} aria-label="button to restart round">
                             <HiOutlineRefresh className='btnIcon'></HiOutlineRefresh>
                         </button>
                     </div>
@@ -225,7 +225,7 @@ export function Game() {
                             exit={{
                                 opacity: 0,
                                 x: "+200%",
-                                transition: { duration: 1.2, ease: "easeInOut" }
+                                transition: { duration: 0.2, ease: "easeInOut" }
                             }}
                             className='postGameSection'>
                             <h1 className='done animate__animated animate__fadeIn'>
