@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "../useLocalStorage";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose } from "react-icons/tfi";
@@ -14,6 +14,8 @@ import { fakeFixturesForNow } from "../fakeData";
 export function Home() {
 
     const navigate = useNavigate();
+    const apiKey = process.env.REACT_APP_API_KEY;
+    const logoRef = useRef()
 
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
@@ -21,11 +23,9 @@ export function Home() {
     const [guessedAllRight, setGuessedAllRight] = useState(false)
     const [hiscoreAchievment, setHiscoreAchievment] = useState(false)
     const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
-
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
-
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
     const [upcomingFixtures, setUpcomingFixtures] = useLocalStorage("upcomingFixtures", []);
@@ -38,19 +38,10 @@ export function Home() {
     const [highScore, setHighScore] = useLocalStorage("highScore", 0);
     const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
 
-
-
-
-     const apiKey = process.env.REACT_APP_API_KEY;
-   // const apiKey = "2e4bc96176msh62bcb518484b1a0p1847bbjsnd2b7dbd5c57b"
-
     let allMatchdays = [];
     let allResultsArray = [];
-
     let latestMatchday = "";
     let nextMatchday = "";
-
-    let devClickCount = 0;
 
     useEffect(() => {
 
@@ -416,7 +407,16 @@ export function Home() {
         )
     })
 
-    return (<main className="animate__animated animate__fadeInLeft animate__fast">
+    return (<motion.main
+        key="homeMain"
+        initial={{ opacity: 0, x: "-200%" }}
+        animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+        exit={{
+            opacity: 0,
+            x: "-200%",
+            transition: { duration: 0.2, ease: "easeInOut" }
+        }}
+    >
 
         <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>
@@ -436,7 +436,7 @@ export function Home() {
 
                     className="historyContainer">
 
-                    <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>
+                    <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                         <Player
                             className="closeHistorybtn"
                             autoplay
@@ -464,7 +464,7 @@ export function Home() {
                             {historyDetailsHtml}
 
 
-                            <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]) }}>
+                            <div onClick={() => { setShowHistory(false); setChosenHistoryRoundOfFixtures([]); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                                 <Player
                                     className="closeHistorybtn"
                                     autoplay
@@ -478,7 +478,7 @@ export function Home() {
                 </motion.div>}
         </AnimatePresence>
 
-        <div className="logo">
+        <div ref={logoRef} className="logo">
             <motion.svg className="svg animate__animated animate__fadeIn" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
             </g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" strokeWidth="0.72" strokeLinecap="round" strokeLinejoin="round"></path> </g>
             </motion.svg>
@@ -516,7 +516,7 @@ export function Home() {
         {historyOfPlayedRounds.length > 0 &&
 
             <div className="information">
-                <div onClick={() => { setShowHistory(true) }}>
+                <div onClick={() => { setShowHistory(true); logoRef.current?.scrollIntoViewIfNeeded(); }}>
                     <Player
                         className="showHistorybtn"
                         autoplay
@@ -615,7 +615,7 @@ export function Home() {
                     </div>
 
 
-                    <button onClick={closeResultsUI} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
+                    <button onClick={() => { closeResultsUI(); logoRef.current?.scrollIntoViewIfNeeded(); }} className="closeBtn"><TfiClose className='closebtnIcon'></TfiClose></button>
 
                 </motion.section>
             }
@@ -702,5 +702,5 @@ export function Home() {
             </a>
         </footer>
 
-    </main>)
+    </motion.main>)
 }
