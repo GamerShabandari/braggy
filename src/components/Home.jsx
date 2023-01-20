@@ -41,8 +41,8 @@ export function Home() {
 
 
 
-    // const apiKey = process.env.REACT_APP_API_KEY;
-    const apiKey = "2e4bc96176msh62bcb518484b1a0p1847bbjsnd2b7dbd5c57b"
+     const apiKey = process.env.REACT_APP_API_KEY;
+   // const apiKey = "2e4bc96176msh62bcb518484b1a0p1847bbjsnd2b7dbd5c57b"
 
     let allMatchdays = [];
     let allResultsArray = [];
@@ -416,7 +416,7 @@ export function Home() {
         )
     })
 
-    return (<main>
+    return (<main className="animate__animated animate__fadeInLeft animate__fast">
 
         <div className="devBtnContainer">
             <button className="btn" onClick={insertFakeResult}>1: Fake</button>

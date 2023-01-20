@@ -142,16 +142,16 @@ export function Game() {
 
     return (<main>
 
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode='wait'>
 
             {timeIsUp &&
                 <motion.section
                     key="gameTimesUp"
-                    initial={{ opacity: 0, y: "-50%" }}
-                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                    initial={{ opacity: 0, x: "-200%" }}
+                    animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
                     exit={{
                         opacity: 0,
-                        x: "+200%",
+                        x: "-200%",
                         transition: { duration: 1.2, ease: "easeInOut" }
                     }}
                     className='postGameSection'>
@@ -183,19 +183,19 @@ export function Game() {
                 {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
                     <motion.div
                         key="gameCards"
-                        initial={{ opacity: 0, y: "-50%" }}
-                        animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                        initial={{ opacity: 0, x: "+200%" }}
+                        animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
                         exit={{
                             opacity: 0,
                             x: "+200%",
                             transition: { duration: 0.2, ease: "easeInOut" }
                         }}
                     >
-                        <div className='timerContainer  animate__animated animate__zoomIn'>
+                        <div className='timerContainer'>
                             <Countdown date={Date.now() + 30000} renderer={renderer} />
                         </div>
 
-                        <div className='cardContainer animate__animated animate__fadeInDown animate__faster'>
+                        <div className='cardContainer'>
                             {matchdayToPlay[1].map((match, i) =>
                                 <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
                                     <div className='card'>
@@ -216,33 +216,35 @@ export function Game() {
                     </motion.div>
                 }
 
-                {isDone && <>
-                    <motion.section
-                        key="gameDone"
-                        initial={{ opacity: 0, y: "-50%" }}
-                        animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
-                        exit={{
-                            opacity: 0,
-                            x: "+200%",
-                            transition: { duration: 1.2, ease: "easeInOut" }
-                        }}
-                        className='postGameSection'>
-                        <h1 className='done animate__animated animate__fadeIn'>
-                            Great job!
-                        </h1>
-                        <h3 className='checkBack animate__animated animate__fadeIn'>
-                            Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
-                        </h3>
-                        <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
-                        <Player
-                            className="fans"
-                            autoplay
-                            loop
-                            src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
-                        >
-                        </Player>
-                    </motion.section>
-                </>}
+                <AnimatePresence mode='wait'>
+                    {isDone && <>
+                        <motion.section
+                            key="gameDone"
+                            initial={{ opacity: 0, x: "-200%" }}
+                            animate={{ opacity: 1, x: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                            exit={{
+                                opacity: 0,
+                                x: "+200%",
+                                transition: { duration: 1.2, ease: "easeInOut" }
+                            }}
+                            className='postGameSection'>
+                            <h1 className='done animate__animated animate__fadeIn'>
+                                Great job!
+                            </h1>
+                            <h3 className='checkBack animate__animated animate__fadeIn'>
+                                Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
+                            </h3>
+                            <button className="btn  animate__animated animate__bounceIn" aria-label="button for navigating back home" onClick={() => { navigate("/") }}><HiHome className='btnIcon'></HiHome></button>
+                            <Player
+                                className="fans"
+                                autoplay
+                                loop
+                                src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
+                            >
+                            </Player>
+                        </motion.section>
+                    </>}
+                </AnimatePresence>
 
             </>}
         </AnimatePresence>
