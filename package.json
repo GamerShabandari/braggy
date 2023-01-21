@@ -20,7 +20,6 @@
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "react-tinder-card": "^1.6.2",
-    "react-type-animation": "^2.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

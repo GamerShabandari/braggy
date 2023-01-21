@@ -27,7 +27,8 @@ application will run at localhost:3000
 
 # Good to know
 - Since the game is dependent of Premier League matchdays to be played before the player can se the results & history of played game/games I have implemented functions for faking a result for demonstration purposes.
-To test a fake result there are two buttons at the bottom of the page, first the player need to play a round, when back at main page first click the "1: Fake" button. Now the fake results have been generated.
-Now click the "2: Check" button to simulate UI/UX when results are in.
+To test a fake result there are two buttons at the bottom of the page(commented out in the code for now).
+- first the player needs to play a round, then when back at main page click the "1: Fake" button.
+- then click the "2: Check" button to simulate UI/UX when results are in.
 
-- The API used has had some issues during development where some fixtures and results where lost and caused issues with app-logic. To adress this there is a function that supplies fake data if the API is having problems. 
+- The API used has had some issues during development where some fixtures and results where lost and caused issues with app-logic. To address this there is a function that supplies fake data if the API is having problems. 
