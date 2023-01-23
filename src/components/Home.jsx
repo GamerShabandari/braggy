@@ -10,7 +10,6 @@ import AnimatedNumbers from "react-animated-numbers";
 import { motion, AnimatePresence } from "framer-motion";
 import { fakeFixturesForNow } from "../fakeData";
 
-
 export function Home() {
 
     const navigate = useNavigate();
@@ -20,16 +19,14 @@ export function Home() {
     const [showLeaderboard, setShowLeaderboard] = useState(false)
     const [loadingLeaderboard, setLoadingLeaderboard] = useState(false)
     const [leaderboard, setLeaderboard] = useState([])
-
-    const [loggedIn, setLoggedIn] = useState(false)
     const [showLoginField, setShowLoginField] = useState(false)
     const [showCreateLoginField, setShowCreateLoginField] = useState(false)
-    const [userId, setUserId] = useLocalStorage("userId", "");
-
     const [createdUsername, setCreatedUsername] = useState("");
     const [createdPassword, setCreatedPassword] = useState("");
     const [createUserError, setCreateUserError] = useState(false)
-
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [showError, setShowError] = useState(false);
     const [isLoadingApiData, setIsLoadingApiData] = useState(false)
     const [resultsUiScore, setResultsUiScore] = useState(0)
     const [resultsUiAmountOfCorrectAnswers, setResultsUiAmountOfCorrectAnswers] = useState(0)
@@ -38,6 +35,7 @@ export function Home() {
     const [fixturesArrayForResultsUI, setFixturesArrayForResultsUI] = useState([])
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
+    const [showHighScoreSavedUI, setShowHighScoreSavedUI] = useState(false)
 
     /// LOCALSTORAGE /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
@@ -52,6 +50,9 @@ export function Home() {
     const [timeOfLastResultsFetchFromApi, setTimeOfLastResultsFetchFromApi] = useLocalStorage("timeOfLastResultsFetchFromApi", "");
     const [highScore, setHighScore] = useLocalStorage("highScore", 0);
     const [showYourResultsUI, setShowYourResultsUI] = useLocalStorage("showYourResultsUI", false);
+    const [userId, setUserId] = useLocalStorage("userId", "");
+    const [myName, setMyName] = useLocalStorage("myName", "");
+    const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false);
 
     let allMatchdays = [];
     let allResultsArray = [];
@@ -143,6 +144,7 @@ export function Home() {
                 if (score > highScore) {
                     setHighScore(score)
                     setHiscoreAchievment(true)
+                    postHighscoreToBackend(score)
                 }
 
                 // UI to display results and score
@@ -154,6 +156,28 @@ export function Home() {
             }
 
         }
+
+    }
+
+    function postHighscoreToBackend(score) {
+
+        let newScoreToPost = {
+            username: myName,
+            highscore: score
+        }
+
+        axios.post("https://braggy-backend.onrender.com/postHighscore/" + userId, newScoreToPost, { headers: { "content-type": "application/json" } })
+            .then(response => {
+                console.log(response.data);
+                setShowHighScoreSavedUI(true)
+                setTimeout(() => {
+                    setShowHighScoreSavedUI(false)
+                }, 3000)
+            })
+            .catch(error => {
+                console.log(error);
+                alert("server error")
+            })
 
     }
 
@@ -307,10 +331,16 @@ export function Home() {
     // update username state-variable when creating a new user
     function handleCreatedNameInput(e) {
         setCreatedUsername(e.target.value)
+        if (createUserError) {
+            setCreateUserError(false)
+        }
     }
     // update password state-variable when creating a new user
     function handleCreatedPasswordInput(e) {
         setCreatedPassword(e.target.value)
+        if (createUserError) {
+            setCreateUserError(false)
+        }
     }
 
     function createAccount() {
@@ -331,12 +361,61 @@ export function Home() {
                 })
                 .catch(error => {
                     console.log(error);
-                    alert("error from server")
+                    alert("server error")
                 })
         }
         else {
             setCreateUserError(true);
         }
+    }
+
+    function handleNameInput(e) {
+        setUsername(e.target.value)
+        if (showError) {
+            setShowError(false)
+        }
+    }
+    // handle input state for login
+    function handlePasswordInput(e) {
+        setPassword(e.target.value)
+        if (showError) {
+            setShowError(false)
+        }
+    }
+
+    // login user, if success change all relevant state-variables and save userid to localstorage, else show error 
+    function login() {
+        let usersLogin = {
+            username: username,
+            password: password
+        }
+        axios.post("https://braggy-backend.onrender.com/login", usersLogin, { headers: { "content-type": "application/json" } })
+            .then(response => {
+
+                if (response.data.loggedIn === true) {
+                    setUserId(response.data.id);
+                    setMyName(username);
+                    setLoggedIn(true);
+                    showCreateLoginField(false)
+                    showLoginField(false)
+                    setShowError(false);
+                    setUsername("");
+                    setPassword("");
+
+                } else {
+                    setShowError(true);
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert("server error")
+            })
+    }
+
+    function logOut() {
+        setUserId("");
+        setMyName("");
+        setLoggedIn(false);
     }
 
 
@@ -540,59 +619,114 @@ export function Home() {
             </div>
         </div>
 
-        {!loggedIn &&
-            <div className="loginContainer">
-                <span>Login to post your highscore to leaderboard</span>
+        <AnimatePresence mode="wait">
+            {!loggedIn &&
+                <motion.div
+                    key="loginContainer"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{
+                        opacity: 0,
+                        y: "-50%",
+                        transition: { duration: 0.1 }
+                    }}
+                    className="loginContainer">
+                    <span>Login to post your highscore to leaderboard</span>
 
-                <button onClick={() => { setShowLoginField(!showLoginField) }}>login</button>
+                    <button onClick={() => { setShowLoginField(!showLoginField); setShowCreateLoginField(false) }}>login</button>
 
-                <AnimatePresence mode='wait'>
+                    <AnimatePresence mode='wait'>
 
-                    {showLoginField &&
-                        <motion.div
-                            key="loginField"
-                            initial={{ opacity: 0, y: "-50%" }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{
-                                opacity: 0,
-                                y: "-50%",
-                                transition: { duration: 0.1 }
-                            }}
-                            className="loginField">
-                            <input type="text" />
-                            <input type="password" />
-                            <button>login</button>
-                            <span>No account? Create a new one</span>
-                            <button onClick={() => { setShowLoginField(false); setShowCreateLoginField(true) }}>create account</button>
-                        </motion.div>
-                    }
+                        {showLoginField &&
+                            <motion.div
+                                key="loginField"
+                                initial={{ opacity: 0, y: "-50%" }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{
+                                    opacity: 0,
+                                    y: "-50%",
+                                    transition: { duration: 0.1 }
+                                }}
+                                className="loginField">
+                                <input type="text" placeholder="username" value={username} onChange={handleNameInput} />
+                                <input type="password" placeholder="password" value={password} onChange={handlePasswordInput} />
+                                <button onClick={login}>login</button>
+                                <AnimatePresence mode="wait">
+                                    {showError &&
+                                        <motion.div
+                                            key="loginError"
+                                            initial={{ opacity: 0, y: "-50%" }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{
+                                                opacity: 0,
+                                                y: "-50%",
+                                                transition: { duration: 0.1 }
+                                            }}
+                                            className="error">
+                                            Incorrect login, try again.
+                                        </motion.div>}
+                                </AnimatePresence>
+                                <span>No account? Create one</span>
+                                <button onClick={() => { setShowLoginField(false); setShowCreateLoginField(true) }}>create account</button>
+                            </motion.div>
+                        }
 
-                    {showCreateLoginField &&
-                        <motion.div
-                            key="createLoginField"
-                            initial={{ opacity: 0, y: "-50%" }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{
-                                opacity: 0,
-                                y: "-50%",
-                                transition: { duration: 0.1 }
-                            }}
-                            className="loginField">
-                            <input type="text" placeholder="username (atleast 6 characters)" value={createdUsername} onChange={handleCreatedNameInput} />
-                            <input type="password" placeholder="password (atleast 6 characters)" value={createdPassword} onChange={handleCreatedPasswordInput} />
 
-                            <button onClick={() => { createAccount(); }}>create account</button>
+                        {showCreateLoginField &&
+                            <motion.div
+                                key="createLoginField"
+                                initial={{ opacity: 0, y: "-50%" }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{
+                                    opacity: 0,
+                                    y: "-50%",
+                                    transition: { duration: 0.1 }
+                                }}
+                                className="loginField">
+                                <input type="text" placeholder="username (atleast 6 characters)" value={createdUsername} onChange={handleCreatedNameInput} />
+                                <input type="password" placeholder="password (atleast 6 characters)" value={createdPassword} onChange={handleCreatedPasswordInput} />
 
-                            {createUserError &&
-                                <div className="animate__animated animate__bounceIn">username and password atleast 6 characters
-                                </div>}
-                        </motion.div>
-                    }
+                                <button onClick={() => { createAccount(); }}>create account</button>
+                                <AnimatePresence mode="wait">
+                                    {createUserError &&
+                                        <motion.div
+                                            key="createUserError"
+                                            initial={{ opacity: 0, y: "-50%" }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{
+                                                opacity: 0,
+                                                y: "-50%",
+                                                transition: { duration: 0.1 }
+                                            }}
+                                            className="error">
+                                            Username & password must be atleast 6 characters.
+                                        </motion.div>}
+                                </AnimatePresence>
+                            </motion.div>
+                        }
+                    </AnimatePresence>
 
-                </AnimatePresence>
+                </motion.div>
+            }
+        </AnimatePresence>
 
-            </div>
-        }
+        <AnimatePresence mode="wait">
+            {loggedIn &&
+                <motion.div
+                    key="logedInUi"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{
+                        opacity: 0,
+                        y: "-50%",
+                        transition: { duration: 0.1 }
+                    }}
+                    className="loggedIn">
+                    Logged in as {myName}.
+                    <button onClick={logOut}>logout</button>
+                </motion.div>
+            }
+        </AnimatePresence>
 
         <section>
             <div className="scoreContainer  animate__animated animate__fadeIn">
@@ -614,7 +748,25 @@ export function Home() {
                             ]}
                         ></AnimatedNumbers>
                     </>}
-                    <button onClick={() => { getLeaderboard() }}>leaderboard</button>
+                    <button onClick={() => { getLeaderboard() }}>view leaderboard</button>
+                    <AnimatePresence mode="wait">
+                        {showHighScoreSavedUI &&
+                            <motion.div
+                                key="createUserError"
+                                initial={{ opacity: 0, y: "-50%" }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{
+                                    opacity: 0,
+                                    y: "-50%",
+                                    transition: { duration: 0.1 }
+                                }}
+                                className="error"
+                            >
+                                Highscore posted to leaderboard.
+                            </motion.div>
+
+                        }
+                    </AnimatePresence>
                 </span>
             </div>
         </section>
