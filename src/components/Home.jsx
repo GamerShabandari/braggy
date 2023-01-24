@@ -131,7 +131,12 @@ export function Home() {
                 if (score > highScore) {
                     setHighScore(score)
                     setHiscoreAchievment(true)
-                    postHighscoreToBackend(score)
+
+
+                    if (username !== "" && userId !== "") {
+                        postHighscoreToBackend(score)
+                    }
+
                 }
 
                 // UI to display results and score
