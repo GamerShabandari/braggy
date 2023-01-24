@@ -39,6 +39,10 @@ export function Home() {
     const [showHistory, setShowHistory] = useState(false)
     const [chosenHistoryRoundOfFixtures, setChosenHistoryRoundOfFixtures] = useState([])
     const [showHighScoreSavedUI, setShowHighScoreSavedUI] = useState(false)
+    const [tryingLogin, setTryingLogin] = useState(false)
+    const [tryingAccount, setTryingAccount] = useState(false)
+
+
 
     /// LOCALSTORAGE /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
@@ -64,7 +68,6 @@ export function Home() {
     useEffect(() => {
         fetchResults()
     }, []);
-
 
     // checks if results are in from last played game and then calculates score 
     function checkResults() {
@@ -120,38 +123,28 @@ export function Home() {
                         }
                     }
                 }
-
                 setResultsUiAmountOfCorrectAnswers(score)
-
                 // If you guessed all matches correct you get an extra bonus
                 if (score === yourFinalPicksForThisMatchDay[1].length) {
                     score = score * 2;
                     setGuessedAllRight(true)
                 }
-
                 // score is number of right guesses x timeLeftOnMyLastRound * 100.
                 score = score * timeLeftOnMyLastRound * 100;
                 if (score > highScore) {
                     setHighScore(score)
                     setHiscoreAchievment(true)
 
-
                     if (username !== "" && userId !== "") {
                         postHighscoreToBackend(score)
                     }
 
                 }
-
                 // UI to display results and score
                 setResultsUiScore(score)
                 setFixturesArrayForResultsUI([...tempArrayToUpdateStateArray])
-                // setShowYourResultsUI(true);
-                // // clear previous play and let user play next round
-                // setYourFinalPicksForThisMatchDay([]);
             }
-
         }
-
     }
 
     function postHighscoreToBackend(score) {
@@ -340,6 +333,9 @@ export function Home() {
     }
 
     function createAccount() {
+
+        setTryingAccount(true)
+
         if (createdUsername.length > 5 && createdPassword.length > 5) {
             setCreateUserError(false);
             let newCreatedUser = {
@@ -353,7 +349,7 @@ export function Home() {
                     setCreatedPassword("");
                     setShowLoginField(true);
                     setShowCreateLoginField(false)
-
+                    setTryingAccount(false)
                 })
                 .catch(error => {
                     console.log(error);
@@ -362,6 +358,7 @@ export function Home() {
         }
         else {
             setCreateUserError(true);
+            setTryingAccount(false)
         }
     }
 
@@ -381,6 +378,9 @@ export function Home() {
 
     // login user, if success change all relevant state-variables and save userid to localstorage, else show error 
     function login() {
+
+        setTryingLogin(true);
+
         let usersLogin = {
             username: username,
             password: password
@@ -397,9 +397,11 @@ export function Home() {
                     setShowError(false);
                     setUsername("");
                     setPassword("");
+                    setTryingLogin(false);
 
                 } else {
                     setShowError(true);
+                    setTryingLogin(false);
                 }
             })
             .catch(error => {
@@ -523,7 +525,7 @@ export function Home() {
 
     let leaderboardListHtml = leaderboard.map((listRow, i) => {
         return (
-            <motion.div className="resultListFixture" key={i}
+            <motion.div className="leaderboardRow" key={i}
                 initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{
@@ -538,10 +540,11 @@ export function Home() {
                     delay: i * 0.2
                 }}
             >
-                <div className="leaderboardRow">
-                    <div>{listRow.username}</div>
-                    <div>{listRow.highscore}</div>
-                </div>
+
+                <div className="placement">{i + 1} :</div>
+                <div className="username">{listRow.username}</div>
+                <div className="points">{listRow.highscore}</div>
+
             </motion.div>
         )
     })
@@ -669,7 +672,7 @@ export function Home() {
                                             Incorrect login, try again.
                                         </motion.div>}
                                 </AnimatePresence>
-                                <button className="secondaryBtn" onClick={login}>Sign in</button>
+                                <button disabled={tryingLogin} className="secondaryBtn" onClick={login}>Sign in</button>
 
                                 <button className="secondaryBtn" onClick={() => { setShowLoginField(false); setShowCreateLoginField(true) }}>
                                     create login
@@ -692,7 +695,7 @@ export function Home() {
                                 <input type="text" placeholder="username (atleast 6 characters)" value={createdUsername} onChange={handleCreatedNameInput} />
                                 <input type="password" placeholder="password (atleast 6 characters)" value={createdPassword} onChange={handleCreatedPasswordInput} />
 
-                                <button className="secondaryBtn" onClick={() => { createAccount(); }}>save account</button>
+                                <button disabled={tryingAccount} className="secondaryBtn" onClick={() => { createAccount(); }}>save account</button>
                                 <AnimatePresence mode="wait">
                                     {createUserError &&
                                         <motion.div
@@ -714,7 +717,7 @@ export function Home() {
 
                 </motion.div>
             }
-        </AnimatePresence>
+        </AnimatePresence >
 
         <AnimatePresence mode="wait">
             {loggedIn &&
@@ -754,7 +757,7 @@ export function Home() {
                             ]}
                         ></AnimatedNumbers>
                     </>}
-                    <button className="btn" onClick={() => { getLeaderboard();  logoRef.current?.scrollIntoViewIfNeeded(); }}>view leaderboard</button>
+                    <button className="btn" onClick={() => { getLeaderboard(); logoRef.current?.scrollIntoViewIfNeeded(); }}>view leaderboard</button>
                     <AnimatePresence mode="wait">
                         {showHighScoreSavedUI &&
                             <motion.div
@@ -995,13 +998,26 @@ export function Home() {
                     }
 
                     {!loadingLeaderboard &&
-                        <div>
-                            <h1>Här är listan sen</h1>
+                        <div className="leaderBoard">
+                            <Player className="trophy animate__animated  animate__zoomIn"
+                                autoplay
+                                keepLastFrame
+                                src="https://assets4.lottiefiles.com/packages/lf20_touohxv0.json"
+                            >
+                            </Player>
                             {leaderboardListHtml}
                         </div>
                     }
 
-                    <button onClick={() => { setShowLeaderboard(false) }}>Close</button>
+                    <div onClick={() => { setShowLeaderboard(false) }}>
+                        <Player
+                            className="closeLeaderboardBtn"
+                            autoplay
+                            loop
+                            src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                        >
+                        </Player>
+                    </div>
                 </motion.div>
             }
         </AnimatePresence>

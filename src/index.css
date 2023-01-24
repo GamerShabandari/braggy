@@ -61,6 +61,11 @@ code {
   cursor: pointer;
 }
 
+.secondaryBtn:disabled {
+  background-color: #17171755;
+  color: #ededed53;
+}
+
 .btn {
   display: flex;
   justify-content: center;
@@ -737,7 +742,7 @@ h3 {
 }
 
 .leaderboardContainer {
-  height: 400px;
+  height: fit-content;
   width: 100%;
   background-color: #FB2576;
   position: absolute;
@@ -749,12 +754,59 @@ h3 {
   padding: 20px;
 }
 
+.leaderBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
 .leaderboardRow {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  width: 300px;
   justify-content: center;
-  background-color: aqua;
   color: #EDEDED;
+  gap: 20px;
+  border: 1px solid black;
+  overflow: hidden;
+  background-color: #171717;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.trophy {
+  width: 100px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.placement {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #EDEDED;
+}
+
+.username {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #EDEDED;
+}
+
+.points {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #FB2576;
+  letter-spacing: 2px;
+}
+
+.closeLeaderboardBtn {
+  width: 30px;
+  filter: brightness(10);
+  transform: rotate(270deg);
 }
 
 .loginContainer {
@@ -766,7 +818,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* padding: 0px 20px; */
+  padding: 20px;
   gap: 20px;
   color: #EDEDED;
   font-weight: 300;
