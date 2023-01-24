@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose } from "react-icons/tfi";
-import { GrUserAdd, GrLogin } from "react-icons/gr";
+import { GrLogout } from "react-icons/gr";
 import { MdExpandMore } from "react-icons/md";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
@@ -164,7 +164,6 @@ export function Home() {
             })
             .catch(error => {
                 console.log(error);
-                alert("server error")
             })
 
     }
@@ -353,7 +352,6 @@ export function Home() {
                 })
                 .catch(error => {
                     console.log(error);
-                    alert("server error")
                 })
         }
         else {
@@ -406,7 +404,6 @@ export function Home() {
             })
             .catch(error => {
                 console.log(error);
-                alert("server error")
             })
     }
 
@@ -731,8 +728,10 @@ export function Home() {
                         transition: { duration: 0.1 }
                     }}
                     className="loggedIn">
-                    Logged in as {myName}.
-                    <button onClick={logOut}>logout</button>
+                    {myName}.
+                    <button className="logout" onClick={logOut}>
+                        sign out
+                    </button>
                 </motion.div>
             }
         </AnimatePresence>
