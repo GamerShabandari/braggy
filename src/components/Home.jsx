@@ -307,7 +307,7 @@ export function Home() {
             setCreateUserError(false)
         }
     }
-    
+
     function handleCreatedPasswordInput(e) {
         setCreatedPassword(e.target.value)
         if (createUserError) {
@@ -503,7 +503,8 @@ export function Home() {
         )
     })
 
-    let leaderboardListHtml = leaderboard.map((listRow, i) => {
+    //leaderboard only top 20
+    let leaderboardListHtml = leaderboard.slice(0, 20).map((listRow, i) => {
         return (
             <motion.div className="leaderboardRow" key={i}
                 initial={{ opacity: 0, y: "-50%", scale: 0.7 }}
@@ -520,7 +521,6 @@ export function Home() {
                     delay: i * 0.2
                 }}
             >
-
                 <div className="placement">{i + 1} :</div>
                 <div className="username">{listRow.username}</div>
                 <div className="points">{listRow.highscore}</div>
@@ -994,6 +994,12 @@ export function Home() {
                                 src="https://assets4.lottiefiles.com/packages/lf20_touohxv0.json"
                             >
                             </Player>
+                            {leaderboard.length === 0 &&
+                                <span>No scores posted yet.
+                                    <br />
+                                   <strong>You</strong> should be the first!
+                                </span>
+                            }
                             {leaderboardListHtml}
                         </div>
                     }
