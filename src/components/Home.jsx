@@ -61,15 +61,17 @@ export function Home() {
 
     useEffect(() => {
         // only fetch from api & check results every 24h
-        if (timeOfLastResultsFetchFromApi !== "") {
-            let timeSinceLastFetch = new Date().getTime() - new Date(timeOfLastResultsFetchFromApi).getTime();
-            let hoursSinceLastFetch = Math.floor(timeSinceLastFetch / (1000 * 60 * 60));
 
-            if (hoursSinceLastFetch < 24) {
-                console.log("hours since last fetch: ", hoursSinceLastFetch);
-                return
-            }
-        }
+        // if (timeOfLastResultsFetchFromApi !== "") {
+        //     let timeSinceLastFetch = new Date().getTime() - new Date(timeOfLastResultsFetchFromApi).getTime();
+        //     let hoursSinceLastFetch = Math.floor(timeSinceLastFetch / (1000 * 60 * 60));
+
+        //     if (hoursSinceLastFetch < 24) {
+        //         console.log("hours since last fetch: ", hoursSinceLastFetch);
+        //         return
+        //     }
+        // }
+
         //if no previous fetch has been made or the last fetch was more than 24h ago, fetch new data and then check for results
         fetchResults()
     }, []);
@@ -78,27 +80,34 @@ export function Home() {
     // checks if results are in from last played game and then calculates score 
     function checkResults() {
 
+        console.log("inne i checkresults");
         let score = 0;
         let timeLeftOnMyLastRound = 0;
         let tempArrayToUpdateStateArray = []
         setIsLoadingApiData(false);
 
         if (yourFinalPicksForThisMatchDay.length === 0) {
+            console.log("avbryter");
             return
         }
 
         for (let i = 0; i < matchdays.length; i++) {
             const matchday = matchdays[i];
+            console.log("högst upp här");
 
             if (Number(matchday.replace(/\D/g, '')) === Number(yourLastPlayedMatchDay)) {
+                console.log("en match! " + matchday + yourLastPlayedMatchDay);
 
                 timeLeftOnMyLastRound = yourFinalPicksForThisMatchDay[0];
 
                 for (const fixtureGuessed of yourFinalPicksForThisMatchDay[1]) {
+                    console.log("loop1");
 
                     for (const fixtureResult of results[i]) {
+                        console.log("loop2");
 
                         if (fixtureGuessed.myWinner === fixtureResult.homeTeam || fixtureGuessed.myWinner === fixtureResult.awayTeam || fixtureGuessed.myWinner === fixtureResult.homeTeam + fixtureResult.awayTeam) {
+                            console.log("match på lagen");
 
                             if (fixtureResult.homeTeamScore === "" || fixtureResult.awayTeamScore === "") {
                                 // if any of the fixtures hasnt been played yet, stop checking results
