@@ -4,14 +4,11 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose } from "react-icons/tfi";
-import { GrLogout } from "react-icons/gr";
 import { MdExpandMore } from "react-icons/md";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion, AnimatePresence } from "framer-motion";
 import { fakeFixturesForNow } from "../fakeData";
-
-
 
 export function Home() {
 
@@ -41,9 +38,6 @@ export function Home() {
     const [showHighScoreSavedUI, setShowHighScoreSavedUI] = useState(false)
     const [tryingLogin, setTryingLogin] = useState(false)
     const [tryingAccount, setTryingAccount] = useState(false)
-
-
-
     /// LOCALSTORAGE /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
     const [results, setResults] = useLocalStorage("results", [""]);
@@ -156,7 +150,6 @@ export function Home() {
 
         axios.post("https://braggy-backend.onrender.com/postHighscore/" + userId, newScoreToPost, { headers: { "content-type": "application/json" } })
             .then(response => {
-                console.log(response.data);
                 setShowHighScoreSavedUI(true)
                 setTimeout(() => {
                     setShowHighScoreSavedUI(false)
@@ -165,7 +158,6 @@ export function Home() {
             .catch(error => {
                 console.log(error);
             })
-
     }
 
     function fetchResults() {
@@ -207,7 +199,6 @@ export function Home() {
         }).catch(function (error) {
             console.error(error);
         });
-
     }
 
     function fetchFixtures() {
@@ -251,14 +242,12 @@ export function Home() {
                         setMatchdayToPlay(fixturesArray);
                     }
                 }
-
             }
             checkResults();
 
         }).catch(function (error) {
             console.error(error);
         });
-
     }
 
     // used to fake result to test app
@@ -302,28 +291,23 @@ export function Home() {
     }
 
     function getLeaderboard() {
-
-        console.log("hämtar leaderboard");
         setLoadingLeaderboard(true)
         setShowLeaderboard(true)
 
         axios.get("https://braggy-backend.onrender.com/leaderboard/")
             .then(response => {
-                console.log("response", response);
-                console.log("data", response.data);
                 setLoadingLeaderboard(false)
                 setLeaderboard([...response.data])
             })
     }
 
-    // update username state-variable when creating a new user
     function handleCreatedNameInput(e) {
         setCreatedUsername(e.target.value)
         if (createUserError) {
             setCreateUserError(false)
         }
     }
-    // update password state-variable when creating a new user
+    
     function handleCreatedPasswordInput(e) {
         setCreatedPassword(e.target.value)
         if (createUserError) {
@@ -343,7 +327,6 @@ export function Home() {
             }
             axios.post("https://braggy-backend.onrender.com/createUser", newCreatedUser, { headers: { "content-type": "application/json" } })
                 .then(response => {
-                    console.log(response.data);
                     setCreatedUsername("");
                     setCreatedPassword("");
                     setShowLoginField(true);
@@ -366,7 +349,7 @@ export function Home() {
             setShowError(false)
         }
     }
-    // handle input state for login
+
     function handlePasswordInput(e) {
         setPassword(e.target.value)
         if (showError) {
@@ -992,7 +975,14 @@ export function Home() {
                 >
                     {loadingLeaderboard &&
                         <div>
-                            <h3>Loading</h3>
+                            <Player
+                                className="fans"
+                                autoplay
+                                loop
+                                src="https://assets1.lottiefiles.com/packages/lf20_1AzBQK1JzD.json"
+                            >
+                            </Player>
+                            <span>loading...</span>
                         </div>
                     }
 

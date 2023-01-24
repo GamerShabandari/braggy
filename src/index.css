@@ -54,7 +54,6 @@ code {
   border-radius: 15px;
   border: none;
   padding: 20px;
-  /* background-color: #6600B8; */
   background-color: #171717;
   color: #EDEDED;
   margin: 0px auto;
@@ -76,12 +75,10 @@ code {
   border-radius: 15px;
   border: none;
   padding: 20px;
-  /* background-color: #6600B8; */
   background-color: #FB2576;
   color: #EDEDED;
   margin: 20px auto;
   cursor: pointer;
-  /* margin: 10px auto; */
 }
 
 .btnIcon {
@@ -815,7 +812,6 @@ h3 {
 .loginContainer {
   height: fit-content;
   width: 100%;
-  /* background-color: #FB2576; */
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
@@ -831,12 +827,10 @@ h3 {
 }
 
 .loginField {
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 10px;
 }
 
@@ -850,10 +844,6 @@ input {
 }
 
 .error {
-  /* padding: 20px;
-  color: #EDEDED;
-  border: 1px solid #EDEDED;
-  border-radius: 15px; */
   font-size: 0.8rem;
   font-weight: 400;
   margin: 10px;
@@ -864,7 +854,7 @@ input {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   justify-content: center;
   padding: 10px;
@@ -872,8 +862,8 @@ input {
   font-size: 0.7rem;
   font-weight: 400;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 10px;
+  right: 10px;
 }
 
 .logout{

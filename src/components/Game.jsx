@@ -14,7 +14,6 @@ export function Game() {
 
     const [isDone, setIsDone] = useState(false)
     const [timeIsUp, setTimeIsUp] = useState(false)
-
     /// LOCALSTORAGE /////
     const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "")
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
@@ -22,7 +21,6 @@ export function Game() {
 
     let myPicks = []
     let myTimeLeft;
-    // let dateOfLastFixtureInThisMatchday = ""
 
     useEffect(() => {
 
