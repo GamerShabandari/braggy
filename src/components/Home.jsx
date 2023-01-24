@@ -921,7 +921,7 @@ export function Home() {
                     <span className="animate__animated animate__fadeIn">
                         The results are now in from your last played round.
                     </span>
-                    <button onClick={() => { setYourFinalPicksForThisMatchDay([]); setShowYourResultsUI(true); }} className="btn">Check 'em out</button>
+                    <button onClick={() => { setYourFinalPicksForThisMatchDay([]); setShowYourResultsUI(true); logoRef.current?.scrollIntoViewIfNeeded(); }} className="btn">Check 'em out</button>
                 </>}
             </div>
         }
