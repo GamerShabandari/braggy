@@ -45,22 +45,41 @@ code {
   bottom: 0px;
 }
 
+.secondaryBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  border: none;
+  padding: 20px;
+  /* background-color: #6600B8; */
+  background-color: #171717;
+  color: #EDEDED;
+  margin: 0px auto;
+  cursor: pointer;
+}
+
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  min-width: 30px;
+  height: 30px;
   border-radius: 15px;
   border: none;
-  padding: 10px;
-  background-color: #6600B8;
-  margin: 30px 0px;
+  padding: 20px;
+  /* background-color: #6600B8; */
+  background-color: #FB2576;
+  color: #EDEDED;
+  margin: 20px auto;
   cursor: pointer;
+  /* margin: 10px auto; */
 }
 
 .btnIcon {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #EDEDED;
 }
 
@@ -95,6 +114,7 @@ a:visited {
   background-color: #1c1c1c;
   border-radius: 15px;
   padding: 20px;
+  margin: 30px 0px;
   border: 1px solid rgba(56, 56, 56, 0.721);
 }
 
@@ -288,6 +308,7 @@ h3 {
   height: fit-content;
   color: #EDEDED;
   border: 1px solid rgba(56, 56, 56, 0.721);
+  margin: 20px 0px;
 }
 
 .animated-container {
@@ -401,24 +422,6 @@ h3 {
   justify-content: center;
   padding-bottom: 25px;
   border-bottom: 1px solid #FB2576;
-}
-
-.closeBtn {
-  margin: 20px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  border: none;
-  cursor: pointer;
-  background-color: #6600B8;
-}
-
-.closebtnIcon {
-  font-size: 1.2rem;
-  color: #EDEDED;
 }
 
 .resultListFixture {
@@ -717,13 +720,13 @@ h3 {
 }
 
 .showHistorybtn {
-  width: 60px;
+  width: 30px;
   filter: brightness(10);
 
 }
 
 .closeHistorybtn {
-  width: 60px;
+  width: 30px;
   filter: brightness(10);
   transform: rotate(180deg);
 }
@@ -765,26 +768,38 @@ h3 {
   justify-content: center;
   padding: 20px;
   gap: 20px;
+  color: #EDEDED;
+  font-weight: 300;
+  font-size: 0.8rem;
 }
 
 .loginField {
-  border: 1px solid black;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  
   gap: 10px;
 }
 
-.error {
+input{
+  border: none;
+  background-color: #EDEDED;
   padding: 10px;
+  border-radius: 15px;
+  color: #171717;
+}
+
+.error {
+  /* padding: 20px;
   color: #EDEDED;
   border: 1px solid #EDEDED;
-  border-radius: 15px;
+  border-radius: 15px; */
   font-size: 0.8rem;
   font-weight: 400;
-  margin: 20px;
+  margin: 10px;
+  color: #171717;
 }
 
 .loggedIn {
@@ -801,4 +816,17 @@ h3 {
   color: #EDEDED;
   font-size: 0.7rem;
   font-weight: 400;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #171717;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #171717;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #171717;
 }

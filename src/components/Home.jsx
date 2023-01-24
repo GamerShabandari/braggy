@@ -4,11 +4,14 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { GiPlayButton } from "react-icons/gi";
 import { TfiCheck, TfiClose } from "react-icons/tfi";
+import { GrUserAdd, GrLogin } from "react-icons/gr";
 import { MdExpandMore } from "react-icons/md";
 import { Player } from '@lottiefiles/react-lottie-player';
 import AnimatedNumbers from "react-animated-numbers";
 import { motion, AnimatePresence } from "framer-motion";
 import { fakeFixturesForNow } from "../fakeData";
+
+
 
 export function Home() {
 
@@ -624,9 +627,17 @@ export function Home() {
                         transition: { duration: 0.1 }
                     }}
                     className="loginContainer">
-                    <span>Login to post your highscore to leaderboard</span>
+                    <span>Sign in to post your highscore to leaderboard</span>
 
-                    <button onClick={() => { setShowLoginField(!showLoginField); setShowCreateLoginField(false) }}>login</button>
+                    <div onClick={() => { setShowLoginField(!showLoginField); setShowCreateLoginField(false) }}>
+                        <Player
+                            className="showHistorybtn"
+                            autoplay
+                            loop
+                            src="https://assets10.lottiefiles.com/packages/lf20_dxwu3xu0.json"
+                        >
+                        </Player>
+                    </div>
 
                     <AnimatePresence mode='wait'>
 
@@ -643,7 +654,6 @@ export function Home() {
                                 className="loginField">
                                 <input type="text" placeholder="username" value={username} onChange={handleNameInput} />
                                 <input type="password" placeholder="password" value={password} onChange={handlePasswordInput} />
-                                <button onClick={login}>login</button>
                                 <AnimatePresence mode="wait">
                                     {showError &&
                                         <motion.div
@@ -659,8 +669,11 @@ export function Home() {
                                             Incorrect login, try again.
                                         </motion.div>}
                                 </AnimatePresence>
-                                <span>No account? Create one</span>
-                                <button onClick={() => { setShowLoginField(false); setShowCreateLoginField(true) }}>create account</button>
+                                <button className="secondaryBtn" onClick={login}>Sign in</button>
+
+                                <button className="secondaryBtn" onClick={() => { setShowLoginField(false); setShowCreateLoginField(true) }}>
+                                    create login
+                                </button>
                             </motion.div>
                         }
 
@@ -679,7 +692,7 @@ export function Home() {
                                 <input type="text" placeholder="username (atleast 6 characters)" value={createdUsername} onChange={handleCreatedNameInput} />
                                 <input type="password" placeholder="password (atleast 6 characters)" value={createdPassword} onChange={handleCreatedPasswordInput} />
 
-                                <button onClick={() => { createAccount(); }}>create account</button>
+                                <button className="secondaryBtn" onClick={() => { createAccount(); }}>save account</button>
                                 <AnimatePresence mode="wait">
                                     {createUserError &&
                                         <motion.div
@@ -741,7 +754,7 @@ export function Home() {
                             ]}
                         ></AnimatedNumbers>
                     </>}
-                    <button onClick={() => { getLeaderboard() }}>view leaderboard</button>
+                    <button className="btn" onClick={() => { getLeaderboard();  logoRef.current?.scrollIntoViewIfNeeded(); }}>view leaderboard</button>
                     <AnimatePresence mode="wait">
                         {showHighScoreSavedUI &&
                             <motion.div
