@@ -890,3 +890,19 @@ input {
   /* Microsoft Edge */
   color: #171717;
 }
+
+.pickTeam{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-weight: 200;
+  gap: 20px;
+  color: #FB2576;
+  cursor: pointer;
+}
+
+.pickTeam img {
+  width: 70px;
+}

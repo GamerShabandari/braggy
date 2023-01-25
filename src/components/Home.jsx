@@ -53,16 +53,23 @@ export function Home() {
     const [userId, setUserId] = useLocalStorage("userId", "");
     const [myName, setMyName] = useLocalStorage("myName", "");
     const [loggedIn, setLoggedIn] = useLocalStorage("loggedIn", false);
+    const [myChosenLeagueToPlay, setMyChosenLeagueToPlay] = useLocalStorage("myChosenLeagueToPlay", "");
 
     let allMatchdays = [];
     let allResultsArray = [];
     let latestMatchday = "";
     let nextMatchday = "";
 
-    useEffect(() => {   
-            fetchResults()
-            console.log("fetching API");   
-    }, []);
+    useEffect(() => {
+
+        if (myChosenLeagueToPlay === "") {
+            console.log("stop, no league picked yet");
+            return
+        }
+
+        fetchResults()
+        console.log("fetching API");
+    }, [myChosenLeagueToPlay]);
 
     // checks if results are in from last played game and then calculates score 
     function checkResults() {
@@ -167,7 +174,7 @@ export function Home() {
 
         const options = {
             method: 'GET',
-            url: 'https://football98.p.rapidapi.com/premierleague/results',
+            url: 'https://football98.p.rapidapi.com/' + myChosenLeagueToPlay + '/results',
             headers: {
                 'X-RapidAPI-Key': apiKey,
                 'X-RapidAPI-Host': 'football98.p.rapidapi.com'
@@ -208,7 +215,7 @@ export function Home() {
 
         const options = {
             method: 'GET',
-            url: 'https://football98.p.rapidapi.com/premierleague/fixtures',
+            url: 'https://football98.p.rapidapi.com/' + myChosenLeagueToPlay + '/fixtures',
             headers: {
                 'X-RapidAPI-Key': apiKey,
                 'X-RapidAPI-Host': 'football98.p.rapidapi.com'
@@ -233,16 +240,28 @@ export function Home() {
             if (fixturesArray.length === 0) {
                 console.log("something wrong with API, not giving proper data for next round... here is some dummy data.");
 
-                for (let prop in fakeFixturesForNow[0]) {
+                for (let prop in upcomingFixtures[0]) {
 
-                    if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
-                        //first index is the number of the matchday
-                        fixturesArray.push(Number(nextMatchday))
-                        //second index is array of fixtures to play
-                        fixturesArray.push(fakeFixturesForNow[0][prop]);
-                        setMatchdayToPlay(fixturesArray);
-                    }
+                    let toplay = ["111"]
+                    toplay.push(upcomingFixtures[0][prop])
+
+                    setMatchdayToPlay(toplay)
                 }
+
+
+
+
+
+                // for (let prop in fakeFixturesForNow[0]) {
+
+                //     if (Number(prop.replace(/\D/g, '')) === Number(nextMatchday)) {
+                //         //first index is the number of the matchday
+                //         fixturesArray.push(Number(nextMatchday))
+                //         //second index is array of fixtures to play
+                //         fixturesArray.push(fakeFixturesForNow[0][prop]);
+                //         setMatchdayToPlay(fixturesArray);
+                //     }
+                // }
             }
             checkResults();
 
@@ -871,6 +890,35 @@ export function Home() {
                         </Player>
                     </div>
                 </motion.section>
+            }
+        </AnimatePresence>
+
+        <AnimatePresence>
+            {myChosenLeagueToPlay === "" &&
+                <motion.div
+                    key="choseYourLeague"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                    exit={{
+                        opacity: 0,
+                        y: "-50%",
+                        transition: { duration: 0.2, ease: "easeInOut" }
+                    }}
+                    className="information">
+                    <span>Pick your league of choice below</span>
+                    <div className="pickTeamsContainer">
+                        <div className="pickTeam" onClick={() => { setMyChosenLeagueToPlay("premierleague") }}>Premier League
+                            <img src="./img/premierleague.png" draggable={false} alt="" />
+                        </div>
+                        <div className="pickTeam" onClick={() => { setMyChosenLeagueToPlay("seriea") }}>Serie A
+                            <img src="./img/seriea.png" draggable={false} alt="" />
+                        </div>
+                        {/* <div onClick={() => { setMyChosenLeagueToPlay("laliga") }}>La Liga
+                        
+                        </div> */}
+                    </div>
+                    {myChosenLeagueToPlay}
+                </motion.div>
             }
         </AnimatePresence>
 

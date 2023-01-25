@@ -18,6 +18,7 @@ export function Game() {
     const [yourLastPlayedMatchDay, setYourLastPlayedMatchDay] = useLocalStorage("yourLastPlayedMatchDay", "")
     const [yourFinalPicksForThisMatchDay, setYourFinalPicksForThisMatchDay] = useLocalStorage("yourFinalPicksForThisMatchDay", [])
     const [matchdayToPlay, setMatchdayToPlay] = useLocalStorage("matchdayToPlay", [])
+    const [myChosenLeagueToPlay, setMyChosenLeagueToPlay] = useLocalStorage("myChosenLeagueToPlay", "");
 
     let myPicks = []
     let myTimeLeft;
@@ -187,7 +188,16 @@ export function Game() {
                                     <TinderCard key={i} preventSwipe={['down']} className='swipe' onSwipe={(dir) => handleSwipes(dir, match, i)} >
                                         <div className='card'>
                                             <div className='PLcontainer'>
-                                                <img src="./img/PL.png" draggable={false} alt="" />
+                                                {myChosenLeagueToPlay === "premierleague" &&
+                                                    <>
+                                                        <img src="./img/PL.png" draggable={false} alt="" />
+                                                    </>
+                                                }
+                                                {myChosenLeagueToPlay !== "premierleague" &&
+                                                    <>
+                                                        <img src={"./img/" + myChosenLeagueToPlay + ".png"} draggable={false} alt="" />
+                                                    </>
+                                                }
                                             </div>
                                             <div className='logoContainer'>
                                                 <img src={"./img/" + match.homeTeam + ".png"} draggable={false} alt="hometeam logo" />
