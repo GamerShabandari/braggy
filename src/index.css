@@ -823,7 +823,7 @@ h3 {
   font-weight: 300;
   font-size: 0.8rem;
   overflow-x: clip;
-  border: 1px solid #FB2576;
+  background-color: #FB2576;
 }
 
 .loginField {
@@ -845,9 +845,9 @@ input {
 
 .error {
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 500;
   margin: 10px;
-  color: #FB2576;
+  color: #171717;
 }
 
 .loggedIn {

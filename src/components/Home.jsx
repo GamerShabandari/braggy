@@ -59,8 +59,9 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
-    useEffect(() => {
-        fetchResults()
+    useEffect(() => {   
+            fetchResults()
+            console.log("fetching API");   
     }, []);
 
     // checks if results are in from last played game and then calculates score 
@@ -997,7 +998,7 @@ export function Home() {
                             {leaderboard.length === 0 &&
                                 <span>No scores posted yet.
                                     <br />
-                                   <strong>You</strong> should be the first!
+                                    <strong>You</strong> should be the first!
                                 </span>
                             }
                             {leaderboardListHtml}
