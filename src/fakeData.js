@@ -287,6 +287,78 @@ export let fakeFixturesForNow = [
                 "awayTeam": "Everton",
                 "MatchDay": "13/02/2023"
             }
+        ],
+        " Matchday 24 ": [
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F199.png",
+                "homeTeam": "Aston Villa",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F2.png",
+                "awayTeam": "Arsenal",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F203.png",
+                "homeTeam": "Wolves",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F622.png",
+                "awayTeam": "Bournemouth",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F671.png",
+                "homeTeam": "Brentford",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F567.png",
+                "awayTeam": "Crystal Palace",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F670.png",
+                "homeTeam": "Brighton",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F211.png",
+                "awayTeam": "Fulham",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F9.png",
+                "homeTeam": "Chelsea",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F615.png",
+                "awayTeam": "Southampton",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F197.png",
+                "homeTeam": "Everton",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F571.png",
+                "awayTeam": "Leeds",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F577.png",
+                "homeTeam": "Nottingham Forest",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F209.png",
+                "awayTeam": "Manchester City",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F207.png",
+                "homeTeam": "Newcastle United",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F18.png",
+                "awayTeam": "Liverpool",
+                "MatchDay": "18/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F21.png",
+                "homeTeam": "Manchester United",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F572.png",
+                "awayTeam": "Leicester",
+                "MatchDay": "19/02/2023"
+            },
+            {
+                "homeLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F202.png",
+                "homeTeam": "Tottenham",
+                "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F198.png",
+                "awayTeam": "West Ham",
+                "MatchDay": "19/02/2023"
+            }
         ]
     }
 ]
