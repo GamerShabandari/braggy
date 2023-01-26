@@ -38,6 +38,8 @@ export function Home() {
     const [showHighScoreSavedUI, setShowHighScoreSavedUI] = useState(false)
     const [tryingLogin, setTryingLogin] = useState(false)
     const [tryingAccount, setTryingAccount] = useState(false)
+    const [usernameTakenError, setUsernameTakenError] = useState(false)
+
     /// LOCALSTORAGE /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
     const [results, setResults] = useLocalStorage("results", [""]);
@@ -59,9 +61,9 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
-    useEffect(() => {   
-            fetchResults()
-            console.log("fetching API");   
+    useEffect(() => {
+        fetchResults()
+        console.log("fetching API");
     }, []);
 
     // checks if results are in from last played game and then calculates score 
@@ -307,12 +309,18 @@ export function Home() {
         if (createUserError) {
             setCreateUserError(false)
         }
+        if (usernameTakenError) {
+            setUsernameTakenError(false);
+        }
     }
 
     function handleCreatedPasswordInput(e) {
         setCreatedPassword(e.target.value)
         if (createUserError) {
             setCreateUserError(false)
+        }
+        if (usernameTakenError) {
+            setUsernameTakenError(false);
         }
     }
 
@@ -328,6 +336,12 @@ export function Home() {
             }
             axios.post("https://braggy-backend.onrender.com/createUser", newCreatedUser, { headers: { "content-type": "application/json" } })
                 .then(response => {
+
+                    if (response.data.error === "username already taken") {
+                        setUsernameTakenError(true);
+                        setTryingAccount(false)
+                        return
+                    }
                     setCreatedUsername("");
                     setCreatedPassword("");
                     setShowLoginField(true);
@@ -678,8 +692,6 @@ export function Home() {
                                 className="loginField">
                                 <input type="text" placeholder="username (atleast 6 characters)" value={createdUsername} onChange={handleCreatedNameInput} />
                                 <input type="password" placeholder="password (atleast 6 characters)" value={createdPassword} onChange={handleCreatedPasswordInput} />
-
-                                <button disabled={tryingAccount} className="secondaryBtn" onClick={() => { createAccount(); }}>save account</button>
                                 <AnimatePresence mode="wait">
                                     {createUserError &&
                                         <motion.div
@@ -694,7 +706,25 @@ export function Home() {
                                             className="error">
                                             Username & password must be atleast 6 characters.
                                         </motion.div>}
+
+                                    {usernameTakenError &&
+                                        <motion.div
+                                            key="usernameTakenError"
+                                            initial={{ opacity: 0, y: "-50%" }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{
+                                                opacity: 0,
+                                                y: "-50%",
+                                                transition: { duration: 0.1 }
+                                            }}
+                                            className="error">
+                                            Username allready taken, try another one.
+                                        </motion.div>
+                                    }
                                 </AnimatePresence>
+
+                                <button disabled={tryingAccount} className="secondaryBtn" onClick={() => { createAccount(); }}>save account</button>
+
                             </motion.div>
                         }
                     </AnimatePresence>
