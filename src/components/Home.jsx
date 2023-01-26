@@ -374,8 +374,8 @@ export function Home() {
                     setUserId(response.data.id);
                     setMyName(username);
                     setLoggedIn(true);
-                    showCreateLoginField(false)
-                    showLoginField(false)
+                    setShowCreateLoginField(false)
+                    setShowLoginField(false)
                     setShowError(false);
                     setUsername("");
                     setPassword("");
@@ -395,6 +395,9 @@ export function Home() {
         setUserId("");
         setMyName("");
         setLoggedIn(false);
+        setTryingLogin(false);
+        setShowLoginField(false)
+        setShowError(false);
     }
 
 
