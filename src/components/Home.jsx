@@ -13,9 +13,12 @@ import { fakeFixturesForNow } from "../fakeData";
 export function Home() {
 
     const navigate = useNavigate();
+    // hidden api key
     const apiKey = process.env.REACT_APP_API_KEY;
+    // ref for scroll to jump to top of page when needed
     const logoRef = useRef()
 
+    // state variables
     const [showLeaderboard, setShowLeaderboard] = useState(false)
     const [loadingLeaderboard, setLoadingLeaderboard] = useState(false)
     const [leaderboard, setLeaderboard] = useState([])
@@ -40,7 +43,7 @@ export function Home() {
     const [tryingAccount, setTryingAccount] = useState(false)
     const [usernameTakenError, setUsernameTakenError] = useState(false)
 
-    /// LOCALSTORAGE /////
+    /// LOCALSTORAGE variables using custom hook  /////
     const [historyOfPlayedRounds, setHistoryOfPlayedRounds] = useLocalStorage("historyOfPlayedRounds", []);
     const [results, setResults] = useLocalStorage("results", [""]);
     const [matchdays, setMatchdays] = useLocalStorage("matchdays", [""]);
@@ -61,10 +64,36 @@ export function Home() {
     let latestMatchday = "";
     let nextMatchday = "";
 
+    // animation variables for animated logo
+    const svgVariants = {
+        hidden: { rotate: -180 },
+        visible: {
+            rotate: 0,
+            transition: { duration: 1 }
+        },
+    }
+
+    const pathVariants = {
+        hidden: {
+            opacity: 0,
+            pathLength: 0,
+        },
+        visible: {
+            opacity: 1,
+            pathLength: 1,
+            transition: {
+                duration: 2,
+                ease: "easeInOut",
+            }
+        }
+    };
+
+
     useEffect(() => {
         fetchResults()
         console.log("fetching API");
     }, []);
+
 
     // checks if results are in from last played game and then calculates score 
     function checkResults() {
@@ -132,6 +161,7 @@ export function Home() {
                     setHighScore(score)
                     setHiscoreAchievment(true)
 
+                    // if logged in then post score to server
                     if (username !== "" && userId !== "") {
                         postHighscoreToBackend(score)
                     }
@@ -144,6 +174,7 @@ export function Home() {
         }
     }
 
+    // post new highscore to server
     function postHighscoreToBackend(score) {
 
         let newScoreToPost = {
@@ -163,6 +194,7 @@ export function Home() {
             })
     }
 
+    // fetch all the latest game results from API
     function fetchResults() {
 
         setIsLoadingApiData(true);
@@ -204,6 +236,7 @@ export function Home() {
         });
     }
 
+    // fetch all the upcoming games from API
     function fetchFixtures() {
 
         let fixturesArray = []
@@ -246,6 +279,7 @@ export function Home() {
                     }
                 }
             }
+            // now that all the latest results are in, and all the upcoming games are in we can check users pick and give score
             checkResults();
 
         }).catch(function (error) {
@@ -253,7 +287,7 @@ export function Home() {
         });
     }
 
-    // used to fake result to test app
+    // used to fake result to test app, not used in production
     function insertFakeResult() {
 
         let matchdayKey = " Matchday " + yourLastPlayedMatchDay + " ";
@@ -276,6 +310,7 @@ export function Home() {
         window.location.reload();
     }
 
+    // remove results modal from UI
     function closeResultsUI() {
         // // before closing and cleaning up, we want to structure and save this round to players history in thisRoundToBeSavedToYourHistory[]
         // // structure is, index 0 = round played (yourLastPlayedMatchDay), index 1 is final score (resultsUiScore), index 2 is all fixtures fixturesArrayForResultsUI
@@ -293,6 +328,7 @@ export function Home() {
         setHiscoreAchievment(false)
     }
 
+    // get latest leaderboard from server
     function getLeaderboard() {
         setLoadingLeaderboard(true)
         setShowLeaderboard(true)
@@ -304,6 +340,7 @@ export function Home() {
             })
     }
 
+    // handle input state
     function handleCreatedNameInput(e) {
         setCreatedUsername(e.target.value)
         if (createUserError) {
@@ -313,7 +350,7 @@ export function Home() {
             setUsernameTakenError(false);
         }
     }
-
+    // handle input state
     function handleCreatedPasswordInput(e) {
         setCreatedPassword(e.target.value)
         if (createUserError) {
@@ -323,9 +360,10 @@ export function Home() {
             setUsernameTakenError(false);
         }
     }
-
+    // let user create account if username and password length are minimum 6 characters long
     function createAccount() {
 
+        // state to disable button while creating account
         setTryingAccount(true)
 
         if (createdUsername.length > 5 && createdPassword.length > 5) {
@@ -358,6 +396,7 @@ export function Home() {
         }
     }
 
+    // handle input state
     function handleNameInput(e) {
         setUsername(e.target.value)
         if (showError) {
@@ -365,6 +404,7 @@ export function Home() {
         }
     }
 
+    // handle input state
     function handlePasswordInput(e) {
         setPassword(e.target.value)
         if (showError) {
@@ -375,6 +415,7 @@ export function Home() {
     // login user, if success change all relevant state-variables and save userid to localstorage, else show error 
     function login() {
 
+        // state to disable button while creating account
         setTryingLogin(true);
 
         let usersLogin = {
@@ -404,7 +445,8 @@ export function Home() {
                 console.log(error);
             })
     }
-
+    
+    // handle logout 
     function logOut() {
         setUserId("");
         setMyName("");
@@ -415,7 +457,7 @@ export function Home() {
     }
 
 
-    // fixt [0] = roundNr ----- [1] = points ----- [2] = fixtures
+    // render list from state variable, fixt [0] = roundNr ----- [1] = points ----- [2] = fixtures
     let historyListHtml = historyOfPlayedRounds.map((fixt, i) => {
 
         return (
@@ -444,6 +486,7 @@ export function Home() {
         )
     })
 
+    // render history list from state
     let historyDetailsHtml = chosenHistoryRoundOfFixtures.map((fixt, i) => {
         return (
             <motion.div className="resultListFixture"
@@ -483,6 +526,7 @@ export function Home() {
         )
     })
 
+    // render restults list from state
     let resultListHtml = fixturesArrayForResultsUI.map((fixt, i) => {
         return (
             <motion.div className="resultListFixture" key={i}
@@ -521,7 +565,7 @@ export function Home() {
         )
     })
 
-    //leaderboard only top 20
+    //leaderboard limited to only top 20 positions
     let leaderboardListHtml = leaderboard.slice(0, 20).map((listRow, i) => {
         return (
             <motion.div className="leaderboardRow" key={i}
@@ -607,8 +651,16 @@ export function Home() {
         </AnimatePresence>
 
         <div ref={logoRef} className="logo">
-            <motion.svg className="svg animate__animated animate__fadeIn" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
-            </g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" strokeWidth="0.72" strokeLinecap="round" strokeLinejoin="round"></path> </g>
+            <motion.svg
+                variants={svgVariants}
+                initial="hidden"
+                animate="visible"
+                className="svg animate__animated animate__fadeIn" viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" strokeWidth="0">
+                </g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier">
+                    <motion.path
+                        variants={pathVariants}
+                        d="M8.5 12H13C14.3807 12 15.5 10.8807 15.5 9.5C15.5 8.11929 14.3807 7 13 7H8.5V12ZM8.5 12H14C15.3807 12 16.5 13.1193 16.5 14.5C16.5 15.8807 15.3807 17 14 17H8.5V12ZM7.8 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H7.8C6.11984 3 5.27976 3 4.63803 3.32698C4.07354 3.6146 3.6146 4.07354 3.32698 4.63803C3 5.27976 3 6.11984 3 7.8V16.2C3 17.8802 3 18.7202 3.32698 19.362C3.6146 19.9265 4.07354 20.3854 4.63803 20.673C5.27976 21 6.11984 21 7.8 21Z" stroke="#FB2576" strokeWidth="0.72" strokeLinecap="round" strokeLinejoin="round">
+                    </motion.path> </g>
             </motion.svg>
 
             <div className="logotext animate__animated animate__fadeInUp">
