@@ -663,7 +663,7 @@ export function Home() {
                     </motion.path> </g>
             </motion.svg>
 
-            <div className="logotext animate__animated animate__fadeInUp">
+            <div className="logotext animate__animated animate__bounceInDown animate__delay-1s">
                 braggy
             </div>
         </div>

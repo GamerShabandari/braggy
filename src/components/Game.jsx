@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import TinderCard from 'react-tinder-card';
 import useLocalStorage from "../useLocalStorage";
 import Countdown from "react-countdown";
@@ -22,7 +22,11 @@ export function Game() {
     let myPicks = []
     let myTimeLeft;
 
+    const timerRef = useRef()
+
     useEffect(() => {
+
+         timerRef.current?.scrollIntoViewIfNeeded();
 
         if (yourFinalPicksForThisMatchDay.length !== 0) {
             setIsDone(true)
@@ -166,6 +170,7 @@ export function Game() {
             }
 
             {!timeIsUp && <>
+                <div ref={timerRef}></div>
                 <AnimatePresence mode='wait'>
                     {!isDone && setYourFinalPicksForThisMatchDay.length !== 0 &&
                         <motion.div
