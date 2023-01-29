@@ -754,7 +754,7 @@ h3 {
   justify-content: flex-start;
   padding: 20px;
   top: 0px;
-  position: fixed;
+  position: absolute;
 }
 
 .leaderBoard {
