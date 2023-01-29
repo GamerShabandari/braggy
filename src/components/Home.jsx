@@ -445,7 +445,7 @@ export function Home() {
                 console.log(error);
             })
     }
-    
+
     // handle logout 
     function logOut() {
         setUserId("");
@@ -790,7 +790,10 @@ export function Home() {
                 <motion.div
                     key="logedInUi"
                     initial={{ opacity: 0, y: "-50%" }}
-                    animate={{ opacity: 1, y: 0 }}
+                    animate={{
+                        opacity: 1, y: 0,
+                        transition: { duration: 0.3, ease: "easeInOut", delay: 1 }
+                    }}
                     exit={{
                         opacity: 0,
                         y: "-50%",
@@ -866,21 +869,32 @@ export function Home() {
             </div>
         }
 
-        {
-            isLoadingApiData &&
-            <div className="loaderContainer animate__animated animate__fadeIn">
-                <h3>
-                    Loading
-                    <Player
-                        className="loader"
-                        autoplay
-                        loop
-                        src="https://assets3.lottiefiles.com/packages/lf20_0omj4rn0.json"
-                    >
-                    </Player>
-                </h3>
-            </div>
-        }
+        <AnimatePresence mode="wait">
+            {
+                isLoadingApiData &&
+                <motion.div
+                    key="loadingUI"
+                    initial={{ opacity: 0, y: "-50%" }}
+                    animate={{ opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeInOut" } }}
+                    exit={{
+                        opacity: 0,
+                        y: "-50%",
+                        transition: { duration: 0.2, ease:"easeInOut" }
+                    }}
+                    className="loaderContainer animate__animated animate__fadeIn">
+                    <h3>
+                        Loading
+                        <Player
+                            className="loader"
+                            autoplay
+                            loop
+                            src="https://assets3.lottiefiles.com/packages/lf20_0omj4rn0.json"
+                        >
+                        </Player>
+                    </h3>
+                </motion.div>
+            }
+        </AnimatePresence>
 
         <AnimatePresence>
             {showYourResultsUI &&
