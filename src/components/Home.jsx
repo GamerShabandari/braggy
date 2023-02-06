@@ -1009,6 +1009,7 @@ export function Home() {
                     <span className="animate__animated animate__fadeIn">
                         We are still waiting for the results to come in from your last played round. <br /> Check back after <span className="Ddate">{yourFinalPicksForThisMatchDay[2]}</span> when the final fixture of this matchday will be played.
                     </span>
+                    <button onClick={fetchResults} className="btn">check results</button>
                 </>}
 
                 {fixturesArrayForResultsUI.length > 0 && <>
