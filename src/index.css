@@ -780,6 +780,12 @@ h3 {
   border-radius: 15px;
 }
 
+.savedScore{
+  font-size: 1rem;
+  color: #EDEDED;
+  padding: 10px;
+}
+
 .trophy {
   width: 100px;
   margin: 0px;

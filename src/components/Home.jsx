@@ -844,7 +844,7 @@ export function Home() {
                     <AnimatePresence mode="wait">
                         {showHighScoreSavedUI &&
                             <motion.div
-                                key="createUserError"
+                                key="highscoresaved"
                                 initial={{ opacity: 0, y: "-50%" }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{
@@ -852,9 +852,9 @@ export function Home() {
                                     y: "-50%",
                                     transition: { duration: 0.1 }
                                 }}
-                                className="error"
+                                className="savedScore"
                             >
-                                Highscore posted to leaderboard.
+                                highscore posted to leaderboard!
                             </motion.div>
 
                         }
