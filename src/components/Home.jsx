@@ -177,10 +177,10 @@ export function Home() {
 
     // post new highscore to server
     function postHighscoreToBackend(theScore) {
-
+        let scoreToPost = Number(theScore)
         let newScoreToPost = {
             username: myName,
-            highscore: theScore
+            highscore: scoreToPost
         }
 
         console.log("score object to post: ", newScoreToPost)
@@ -591,6 +591,13 @@ export function Home() {
                 <div className="placement">{i + 1} :</div>
                 <div className="username">{listRow.username}</div>
                 <div className="points">{listRow.highscore}</div>
+                <Player
+                    className="coin"
+                    autoplay
+                    loop
+                    src="https://assets5.lottiefiles.com/packages/lf20_CbT8Hi.json"
+                >
+                </Player>
 
             </motion.div>
         )
@@ -606,8 +613,6 @@ export function Home() {
             transition: { duration: 0.2, ease: "easeInOut" }
         }}
     >
-
-        <button onClick={postHighscoreToBackend}>TEST</button>
         <AnimatePresence>
             {showHistory &&
                 <motion.div
@@ -886,7 +891,7 @@ export function Home() {
                     exit={{
                         opacity: 0,
                         y: "-50%",
-                        transition: { duration: 0.2, ease:"easeInOut" }
+                        transition: { duration: 0.2, ease: "easeInOut" }
                     }}
                     className="loaderContainer animate__animated animate__fadeIn">
                     <h3>
