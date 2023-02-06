@@ -769,7 +769,7 @@ h3 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 350px;
+  width: 300px;
   justify-content: space-between;
   color: #EDEDED;
   gap: 20px;
