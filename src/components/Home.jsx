@@ -164,6 +164,7 @@ export function Home() {
                     // if logged in then post score to server
                     if (username !== "" && userId !== "") {
                         postHighscoreToBackend(score)
+                        console.log("running func postHighscore");
                     }
 
                 }
@@ -175,15 +176,19 @@ export function Home() {
     }
 
     // post new highscore to server
-    function postHighscoreToBackend(score) {
+    function postHighscoreToBackend(theScore) {
 
         let newScoreToPost = {
             username: myName,
-            highscore: score
+            highscore: theScore
         }
 
-        axios.post("https://braggy-backend.onrender.com/postHighscore/" + userId, newScoreToPost, { headers: { "content-type": "application/json" } })
+        console.log("score object to post: ", newScoreToPost)
+        console.log("score object to post: ", userId)
+
+        axios.post("https://braggy-backend.onrender.com/posthighscore/" + userId, newScoreToPost, { headers: { "content-type": "application/json" } })
             .then(response => {
+                console.log("response:", response)
                 setShowHighScoreSavedUI(true)
                 setTimeout(() => {
                     setShowHighScoreSavedUI(false)
@@ -601,6 +606,8 @@ export function Home() {
             transition: { duration: 0.2, ease: "easeInOut" }
         }}
     >
+
+        <button onClick={postHighscoreToBackend}>TEST</button>
         <AnimatePresence>
             {showHistory &&
                 <motion.div
