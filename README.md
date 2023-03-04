@@ -1,3 +1,6 @@
+#Update March 2023
+Backend no longer persistent do to cost, created users/logins and posted highscores will not persist over time.
+
 # Braggy
 This mobile game was made for my thesis assignment at Medieinstitutet. Its a game where you guess the results of all the fixtures in the upcoming round of the Premier League.
 
